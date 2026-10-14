@@ -1,0 +1,34 @@
+{
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_18CM_2026-10-06/V44_18CM_BEST_model_3930.pt",
+  "source_sha256": "f936cec07f05495a90ef12c3bae5007fd161b55b39564f837a77f9ba51c47720",
+  "source_physical_success": {
+    "12cm": "32/32",
+    "14cm": "31/32",
+    "16cm": "23/32",
+    "18cm": "13/32"
+  },
+  "stair_height_m": [
+    0.12,
+    0.23
+  ],
+  "stair_step_width_m": 0.3,
+  "fixed_18cm_anchor_proportion": 0.2,
+  "main_upstairs_proportion": 0.45,
+  "swing_target_m": {
+    "flat": 0.09,
+    "at_18cm_relief": 0.198,
+    "at_23cm_relief": 0.228
+  },
+  "excessive_foot_height_threshold_m": 0.3,
+  "actor_observation_dim": 62,
+  "height_scan_in_actor": false,
+  "actor_warmup_update_calls": 30,
+  "optimizer_transfer": false,
+  "fixed_alpha_from_source": true,
+  "actor_learning_rate": 2e-07,
+  "critic_learning_rate": 5e-05,
+  "policy_frequency": 5,
+  "iterations": 200,
+  "save_interval": 5,
+  "num_envs": 4096
+}

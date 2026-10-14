@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": 1791297597.4892888,
+  "supervisor_pid": 37301,
+  "error": "KeyboardInterrupt()"
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1789690600.2444022,
+  "supervisor_pid": 45952,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v29_history_scratch_multiterrain/2026-09-17_23-21-44_pilot_20260917T232108Z/model_299.pt",
+  "page": "/home/ubuntu22/terrain_v29_history_scratch/results/20260917T232108Z/V29从头多地形Pilot.html",
+  "ready_for_overnight_review": true
+}

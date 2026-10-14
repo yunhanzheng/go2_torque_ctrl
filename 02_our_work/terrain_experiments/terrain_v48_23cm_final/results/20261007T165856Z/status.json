@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": 1791392342.4509032,
+  "supervisor_pid": 24624,
+  "error": "RuntimeError('training exited with 1')"
+}

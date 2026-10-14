@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1790428954.7241127,
+  "supervisor_pid": 33547,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v38_official_stairs/2026-09-26_11-55-01_official_5to23cm_resume2900_to3799_20260926T115454Z/model_3798.pt",
+  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v38_official_stairs/2026-09-26_00-50-15_official_5to23cm_from_v37_2799_20260926T005009Z/model_2900.pt",
+  "log": "/home/ubuntu22/terrain_v38_official_stairs/results/20260926T115454Z/V38原始楼梯课程_从2900恢复到3799.log"
+}

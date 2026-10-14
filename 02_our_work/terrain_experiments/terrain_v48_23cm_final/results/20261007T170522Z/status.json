@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1791394536.8625498,
+  "supervisor_pid": 5818,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v48_23cm_final/2026-10-07_17-05-30_focused_215to23cm_from_v47_4479_20261007T170522Z/model_4778.pt",
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_22CM_BEST_2026-10-07/V47_22CM_19OF32_model_4479.pt",
+  "log": "/home/ubuntu22/terrain_v48_23cm_final/results/20261007T170522Z/V48_最终突破23cm_300轮.log"
+}

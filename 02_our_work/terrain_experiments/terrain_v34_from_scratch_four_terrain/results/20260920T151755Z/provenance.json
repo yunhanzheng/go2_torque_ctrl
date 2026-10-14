@@ -1,0 +1,18 @@
+{
+  "strict_from_scratch": true,
+  "external_checkpoint_loaded": false,
+  "curriculum": [
+    "stand",
+    "0.15mps",
+    "0.3mps",
+    "0.5mps",
+    "four_terrain"
+  ],
+  "training_seed": 1,
+  "reference_hashes": {
+    "V24": "6d41e21f2dc7bc7a6dd9f9c490a535507724a5e7eaa7c1dea76d1fbd20dcc5dc",
+    "V26": "8c1f588b9aaa39449bca185df986e079ab4a017d914ed772c04796d66477fb4e"
+  },
+  "continued_from_own_stage0": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_stage0_stand/2026-09-20_14-37-36_stage0_20260920T143704Z/model_299.pt",
+  "continued_from_own_stage0_sha256": "6c4fa643998c69ab32bb629eb0b60dd2f29c5487438564cd7dc03513ac5763a2"
+}

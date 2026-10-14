@@ -1,0 +1,228 @@
+{
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_four_terrain/2026-09-20_22-45-03_mixed_curriculum_20260920T224437Z/model_2396.pt",
+  "terrain": "slope_up",
+  "difficulty": 0.75,
+  "terrain_seed": 7,
+  "num_envs": 1,
+  "steps": 600,
+  "dt": 0.02,
+  "success": 0,
+  "terminated": 1,
+  "other_no_success": 0,
+  "max_x_m": [
+    2.27000093460083
+  ],
+  "trace_env0": [
+    {
+      "step": 0,
+      "x": 0.000948810949921608,
+      "z": 0.39741823077201843,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 20,
+      "x": 0.13016727566719055,
+      "z": 0.2680727243423462,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 40,
+      "x": 0.325274795293808,
+      "z": 0.29565975069999695,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 60,
+      "x": 0.5309348702430725,
+      "z": 0.2942105531692505,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 80,
+      "x": 0.7340107560157776,
+      "z": 0.2976665496826172,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 100,
+      "x": 0.9368205666542053,
+      "z": 0.30092668533325195,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 120,
+      "x": 1.1397732496261597,
+      "z": 0.2958712577819824,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 140,
+      "x": 1.3384711742401123,
+      "z": 0.294219434261322,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 160,
+      "x": 1.5392614603042603,
+      "z": 0.3066818118095398,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 180,
+      "x": 1.7332878112792969,
+      "z": 0.3487994074821472,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 200,
+      "x": 1.9330254793167114,
+      "z": 0.39913663268089294,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 220,
+      "x": 2.1324641704559326,
+      "z": 0.43844136595726013,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 240,
+      "x": 2.330122947692871,
+      "z": 0.4800623953342438,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 260,
+      "x": 2.530164957046509,
+      "z": 0.5272865891456604,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 280,
+      "x": 2.727705240249634,
+      "z": 0.5593605041503906,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 300,
+      "x": 2.928100824356079,
+      "z": 0.6069151163101196,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 320,
+      "x": 3.1311917304992676,
+      "z": 0.6335960626602173,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 340,
+      "x": 3.331254243850708,
+      "z": 0.6711183190345764,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 360,
+      "x": 3.536198377609253,
+      "z": 0.7088035941123962,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 380,
+      "x": 3.740412473678589,
+      "z": 0.7226554155349731,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 400,
+      "x": 3.947700023651123,
+      "z": 0.7437770962715149,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 420,
+      "x": 4.158144950866699,
+      "z": 0.7450331449508667,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 440,
+      "x": 4.3677167892456055,
+      "z": 0.7390755414962769,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 460,
+      "x": 4.579972267150879,
+      "z": 0.7415741682052612,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 480,
+      "x": 4.7894182205200195,
+      "z": 0.7413715720176697,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 500,
+      "x": 4.999231338500977,
+      "z": 0.7460743188858032,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 520,
+      "x": 5.211287021636963,
+      "z": 0.7407608032226562,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 540,
+      "x": 5.418906211853027,
+      "z": 0.7381759881973267,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 560,
+      "x": 5.629945755004883,
+      "z": 0.74101722240448,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 580,
+      "x": 5.837584018707275,
+      "z": 0.7416733503341675,
+      "done": false,
+      "active": false
+    }
+  ],
+  "criterion": "first episode; fixed 0.5 m/s; base x > 3.5m, all feet x > 3.05m, gravity_z < -0.85 for 0.5s; abs(y)<=0.75m; no reset"
+}

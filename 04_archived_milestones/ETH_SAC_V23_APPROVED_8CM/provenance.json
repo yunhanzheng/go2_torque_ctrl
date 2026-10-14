@@ -1,0 +1,7 @@
+{
+  "source": "/home/ubuntu22/saved_models/V22_APPROVED/model_299.pt",
+  "sha256": "2d34a382bd6e725103723fcdca8d983a382b863ac7006f2c2f339e49e38c17a9",
+  "warmup_update_calls": 25,
+  "transfer": "actor, critic, optimizer and alpha; fresh replay and iteration counter",
+  "actor_observation_dim": 62
+}

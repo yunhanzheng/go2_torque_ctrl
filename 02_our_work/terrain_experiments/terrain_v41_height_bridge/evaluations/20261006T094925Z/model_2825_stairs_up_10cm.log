@@ -1,0 +1,254 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/eth_sac/isaaclab-sac/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261006_095113.log
+2026-10-06T09:51:13Z [75ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-10-06T09:51:14Z [560ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-10-06T09:51:14Z [570ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-10-06T09:51:17Z [3,335ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-10-06T09:51:17Z [3,335ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-10-06T09:51:17Z [3,335ms] [Error] [gpu.foundation.plugin] Multiple Installable Client Drivers (ICDs) are found for the same GPU on the system. This causes the same GPU to be reported multiple times by more than one driver and leads to instability or crash. 
+It requires multi-gpu mode to be disabled and the correct device with the correct driver to be set via activeGpu setting.
+For NVIDIA drivers, please follow troubleshooting docs to uninstall and completely purge Linux-distribution-provided driver packages, and then reinstall your driver cleanly via .run package. Otherwise, updating Ubuntu software may reinstall a secondary ICD or override the existing NVIDIA driver.
+
+To verify the proper NVIDIA driver installation, only one of the following icd.d folders should contain nvidia_icd.json file:
+/etc/vulkan/icd.d: Location of ICDs installed from non-Linux-distribution-provided packages
+/usr/share/vulkan/icd.d : Location of ICDs installed from Linux-distribution-provided packages
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 0 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 1 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 2   | Intel(R) Graphics (RPL-S)        |        |     | 23845   MB | 8086      | 0          |
+|     |                                  |        |     |            | a788      | 868088a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.4 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.4, Kernel: 6.8.0-110-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Core(TM) i9-14900HX
+| Cores: 24 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 31793 | Free Memory: 28414
+| Total Page/Swap (MB): 7628 | Free Page/Swap: 7628
+|---------------------------------------------------------------------------------------------|
+2026-10-06T09:51:17Z [3,746ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-10-06T09:51:17Z [3,755ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 0 don't match.
+2026-10-06T09:51:17Z [3,755ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+2026-10-06T09:51:17Z [3,755ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-10-06T09:51:17Z [3,755ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 380.26 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.53 
+
+   CPU     0 
+     0   1.68 
+[INFO]: Parsing configuration from: terrain_v41_height_bridge.config:V41HeightBridgeEnvCfg
+[INFO]: Parsing configuration from: terrain_v41_height_bridge.config:V41HeightBridgeRunnerCfg
+[INFO] Loading experiment from directory: /home/ubuntu22/logs/rsl_rl/terrain_v41_height_bridge
+[INFO] Viewer camera follows robot: eye=(0.8, -3.2, 1.5), lookat=(0.0, 0.0, 0.3), origin_type=asset_root, asset_name=robot
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-10-06_09-51-19.log[0m
+[36m======================================================================================[0m
+
+[33m09:51:19 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 7
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains randomly took : 0.048312 seconds
+[INFO]: Time taken for scene creation : 1.774460 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.504040 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++-------------------------------------+
+| Active Event Terms in Mode: 'reset' |
++---------+---------------------------+
+|  Index  | Name                      |
++---------+---------------------------+
+|    0    | reset_base                |
+|    1    | reset_robot_joints        |
++---------+---------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 12)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          12 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++-------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (62,)) |
++-------------+---------------------------+-------------+
+|    Index    | Name                      |    Shape    |
++-------------+---------------------------+-------------+
+|      0      | base_lin_vel              |    (62,)    |
++-------------+---------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 3 active terms.
++------------------------------------------+
+|         Active Termination Terms         |
++-------+-----------------------+----------+
+| Index | Name                  | Time Out |
++-------+-----------------------+----------+
+|   0   | time_out              |   True   |
+|   1   | base_contact          |  False   |
+|   2   | invalid_upright_state |  False   |
++-------+-----------------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 13 active terms.
++----------------------------------------+
+|          Active Reward Terms           |
++-------+-----------------------+--------+
+| Index | Name                  | Weight |
++-------+-----------------------+--------+
+|   0   | track_lin_vel_xy_exp  |   20.0 |
+|   1   | track_ang_vel_z_exp   |   -3.0 |
+|   2   | lin_vel_z_l2          |   -5.0 |
+|   3   | dof_acc_l2            | -1e-06 |
+|   4   | undesired_contacts    |   -5.0 |
+|   5   | dof_pos_limits        |   -5.0 |
+|   6   | head_height           |    5.0 |
+|   7   | moving_y              |   -2.0 |
+|   8   | roll                  |   -5.0 |
+|   9   | gait_contact          |    5.0 |
+|   10  | swing_clearance       |    4.0 |
+|   11  | feet_slip             |   -0.5 |
+|   12  | excessive_foot_height |  -0.03 |
++-------+-----------------------+--------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+2026-10-06T09:51:22Z [8,546ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_current.
+2026-10-06T09:51:22Z [8,546ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_goal.
+[INFO]: Loading model checkpoint from: /home/ubuntu22/logs/rsl_rl/terrain_v41_height_bridge/2026-10-06_09-40-05_height_5to12cm_width40_from_v37_2799_20261006T093959Z/model_2825.pt
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:284: UserWarning: The observation configuration dictionary 'obs_groups' is empty and thus likely not configured. Consider configuring the 'obs_groups' dictionary explicitly
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'actor' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'actor' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'critic' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+SAC Actor: SACActorModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): MLP(
+    (0): Linear(in_features=62, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=24, bias=True)
+    (7): Unflatten(dim=-1, unflattened_size=[2, 12])
+  )
+)
+SAC: Computed physics-based action scaling factors.
+  Global action scale from ActionManager: 0.25
+  Scaling factors lower limits: tensor([4.1699, 3.3699, 4.1699, 3.3699, 8.4709, 8.4709, 5.0821, 5.0821, 4.5138,
+        4.5138, 4.5138, 4.5138], device='cuda:0')
+  Scaling factors upper limits: tensor([ 3.3699,  4.1699,  3.3699,  4.1699,  9.7505,  9.7505, 13.1393, 13.1393,
+         2.2720,  2.2720,  2.2720,  2.2720], device='cuda:0')
+SAC Critic: SACCriticModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): None
+  (critic1): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic1_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+[V34_FRESH_INIT] no checkpoint loaded
+[V34_FRESH_INIT] initial deterministic action: [0.0, 0.0, 0.0, 0.0, 5.960464477539063e-08, 5.960464477539063e-08, 0.0, 0.0, -1.1920928955078125e-07, -1.1920928955078125e-07, -1.1920928955078125e-07, -1.1920928955078125e-07]
+[STRAIGHT_RESULT] {'checkpoint': '/home/ubuntu22/logs/rsl_rl/terrain_v41_height_bridge/2026-10-06_09-40-05_height_5to12cm_width40_from_v37_2799_20261006T093959Z/model_2825.pt', 'num_envs': 32, 'steps': 1000, 'dt': 0.02, 'success': 13, 'terminated': 2, 'other_no_success': 17, 'max_abs_y_m': [0.5643730163574219, 0.2088298797607422, 0.5939311981201172, 0.2441253662109375, 0.5528125762939453, 0.36394309997558594, 0.8566493988037109, 0.4400653839111328, 0.4353351593017578, 0.46588897705078125, 0.1600332260131836, 0.3897562026977539, 0.43263864517211914, 0.6075129508972168, 0.13327932357788086, 0.5170798301696777, 0.4392690658569336, 0.3149867057800293, 0.11644268035888672, 0.31294775009155273, 0.5484476089477539, 0.4903402328491211, 0.3913860321044922, 0.22940540313720703, 0.5513401031494141, 0.40032386779785156, 0.5535907745361328, 0.5787868499755859, 0.18671607971191406, 0.3815593719482422, 0.41205787658691406, 0.5526924133300781], 'final_y_m': [-0.47879981994628906, -0.12027740478515625, -0.2579822540283203, -0.2170085906982422, -0.4631538391113281, -0.24147605895996094, -0.8522052764892578, -0.23065948486328125, -0.3498849868774414, -0.24812698364257812, 0.013548851013183594, -0.2318716049194336, -0.23871326446533203, -0.5093603134155273, -0.13171768188476562, -0.3373990058898926, -0.24099373817443848, -0.14577126502990723, 0.11644268035888672, 0.22089719772338867, 0.5413074493408203, -0.2802610397338867, -0.29619789123535156, -0.22125911712646484, -0.44678688049316406, -0.24898719787597656, -0.4183006286621094, -0.4859275817871094, -0.11025047302246094, -0.2396087646484375, -0.35788536071777344, -0.44867897033691406], 'max_abs_heading_deg': [8.334443092346191, 7.680180072784424, 14.865346908569336, 21.550533294677734, 8.419816017150879, 7.656865119934082, 13.882015228271484, 8.211463928222656, 10.008794784545898, 8.351509094238281, 6.966765880584717, 7.170842170715332, 7.3049421310424805, 8.477441787719727, 7.841128349304199, 9.0535249710083, 8.45444107055664, 7.120567798614502, 14.19530200958252, 10.54723072052002, 12.938236236572266, 8.121053695678711, 11.099801063537598, 6.481451988220215, 16.89341926574707, 8.253256797790527, 8.81046199798584, 8.599109649658203, 6.366666316986084, 7.214043140411377, 11.647095680236816, 8.292704582214355], 'final_heading_deg': [-0.13530859351158142, -4.200603485107422, -0.3845181465148926, -21.31498146057129, -0.07712514698505402, -0.3083787262439728, -3.042787790298462, -0.16716061532497406, 0.15168067812919617, 0.004528659861534834, -4.885214805603027, -0.06926269084215164, -0.344603031873703, 0.1293688863515854, -4.10835075378418, -0.1621818244457245, -0.07543060928583145, -2.1655046939849854, -14.017602920532227, -4.540085315704346, -2.921940803527832, -0.05309045687317848, -2.203433036804199, -4.067954063415527, -2.049067974090576, -0.1856183558702469, 0.04936888441443443, 0.13984276354312897, -4.124931812286377, -0.09556222707033157, -2.733165740966797, 0.0272950679063797], 'mean_max_abs_y_m': 0.4195795953273773, 'mean_final_abs_y_m': 0.30442941188812256, 'mean_max_abs_heading_deg': 9.712825775146484, 'terrain': 'stairs_up', 'difficulty': 0.7142857142857144, 'criterion': 'first episode; x>3.5m; abs(y)<0.25m; abs(heading)<5deg; upright for 0.5s; no reset'}

@@ -1,0 +1,42 @@
+[
+  {
+    "terrain": "random_rough",
+    "difficulty": 0.25,
+    "vertices": 6593
+  },
+  {
+    "terrain": "random_rough",
+    "difficulty": 0.75,
+    "vertices": 6593
+  },
+  {
+    "terrain": "boxes",
+    "difficulty": 0.25,
+    "vertices": 2317
+  },
+  {
+    "terrain": "boxes",
+    "difficulty": 0.75,
+    "vertices": 2317
+  },
+  {
+    "terrain": "slope_up",
+    "difficulty": 0.25,
+    "vertices": 6593
+  },
+  {
+    "terrain": "slope_up",
+    "difficulty": 0.75,
+    "vertices": 6593
+  },
+  {
+    "terrain": "slope_down",
+    "difficulty": 0.25,
+    "vertices": 6593
+  },
+  {
+    "terrain": "slope_down",
+    "difficulty": 0.75,
+    "vertices": 6593
+  }
+]

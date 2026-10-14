@@ -1,0 +1,25 @@
+{
+  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v37_stairs_focus/2026-09-26_00-09-12_stairs_5to10cm_from_v36_2550_20260926T000905Z/model_2799.pt",
+  "source_sha256": "162ff924f79a0c2e0d16caffe80873faf4b4f77b5b2c4ad883c34b95250fc01c",
+  "actor_observation_dim": 62,
+  "height_scan_in_actor": false,
+  "network_changed": false,
+  "stair_height_m": [
+    0.05,
+    0.23
+  ],
+  "stair_step_width_m": 0.3,
+  "curriculum_max_initial_level": 1,
+  "terrain_proportions": {
+    "plane": 0.15,
+    "stairs_up": 0.5,
+    "stairs_down": 0.15,
+    "slope_up": 0.025,
+    "slope_down": 0.025,
+    "boxes": 0.075,
+    "random_rough": 0.075
+  },
+  "actor_learning_rate": 2e-06,
+  "iterations": 1000,
+  "num_envs": 4096
+}

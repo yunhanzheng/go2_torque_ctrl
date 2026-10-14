@@ -1,0 +1,20 @@
+{
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_PAPER_2026-09-26/V37_PAPER_RECOMMENDED_model_2799.pt",
+  "source_sha256": "162ff924f79a0c2e0d16caffe80873faf4b4f77b5b2c4ad883c34b95250fc01c",
+  "actor_observation_dim": 62,
+  "height_scan_in_actor": false,
+  "changed_geometry": "height only",
+  "stair_height_m": [
+    0.05,
+    0.12
+  ],
+  "stair_step_width_m": 0.4,
+  "actor_warmup_update_calls": 25,
+  "optimizer_transfer": false,
+  "alpha_transfer": true,
+  "actor_learning_rate": 2e-07,
+  "critic_learning_rate": 5e-05,
+  "iterations": 100,
+  "save_interval": 5,
+  "num_envs": 4096
+}

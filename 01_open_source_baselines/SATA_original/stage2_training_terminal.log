@@ -1,0 +1,218 @@
+Script started on 2026-08-05 19:13:21+00:00 [TERM="dumb" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+Importing module 'gym_38' (/data/sata/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so)
+Setting GYM_USD_PLUG_INFO_PATH to /data/sata/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+PyTorch version 2.0.1+cu118
+Device count 1
+/data/sata/isaacgym/python/isaacgym/_bindings/src/gymtorch
+Using /home/ubuntu22/.cache/torch_extensions/py38_cu118 as PyTorch extensions root...
+Emitting ninja build file /home/ubuntu22/.cache/torch_extensions/py38_cu118/gymtorch/build.ninja...
+Building extension module gymtorch...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module gymtorch...
+Setting seed: 1
+Not connected to PVD
++++ Using GPU PhysX
+Physics Engine: PhysX
+Physics Device: cuda:0
+GPU Pipeline: enabled
+/home/ubuntu22/miniforge3/envs/sata/lib/python3.8/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Actor MLP: Sequential(
+  (0): Linear(in_features=60, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=12, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=60, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('core')` is a no-op as it is now the default behavior.
+[34m[1mwandb[0m: Tracking run with wandb version 0.24.2
+[34m[1mwandb[0m: W&B syncing is set to [1m`offline`[0m in this directory. Run [1m`wandb online`[0m or set [1mWANDB_MODE=online[0m to enable cloud syncing.
+[34m[1mwandb[0m: Run data is saved locally in [35m[1m/data/sata/SATA_flat_reproduction/legged_gym/logs/SATA_flat_foot_contact/Aug05_19-13-29_stage2_collision_airtime_seed1_final/wandb/offline-run-20260805_191329-tlrcjjnm[0m
+Copying code from /data/sata/SATA_flat_reproduction/legged_gym/legged_gym to /data/sata/SATA_flat_reproduction/legged_gym/logs/SATA_flat_foot_contact/Aug05_19-13-29_stage2_collision_airtime_seed1_final/wandb/offline-run-20260805_191329-tlrcjjnm/files/legged_gym
+################################################################################
+                      [1m Learning iteration 0/3000 [0m                       
+
+                       Computation: 77466 steps/s (collection: 0.963s, learning 0.306s)
+               Value function loss: 0.1346
+                    Surrogate loss: 0.0114
+             Mean action noise std: 1.00
+                       Mean reward: -1.13
+               Mean episode length: 23.49
+        Mean episode rew_collision: -0.0017
+          Mean episode rew_dof_acc: -0.0615
+    Mean episode rew_feet_air_time: -0.0003
+          Mean episode rew_forward: 0.0240
+      Mean episode rew_head_height: 0.0178
+        Mean episode rew_lin_vel_z: -0.0358
+    Mean episode rew_motor_fatigue: -0.0020
+         Mean episode rew_moving_y: 0.0058
+       Mean episode rew_moving_yaw: 0.0041
+             Mean episode rew_roll: -0.0068
+Mean episode rew_soft_dof_pos_limits: -0.0099
+--------------------------------------------------------------------------------
+                   Total timesteps: 98304
+                    Iteration time: 1.27s
+                        Total time: 1.27s
+                               ETA: 3807.0s
+
+################################################################################
+                      [1m Learning iteration 1/3000 [0m                       
+
+                       Computation: 82196 steps/s (collection: 0.953s, learning 0.243s)
+               Value function loss: 0.0661
+                    Surrogate loss: -0.0049
+             Mean action noise std: 1.00
+                       Mean reward: -1.61
+               Mean episode length: 35.73
+        Mean episode rew_collision: -0.0148
+          Mean episode rew_dof_acc: -0.1425
+    Mean episode rew_feet_air_time: -0.0013
+          Mean episode rew_forward: 0.0492
+      Mean episode rew_head_height: 0.0317
+        Mean episode rew_lin_vel_z: -0.0716
+    Mean episode rew_motor_fatigue: -0.0055
+         Mean episode rew_moving_y: 0.0098
+       Mean episode rew_moving_yaw: 0.0062
+             Mean episode rew_roll: -0.0248
+Mean episode rew_soft_dof_pos_limits: -0.0258
+--------------------------------------------------------------------------------
+                   Total timesteps: 196608
+                    Iteration time: 1.20s
+                        Total time: 2.46s
+                               ETA: 3696.2s
+
+################################################################################
+                      [1m Learning iteration 2/3000 [0m                       
+
+                       Computation: 77140 steps/s (collection: 1.038s, learning 0.236s)
+               Value function loss: 0.0401
+                    Surrogate loss: -0.0037
+             Mean action noise std: 0.99
+                       Mean reward: -1.80
+               Mean episode length: 42.59
+        Mean episode rew_collision: -0.0200
+          Mean episode rew_dof_acc: -0.1532
+    Mean episode rew_feet_air_time: -0.0016
+          Mean episode rew_forward: 0.0498
+      Mean episode rew_head_height: 0.0352
+        Mean episode rew_lin_vel_z: -0.0711
+    Mean episode rew_motor_fatigue: -0.0063
+         Mean episode rew_moving_y: 0.0105
+       Mean episode rew_moving_yaw: 0.0068
+             Mean episode rew_roll: -0.0336
+Mean episode rew_soft_dof_pos_limits: -0.0317
+--------------------------------------------------------------------------------
+                   Total timesteps: 294912
+                    Iteration time: 1.27s
+                        Total time: 3.74s
+                               ETA: 3736.8s
+
+################################################################################
+                      [1m Learning iteration 3/3000 [0m                       
+
+                       Computation: 65331 steps/s (collection: 1.095s, learning 0.410s)
+               Value function loss: 0.0286
+                    Surrogate loss: -0.0043
+             Mean action noise std: 0.99
+                       Mean reward: -2.13
+               Mean episode length: 53.31
+        Mean episode rew_collision: -0.0373
+          Mean episode rew_dof_acc: -0.1964
+    Mean episode rew_feet_air_time: -0.0026
+          Mean episode rew_forward: 0.0804
+      Mean episode rew_head_height: 0.0449
+        Mean episode rew_lin_vel_z: -0.0726
+    Mean episode rew_motor_fatigue: -0.0093
+         Mean episode rew_moving_y: 0.0150
+       Mean episode rew_moving_yaw: 0.0089
+             Mean episode rew_roll: -0.0473
+Mean episode rew_soft_dof_pos_limits: -0.0528
+--------------------------------------------------------------------------------
+                   Total timesteps: 393216
+                    Iteration time: 1.50s
+                        Total time: 5.24s
+                               ETA: 3929.1s
+
+################################################################################
+                      [1m Learning iteration 4/3000 [0m                       
+
+                       Computation: 75486 steps/s (collection: 1.048s, learning 0.254s)
+               Value function loss: 0.0228
+                    Surrogate loss: -0.0032
+             Mean action noise std: 0.99
+                       Mean reward: -2.71
+               Mean episode length: 74.03
+        Mean episode rew_collision: -0.0685
+          Mean episode rew_dof_acc: -0.2229
+    Mean episode rew_feet_air_time: -0.0032
+          Mean episode rew_forward: 0.0977
+      Mean episode rew_head_height: 0.0465
+        Mean episode rew_lin_vel_z: -0.0756
+    Mean episode rew_motor_fatigue: -0.0117
+         Mean episode rew_moving_y: 0.0192
+       Mean episode rew_moving_yaw: 0.0115
+             Mean episode rew_roll: -0.0630
+Mean episode rew_soft_dof_pos_limits: -0.0638
+--------------------------------------------------------------------------------
+                   Total timesteps: 491520
+                    Iteration time: 1.30s
+                        Total time: 6.55s
+                               ETA: 3922.5s
+
+################################################################################
+                      [1m Learning iteration 5/3000 [0m                       
+
+                       Computation: 78190 steps/s (collection: 1.013s, learning 0.244s)
+               Value function loss: 0.0185
+                    Surrogate loss: -0.0056
+             Mean action noise std: 0.99
+                       Mean reward: -2.76
+               Mean episode length: 84.81
+        Mean episode rew_collision: -0.0777
+          Mean episode rew_dof_acc: -0.2631
+    Mean episode rew_feet_air_time: -0.0047
+          Mean episode rew_forward: 0.1217
+      Mean episode rew_head_height: 0.0617
+        Mean episode rew_lin_vel_z: -0.0746
+    Mean episode rew_motor_fatigue: -0.0149
+         Mean episode rew_moving_y: 0.0260
+       Mean episode rew_moving_yaw: 0.0160
+             Mean episode rew_roll: -0.0549
+Mean episode rew_soft_dof_pos_limits: -0.0912
+--------------------------------------------------------------------------------
+                   Total timesteps: 589824
+                    Iteration time: 1.26s
+                        Total time: 7.80s
+                               ETA: 3895.2s
+
+^CTraceback (most recent call last):
+  File "/data/sata/SATA_flat_reproduction/legged_gym/legged_gym/scripts/train.py", line 47, in <module>
+    train(args)
+  File "/data/sata/SATA_flat_reproduction/legged_gym/legged_gym/scripts/train.py", line 43, in train
+    ppo_runner.learn(num_learning_iterations=train_cfg.runner.max_iterations, init_at_random_ep_len=True)
+  File "/data/sata/SATA_flat_reproduction/rsl_rl/rsl_rl/runners/on_policy_runner.py", line 129, in learn
+    obs, privileged_obs, rewards, dones, infos = self.env.step(actions)
+  File "/data/sata/SATA_flat_reproduction/legged_gym/legged_gym/envs/go2/go2_torque/go2_torque.py", line 204, in step
+    self.gym.simulate(self.sim)
+KeyboardInterrupt
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /data/sata/SATA_flat_reproduction/legged_gym/logs/SATA_flat_foot_contact/Aug05_19-13-29_stage2_collision_airtime_seed1_final/wandb/offline-run-20260805_191329-tlrcjjnm[0m
+[1;34mwandb[0m: Find logs at: [1;35mlogs/SATA_flat_foot_contact/Aug05_19-13-29_stage2_collision_airtime_seed1_final/wandb/offline-run-20260805_191329-tlrcjjnm/logs[0m
+
+CondaError: KeyboardInterrupt
+
+
+Script done on 2026-08-05 19:13:38+00:00 [COMMAND_EXIT_CODE="1"]

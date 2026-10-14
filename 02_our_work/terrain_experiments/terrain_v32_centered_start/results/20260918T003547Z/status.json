@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": 1789692028.073034,
+  "supervisor_pid": 62900,
+  "error": "AssertionError(PosixPath('/home/ubuntu22/logs/rsl_rl/terrain_v32_history_flat_foundation/2026-09-18_00-36-13_flat_20260918T003547Z'))"
+}

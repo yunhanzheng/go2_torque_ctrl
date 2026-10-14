@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1791280093.6655378,
+  "supervisor_pid": 10321,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v41_height_bridge/2026-10-06_09-40-05_height_5to12cm_width40_from_v37_2799_20261006T093959Z/model_2898.pt",
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_PAPER_2026-09-26/V37_PAPER_RECOMMENDED_model_2799.pt",
+  "log": "/home/ubuntu22/terrain_v41_height_bridge/results/20261006T093959Z/V41高度单变量桥接_100轮.log"
+}

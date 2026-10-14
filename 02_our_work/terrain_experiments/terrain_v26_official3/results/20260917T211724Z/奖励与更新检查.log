@@ -1,0 +1,1440 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/eth_sac/isaaclab-sac/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260917_211730.log
+2026-09-17T21:17:30Z [77ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-17T21:17:31Z [510ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-17T21:17:31Z [518ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-17T21:17:34Z [3,845ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-17T21:17:34Z [3,845ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-17T21:17:34Z [3,845ms] [Error] [gpu.foundation.plugin] Multiple Installable Client Drivers (ICDs) are found for the same GPU on the system. This causes the same GPU to be reported multiple times by more than one driver and leads to instability or crash. 
+It requires multi-gpu mode to be disabled and the correct device with the correct driver to be set via activeGpu setting.
+For NVIDIA drivers, please follow troubleshooting docs to uninstall and completely purge Linux-distribution-provided driver packages, and then reinstall your driver cleanly via .run package. Otherwise, updating Ubuntu software may reinstall a secondary ICD or override the existing NVIDIA driver.
+
+To verify the proper NVIDIA driver installation, only one of the following icd.d folders should contain nvidia_icd.json file:
+/etc/vulkan/icd.d: Location of ICDs installed from non-Linux-distribution-provided packages
+/usr/share/vulkan/icd.d : Location of ICDs installed from Linux-distribution-provided packages
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 0 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 1 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 2   | Intel(R) Graphics (RPL-S)        |        |     | 23845   MB | 8086      | 0          |
+|     |                                  |        |     |            | a788      | 868088a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.4 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.4, Kernel: 6.8.0-110-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Core(TM) i9-14900HX
+| Cores: 24 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 31793 | Free Memory: 27492
+| Total Page/Swap (MB): 7628 | Free Page/Swap: 7628
+|---------------------------------------------------------------------------------------------|
+2026-09-17T21:17:34Z [4,255ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-17T21:17:34Z [4,265ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 0 don't match.
+2026-09-17T21:17:34Z [4,265ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+2026-09-17T21:17:34Z [4,265ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-09-17T21:17:34Z [4,265ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 373.89 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.58 
+
+   CPU     0 
+     0   1.89 
+[INFO]: Parsing configuration from: terrain_v26_official3.config:OfficialThreeEnvCfg
+[INFO]: Parsing configuration from: terrain_v26_official3.config:OfficialThreeRunnerCfg
+[INFO] Logging experiment in directory: /home/ubuntu22/logs/rsl_rl/terrain_v26_official3_from_v24
+Exact experiment name requested from command line: 2026-09-17_21-17-36
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-17_21-17-36.log[0m
+[36m======================================================================================[0m
+
+[33m21:17:36 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 1
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.005
+	Environment step-size : 0.005
+[INFO] Generating terrains based on curriculum took : 1.556175 seconds
+[INFO]: Time taken for scene creation : 3.921009 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 64
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 5.886769 seconds
+[33m21:17:47 [velocity_command.py] WARNING: The velocity command has the 'ranges.heading' attribute set to '(0.0, 0.0)' but the heading command is not active. Consider setting the flag for the heading command to True.[0m
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++---------------------------------------+
+|  Active Event Terms in Mode: 'reset'  |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | base_external_force_torque   |
+|   1    | reset_base                   |
+|   2    | reset_robot_joints           |
++--------+------------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 12)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          12 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++-------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (62,)) |
++-------------+---------------------------+-------------+
+|    Index    | Name                      |    Shape    |
++-------------+---------------------------+-------------+
+|      0      | base_lin_vel              |    (62,)    |
++-------------+---------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 3 active terms.
++------------------------------------------+
+|         Active Termination Terms         |
++-------+-----------------------+----------+
+| Index | Name                  | Time Out |
++-------+-----------------------+----------+
+|   0   | time_out              |   True   |
+|   1   | base_contact          |  False   |
+|   2   | invalid_upright_state |  False   |
++-------+-----------------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 13 active terms.
++----------------------------------------+
+|          Active Reward Terms           |
++-------+-----------------------+--------+
+| Index | Name                  | Weight |
++-------+-----------------------+--------+
+|   0   | track_lin_vel_xy_exp  |   10.0 |
+|   1   | track_ang_vel_z_exp   |    5.0 |
+|   2   | lin_vel_z_l2          |   -5.0 |
+|   3   | dof_acc_l2            | -1e-06 |
+|   4   | undesired_contacts    |   -5.0 |
+|   5   | dof_pos_limits        |   -5.0 |
+|   6   | head_height           |    5.0 |
+|   7   | moving_y              |    5.0 |
+|   8   | roll                  |   -5.0 |
+|   9   | gait_contact          |    5.0 |
+|   10  | swing_clearance       |    2.0 |
+|   11  | feet_slip             |   -0.5 |
+|   12  | excessive_foot_height |  -0.03 |
++-------+-----------------------+--------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 1 active terms.
++---------------------------+
+|  Active Curriculum Terms  |
++--------+------------------+
+| Index  | Name             |
++--------+------------------+
+|   0    | terrain_levels   |
++--------+------------------+
+
+[INFO]: Completed setting up the environment...
+2026-09-17T21:17:47Z [17,291ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_current.
+2026-09-17T21:17:47Z [17,291ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_goal.
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:284: UserWarning: The observation configuration dictionary 'obs_groups' is empty and thus likely not configured. Consider configuring the 'obs_groups' dictionary explicitly
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'actor' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'actor' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'critic' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+SAC Actor: SACActorModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): MLP(
+    (0): Linear(in_features=62, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=24, bias=True)
+    (7): Unflatten(dim=-1, unflattened_size=[2, 12])
+  )
+)
+SAC: Computed physics-based action scaling factors.
+  Global action scale from ActionManager: 0.25
+  Scaling factors lower limits: tensor([4.1699, 3.3699, 4.1699, 3.3699, 8.4709, 8.4709, 5.0821, 5.0821, 4.5138,
+        4.5138, 4.5138, 4.5138], device='cuda:0')
+  Scaling factors upper limits: tensor([ 3.3699,  4.1699,  3.3699,  4.1699,  9.7505,  9.7505, 13.1393, 13.1393,
+         2.2720,  2.2720,  2.2720,  2.2720], device='cuda:0')
+SAC Critic: SACCriticModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): None
+  (critic1): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic1_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+Storing git diff for 'rsl_rl_sac' in: /home/ubuntu22/logs/rsl_rl/terrain_v26_official3_from_v24/2026-09-17_21-17-36_smoke_20260917T211724Z/git/rsl_rl_sac.diff
+[INFO]: Loading model checkpoint from: /data/sac/saved_models/ETH_SAC_V24_10CM/model_299.pt
+[V26_INIT] {'source': '/data/sac/saved_models/ETH_SAC_V24_10CM/model_299.pt', 'sha256': '6d41e21f2dc7bc7a6dd9f9c490a535507724a5e7eaa7c1dea76d1fbd20dcc5dc', 'warmup_update_calls': 25, 'transfer': 'V24 actor, critic, optimizer and alpha; fresh replay and iteration counter', 'actor_observation_dim': 62}
+################################################################################
+[1m                            Learning iteration 0/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 1536 
+                       Steps per second: 1858 
+                        Collection time: 0.826s 
+                          Learning time: 0.000s 
+                  Mean action noise std: 0.15
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0000
+     Episode_Reward/track_ang_vel_z_exp: 0.0000
+            Episode_Reward/lin_vel_z_l2: 0.0000
+              Episode_Reward/dof_acc_l2: 0.0000
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 0.0000
+                Episode_Reward/moving_y: 0.0000
+                    Episode_Reward/roll: 0.0000
+            Episode_Reward/gait_contact: 0.0000
+         Episode_Reward/swing_clearance: 0.0000
+               Episode_Reward/feet_slip: 0.0000
+   Episode_Reward/excessive_foot_height: 0.0000
+              Curriculum/terrain_levels: 1.9688
+     Metrics/base_velocity/error_vel_xy: 0.0000
+    Metrics/base_velocity/error_vel_yaw: 0.0000
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 0.83s
+                           Time elapsed: 00:00:00
+                                    ETA: 00:00:23
+
+################################################################################
+[1m                            Learning iteration 1/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 3072 
+                       Steps per second: 1187 
+                        Collection time: 1.176s 
+                          Learning time: 0.118s 
+                      Mean critic1 loss: 9.9435
+                      Mean critic2 loss: 12.2463
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -1.59
+            Mean reward + terrain level: 0.36
+                    Mean episode length: 45.20
+                  Mean action noise std: 0.17
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0073
+     Episode_Reward/track_ang_vel_z_exp: 0.0059
+            Episode_Reward/lin_vel_z_l2: -0.0125
+              Episode_Reward/dof_acc_l2: -0.0296
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0001
+             Episode_Reward/head_height: 0.0075
+                Episode_Reward/moving_y: 0.0095
+                    Episode_Reward/roll: -0.0017
+            Episode_Reward/gait_contact: 0.0035
+         Episode_Reward/swing_clearance: 0.0003
+               Episode_Reward/feet_slip: -0.0044
+   Episode_Reward/excessive_foot_height: -0.0001
+              Curriculum/terrain_levels: 1.9564
+     Metrics/base_velocity/error_vel_xy: 0.0012
+    Metrics/base_velocity/error_vel_yaw: 0.0009
+           Episode_Termination/time_out: 0.0007
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0117
+--------------------------------------------------------------------------------
+                         Iteration time: 1.29s
+                           Time elapsed: 00:00:02
+                                    ETA: 00:00:28
+
+################################################################################
+[1m                            Learning iteration 2/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 4608 
+                       Steps per second: 2298 
+                        Collection time: 0.660s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 7.0308
+                      Mean critic2 loss: 6.5786
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -1.43
+            Mean reward + terrain level: 0.44
+                    Mean episode length: 48.57
+                  Mean action noise std: 0.15
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0494
+     Episode_Reward/track_ang_vel_z_exp: 0.0293
+            Episode_Reward/lin_vel_z_l2: -0.0386
+              Episode_Reward/dof_acc_l2: -0.1863
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0006
+             Episode_Reward/head_height: 0.0357
+                Episode_Reward/moving_y: 0.0538
+                    Episode_Reward/roll: -0.0089
+            Episode_Reward/gait_contact: 0.0301
+         Episode_Reward/swing_clearance: 0.0016
+               Episode_Reward/feet_slip: -0.0176
+   Episode_Reward/excessive_foot_height: -0.0007
+              Curriculum/terrain_levels: 1.8698
+     Metrics/base_velocity/error_vel_xy: 0.0049
+    Metrics/base_velocity/error_vel_yaw: 0.0055
+           Episode_Termination/time_out: 0.0156
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0833
+--------------------------------------------------------------------------------
+                         Iteration time: 0.67s
+                           Time elapsed: 00:00:02
+                                    ETA: 00:00:24
+
+################################################################################
+[1m                            Learning iteration 3/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 6144 
+                       Steps per second: 5218 
+                        Collection time: 0.286s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 5.4921
+                      Mean critic2 loss: 6.2005
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -1.21
+            Mean reward + terrain level: 0.63
+                    Mean episode length: 55.44
+                  Mean action noise std: 0.16
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0992
+     Episode_Reward/track_ang_vel_z_exp: 0.0406
+            Episode_Reward/lin_vel_z_l2: -0.0296
+              Episode_Reward/dof_acc_l2: -0.2438
+      Episode_Reward/undesired_contacts: -0.0029
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.0527
+                Episode_Reward/moving_y: 0.0770
+                    Episode_Reward/roll: -0.0171
+            Episode_Reward/gait_contact: 0.0382
+         Episode_Reward/swing_clearance: 0.0010
+               Episode_Reward/feet_slip: -0.0265
+   Episode_Reward/excessive_foot_height: -0.0009
+              Curriculum/terrain_levels: 1.8366
+     Metrics/base_velocity/error_vel_xy: 0.0055
+    Metrics/base_velocity/error_vel_yaw: 0.0063
+           Episode_Termination/time_out: 0.0156
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.1165
+--------------------------------------------------------------------------------
+                         Iteration time: 0.29s
+                           Time elapsed: 00:00:03
+                                    ETA: 00:00:19
+
+################################################################################
+[1m                            Learning iteration 4/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 7680 
+                       Steps per second: 5455 
+                        Collection time: 0.273s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 2.8820
+                      Mean critic2 loss: 3.5822
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -1.58
+            Mean reward + terrain level: 0.25
+                    Mean episode length: 56.00
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0923
+     Episode_Reward/track_ang_vel_z_exp: 0.0330
+            Episode_Reward/lin_vel_z_l2: -0.0458
+              Episode_Reward/dof_acc_l2: -0.2683
+      Episode_Reward/undesired_contacts: -0.0039
+          Episode_Reward/dof_pos_limits: -0.0002
+             Episode_Reward/head_height: 0.0498
+                Episode_Reward/moving_y: 0.0724
+                    Episode_Reward/roll: -0.0163
+            Episode_Reward/gait_contact: 0.0353
+         Episode_Reward/swing_clearance: 0.0022
+               Episode_Reward/feet_slip: -0.0155
+   Episode_Reward/excessive_foot_height: -0.0009
+              Curriculum/terrain_levels: 1.8236
+     Metrics/base_velocity/error_vel_xy: 0.0058
+    Metrics/base_velocity/error_vel_yaw: 0.0087
+           Episode_Termination/time_out: 0.0156
+       Episode_Termination/base_contact: 0.0046
+Episode_Termination/invalid_upright_state: 0.1204
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:03
+                                    ETA: 00:00:16
+
+################################################################################
+[1m                            Learning iteration 5/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 9216 
+                       Steps per second: 4798 
+                        Collection time: 0.312s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 2.3368
+                      Mean critic2 loss: 2.3102
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.20
+            Mean reward + terrain level: 2.01
+                    Mean episode length: 70.33
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0829
+     Episode_Reward/track_ang_vel_z_exp: 0.0431
+            Episode_Reward/lin_vel_z_l2: -0.0694
+              Episode_Reward/dof_acc_l2: -0.2740
+      Episode_Reward/undesired_contacts: -0.0010
+          Episode_Reward/dof_pos_limits: -0.0004
+             Episode_Reward/head_height: 0.0454
+                Episode_Reward/moving_y: 0.0698
+                    Episode_Reward/roll: -0.0124
+            Episode_Reward/gait_contact: 0.0446
+         Episode_Reward/swing_clearance: 0.0074
+               Episode_Reward/feet_slip: -0.0097
+   Episode_Reward/excessive_foot_height: -0.0009
+              Curriculum/terrain_levels: 1.8086
+     Metrics/base_velocity/error_vel_xy: 0.0064
+    Metrics/base_velocity/error_vel_yaw: 0.0097
+           Episode_Termination/time_out: 0.0189
+       Episode_Termination/base_contact: 0.0156
+Episode_Termination/invalid_upright_state: 0.1100
+--------------------------------------------------------------------------------
+                         Iteration time: 0.32s
+                           Time elapsed: 00:00:03
+                                    ETA: 00:00:14
+
+################################################################################
+[1m                            Learning iteration 6/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 10752 
+                       Steps per second: 4378 
+                        Collection time: 0.340s 
+                          Learning time: 0.011s 
+                      Mean critic1 loss: 2.0283
+                      Mean critic2 loss: 2.3355
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.29
+            Mean reward + terrain level: 3.07
+                    Mean episode length: 77.54
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1275
+     Episode_Reward/track_ang_vel_z_exp: 0.1186
+            Episode_Reward/lin_vel_z_l2: -0.0186
+              Episode_Reward/dof_acc_l2: -0.1547
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0036
+             Episode_Reward/head_height: 0.0897
+                Episode_Reward/moving_y: 0.1567
+                    Episode_Reward/roll: -0.0222
+            Episode_Reward/gait_contact: 0.0679
+         Episode_Reward/swing_clearance: 0.0051
+               Episode_Reward/feet_slip: -0.0080
+   Episode_Reward/excessive_foot_height: -0.0017
+              Curriculum/terrain_levels: 1.7780
+     Metrics/base_velocity/error_vel_xy: 0.0125
+    Metrics/base_velocity/error_vel_yaw: 0.0047
+           Episode_Termination/time_out: 0.0345
+       Episode_Termination/base_contact: 0.0156
+Episode_Termination/invalid_upright_state: 0.1250
+--------------------------------------------------------------------------------
+                         Iteration time: 0.35s
+                           Time elapsed: 00:00:04
+                                    ETA: 00:00:12
+
+################################################################################
+[1m                            Learning iteration 7/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 12288 
+                       Steps per second: 4197 
+                        Collection time: 0.356s 
+                          Learning time: 0.010s 
+                      Mean critic1 loss: 2.1989
+                      Mean critic2 loss: 1.7933
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.79
+            Mean reward + terrain level: 2.55
+                    Mean episode length: 83.87
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0965
+     Episode_Reward/track_ang_vel_z_exp: 0.0655
+            Episode_Reward/lin_vel_z_l2: -0.0809
+              Episode_Reward/dof_acc_l2: -0.3068
+      Episode_Reward/undesired_contacts: -0.0042
+          Episode_Reward/dof_pos_limits: -0.0013
+             Episode_Reward/head_height: 0.0628
+                Episode_Reward/moving_y: 0.0846
+                    Episode_Reward/roll: -0.0124
+            Episode_Reward/gait_contact: 0.0479
+         Episode_Reward/swing_clearance: 0.0044
+               Episode_Reward/feet_slip: -0.0161
+   Episode_Reward/excessive_foot_height: -0.0014
+              Curriculum/terrain_levels: 1.7637
+     Metrics/base_velocity/error_vel_xy: 0.0091
+    Metrics/base_velocity/error_vel_yaw: 0.0094
+           Episode_Termination/time_out: 0.0469
+       Episode_Termination/base_contact: 0.0156
+Episode_Termination/invalid_upright_state: 0.1270
+--------------------------------------------------------------------------------
+                         Iteration time: 0.37s
+                           Time elapsed: 00:00:04
+                                    ETA: 00:00:11
+
+################################################################################
+[1m                            Learning iteration 8/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 13824 
+                       Steps per second: 4648 
+                        Collection time: 0.322s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 0.8883
+                      Mean critic2 loss: 0.8305
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.76
+            Mean reward + terrain level: 2.51
+                    Mean episode length: 92.06
+                  Mean action noise std: 0.13
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1420
+     Episode_Reward/track_ang_vel_z_exp: 0.1425
+            Episode_Reward/lin_vel_z_l2: -0.0409
+              Episode_Reward/dof_acc_l2: -0.4850
+      Episode_Reward/undesired_contacts: -0.0003
+          Episode_Reward/dof_pos_limits: -0.0044
+             Episode_Reward/head_height: 0.1188
+                Episode_Reward/moving_y: 0.1883
+                    Episode_Reward/roll: -0.0323
+            Episode_Reward/gait_contact: 0.0649
+         Episode_Reward/swing_clearance: 0.0017
+               Episode_Reward/feet_slip: -0.0132
+   Episode_Reward/excessive_foot_height: -0.0040
+              Curriculum/terrain_levels: 1.7487
+     Metrics/base_velocity/error_vel_xy: 0.0171
+    Metrics/base_velocity/error_vel_yaw: 0.0075
+           Episode_Termination/time_out: 0.0469
+       Episode_Termination/base_contact: 0.0156
+Episode_Termination/invalid_upright_state: 0.1419
+--------------------------------------------------------------------------------
+                         Iteration time: 0.33s
+                           Time elapsed: 00:00:04
+                                    ETA: 00:00:10
+
+################################################################################
+[1m                            Learning iteration 9/29                             [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 15360 
+                       Steps per second: 5190 
+                        Collection time: 0.287s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 1.5847
+                      Mean critic2 loss: 1.4860
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.13
+            Mean reward + terrain level: 1.59
+                    Mean episode length: 96.53
+                  Mean action noise std: 0.11
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1824
+     Episode_Reward/track_ang_vel_z_exp: 0.0816
+            Episode_Reward/lin_vel_z_l2: -0.0483
+              Episode_Reward/dof_acc_l2: -0.7800
+      Episode_Reward/undesired_contacts: -0.0406
+          Episode_Reward/dof_pos_limits: -0.0101
+             Episode_Reward/head_height: 0.0932
+                Episode_Reward/moving_y: 0.1818
+                    Episode_Reward/roll: -0.0346
+            Episode_Reward/gait_contact: 0.0704
+         Episode_Reward/swing_clearance: 0.0022
+               Episode_Reward/feet_slip: -0.0468
+   Episode_Reward/excessive_foot_height: -0.0025
+              Curriculum/terrain_levels: 1.7266
+     Metrics/base_velocity/error_vel_xy: 0.0165
+    Metrics/base_velocity/error_vel_yaw: 0.0207
+           Episode_Termination/time_out: 0.0469
+       Episode_Termination/base_contact: 0.0234
+Episode_Termination/invalid_upright_state: 0.1484
+--------------------------------------------------------------------------------
+                         Iteration time: 0.30s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:00:09
+
+################################################################################
+[1m                            Learning iteration 10/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 16896 
+                       Steps per second: 4975 
+                        Collection time: 0.301s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 1.3368
+                      Mean critic2 loss: 1.0592
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.52
+            Mean reward + terrain level: 1.19
+                    Mean episode length: 106.05
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1219
+     Episode_Reward/track_ang_vel_z_exp: 0.0635
+            Episode_Reward/lin_vel_z_l2: -0.0503
+              Episode_Reward/dof_acc_l2: -0.7875
+      Episode_Reward/undesired_contacts: -0.0296
+          Episode_Reward/dof_pos_limits: -0.0139
+             Episode_Reward/head_height: 0.0594
+                Episode_Reward/moving_y: 0.1530
+                    Episode_Reward/roll: -0.0272
+            Episode_Reward/gait_contact: 0.0517
+         Episode_Reward/swing_clearance: 0.0027
+               Episode_Reward/feet_slip: -0.0548
+   Episode_Reward/excessive_foot_height: -0.0036
+              Curriculum/terrain_levels: 1.7090
+     Metrics/base_velocity/error_vel_xy: 0.0194
+    Metrics/base_velocity/error_vel_yaw: 0.0294
+           Episode_Termination/time_out: 0.0469
+       Episode_Termination/base_contact: 0.0410
+Episode_Termination/invalid_upright_state: 0.1309
+--------------------------------------------------------------------------------
+                         Iteration time: 0.31s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:00:08
+
+################################################################################
+[1m                            Learning iteration 11/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 18432 
+                       Steps per second: 5468 
+                        Collection time: 0.273s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 2.8048
+                      Mean critic2 loss: 1.7528
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.28
+            Mean reward + terrain level: 1.98
+                    Mean episode length: 115.00
+                  Mean action noise std: 0.12
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1782
+     Episode_Reward/track_ang_vel_z_exp: 0.0879
+            Episode_Reward/lin_vel_z_l2: -0.0476
+              Episode_Reward/dof_acc_l2: -0.7306
+      Episode_Reward/undesired_contacts: -0.0135
+          Episode_Reward/dof_pos_limits: -0.0111
+             Episode_Reward/head_height: 0.0754
+                Episode_Reward/moving_y: 0.1706
+                    Episode_Reward/roll: -0.0206
+            Episode_Reward/gait_contact: 0.0773
+         Episode_Reward/swing_clearance: 0.0040
+               Episode_Reward/feet_slip: -0.0584
+   Episode_Reward/excessive_foot_height: -0.0035
+              Curriculum/terrain_levels: 1.7005
+     Metrics/base_velocity/error_vel_xy: 0.0182
+    Metrics/base_velocity/error_vel_yaw: 0.0297
+           Episode_Termination/time_out: 0.0469
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1276
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:00:07
+
+################################################################################
+[1m                            Learning iteration 12/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 19968 
+                       Steps per second: 5349 
+                        Collection time: 0.279s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 1.4987
+                      Mean critic2 loss: 1.4408
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.81
+            Mean reward + terrain level: 2.49
+                    Mean episode length: 123.91
+                  Mean action noise std: 0.12
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.5349
+     Episode_Reward/track_ang_vel_z_exp: 0.2659
+            Episode_Reward/lin_vel_z_l2: -0.0202
+              Episode_Reward/dof_acc_l2: -0.2058
+      Episode_Reward/undesired_contacts: -0.0037
+          Episode_Reward/dof_pos_limits: -0.0013
+             Episode_Reward/head_height: 0.1967
+                Episode_Reward/moving_y: 0.3054
+                    Episode_Reward/roll: -0.0195
+            Episode_Reward/gait_contact: 0.2422
+         Episode_Reward/swing_clearance: 0.0320
+               Episode_Reward/feet_slip: -0.0125
+   Episode_Reward/excessive_foot_height: -0.0017
+              Curriculum/terrain_levels: 1.6719
+     Metrics/base_velocity/error_vel_xy: 0.0080
+    Metrics/base_velocity/error_vel_yaw: 0.0077
+           Episode_Termination/time_out: 0.0625
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.29s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:00:07
+
+################################################################################
+[1m                            Learning iteration 13/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 21504 
+                       Steps per second: 5067 
+                        Collection time: 0.295s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 1.6525
+                      Mean critic2 loss: 1.2945
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.97
+            Mean reward + terrain level: 3.63
+                    Mean episode length: 132.65
+                  Mean action noise std: 0.13
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.3336
+     Episode_Reward/track_ang_vel_z_exp: 0.1495
+            Episode_Reward/lin_vel_z_l2: -0.0625
+              Episode_Reward/dof_acc_l2: -0.6318
+      Episode_Reward/undesired_contacts: -0.0244
+          Episode_Reward/dof_pos_limits: -0.0081
+             Episode_Reward/head_height: 0.1400
+                Episode_Reward/moving_y: 0.2123
+                    Episode_Reward/roll: -0.0279
+            Episode_Reward/gait_contact: 0.1660
+         Episode_Reward/swing_clearance: 0.0113
+               Episode_Reward/feet_slip: -0.0206
+   Episode_Reward/excessive_foot_height: -0.0025
+              Curriculum/terrain_levels: 1.6641
+     Metrics/base_velocity/error_vel_xy: 0.0175
+    Metrics/base_velocity/error_vel_yaw: 0.0262
+           Episode_Termination/time_out: 0.0703
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.30s
+                           Time elapsed: 00:00:06
+                                    ETA: 00:00:06
+
+################################################################################
+[1m                            Learning iteration 14/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 23040 
+                       Steps per second: 4907 
+                        Collection time: 0.305s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 1.0661
+                      Mean critic2 loss: 1.0061
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.97
+            Mean reward + terrain level: 3.63
+                    Mean episode length: 132.65
+                  Mean action noise std: 0.09
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.6272
+     Episode_Reward/track_ang_vel_z_exp: 0.2681
+            Episode_Reward/lin_vel_z_l2: -0.0342
+              Episode_Reward/dof_acc_l2: -0.3606
+      Episode_Reward/undesired_contacts: -0.0037
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.2316
+                Episode_Reward/moving_y: 0.3681
+                    Episode_Reward/roll: -0.0207
+            Episode_Reward/gait_contact: 0.2870
+         Episode_Reward/swing_clearance: 0.0177
+               Episode_Reward/feet_slip: -0.0085
+   Episode_Reward/excessive_foot_height: -0.0018
+              Curriculum/terrain_levels: 1.6562
+     Metrics/base_velocity/error_vel_xy: 0.0081
+    Metrics/base_velocity/error_vel_yaw: 0.0102
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.31s
+                           Time elapsed: 00:00:06
+                                    ETA: 00:00:06
+
+################################################################################
+[1m                            Learning iteration 15/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 24576 
+                       Steps per second: 5381 
+                        Collection time: 0.276s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 1.1593
+                      Mean critic2 loss: 1.3198
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.97
+            Mean reward + terrain level: 3.63
+                    Mean episode length: 132.65
+                  Mean action noise std: 0.11
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.6272
+     Episode_Reward/track_ang_vel_z_exp: 0.2681
+            Episode_Reward/lin_vel_z_l2: -0.0342
+              Episode_Reward/dof_acc_l2: -0.3606
+      Episode_Reward/undesired_contacts: -0.0037
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.2316
+                Episode_Reward/moving_y: 0.3681
+                    Episode_Reward/roll: -0.0207
+            Episode_Reward/gait_contact: 0.2870
+         Episode_Reward/swing_clearance: 0.0177
+               Episode_Reward/feet_slip: -0.0085
+   Episode_Reward/excessive_foot_height: -0.0018
+              Curriculum/terrain_levels: 1.6562
+     Metrics/base_velocity/error_vel_xy: 0.0081
+    Metrics/base_velocity/error_vel_yaw: 0.0102
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.29s
+                           Time elapsed: 00:00:06
+                                    ETA: 00:00:05
+
+################################################################################
+[1m                            Learning iteration 16/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 26112 
+                       Steps per second: 5294 
+                        Collection time: 0.281s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 1.5931
+                      Mean critic2 loss: 1.6802
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.97
+            Mean reward + terrain level: 3.63
+                    Mean episode length: 132.65
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.6272
+     Episode_Reward/track_ang_vel_z_exp: 0.2681
+            Episode_Reward/lin_vel_z_l2: -0.0342
+              Episode_Reward/dof_acc_l2: -0.3606
+      Episode_Reward/undesired_contacts: -0.0037
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.2316
+                Episode_Reward/moving_y: 0.3681
+                    Episode_Reward/roll: -0.0207
+            Episode_Reward/gait_contact: 0.2870
+         Episode_Reward/swing_clearance: 0.0177
+               Episode_Reward/feet_slip: -0.0085
+   Episode_Reward/excessive_foot_height: -0.0018
+              Curriculum/terrain_levels: 1.6562
+     Metrics/base_velocity/error_vel_xy: 0.0081
+    Metrics/base_velocity/error_vel_yaw: 0.0102
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.29s
+                           Time elapsed: 00:00:07
+                                    ETA: 00:00:05
+
+################################################################################
+[1m                            Learning iteration 17/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 27648 
+                       Steps per second: 4679 
+                        Collection time: 0.319s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 0.9305
+                      Mean critic2 loss: 1.0170
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.20
+            Mean reward + terrain level: 2.86
+                    Mean episode length: 135.42
+                  Mean action noise std: 0.12
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.5161
+     Episode_Reward/track_ang_vel_z_exp: 0.2253
+            Episode_Reward/lin_vel_z_l2: -0.0506
+              Episode_Reward/dof_acc_l2: -0.4564
+      Episode_Reward/undesired_contacts: -0.0272
+          Episode_Reward/dof_pos_limits: -0.0049
+             Episode_Reward/head_height: 0.1974
+                Episode_Reward/moving_y: 0.3129
+                    Episode_Reward/roll: -0.0334
+            Episode_Reward/gait_contact: 0.2401
+         Episode_Reward/swing_clearance: 0.0148
+               Episode_Reward/feet_slip: -0.0189
+   Episode_Reward/excessive_foot_height: -0.0023
+              Curriculum/terrain_levels: 1.6530
+     Metrics/base_velocity/error_vel_xy: 0.0125
+    Metrics/base_velocity/error_vel_yaw: 0.0164
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.33s
+                           Time elapsed: 00:00:07
+                                    ETA: 00:00:04
+
+################################################################################
+[1m                            Learning iteration 18/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 29184 
+                       Steps per second: 4607 
+                        Collection time: 0.324s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 0.5963
+                      Mean critic2 loss: 0.4535
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.45
+            Mean reward + terrain level: 2.08
+                    Mean episode length: 137.52
+                  Mean action noise std: 0.11
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1145
+     Episode_Reward/track_ang_vel_z_exp: 0.0441
+            Episode_Reward/lin_vel_z_l2: -0.1074
+              Episode_Reward/dof_acc_l2: -0.8684
+      Episode_Reward/undesired_contacts: -0.1261
+          Episode_Reward/dof_pos_limits: -0.0307
+             Episode_Reward/head_height: 0.0617
+                Episode_Reward/moving_y: 0.1039
+                    Episode_Reward/roll: -0.0818
+            Episode_Reward/gait_contact: 0.0632
+         Episode_Reward/swing_clearance: 0.0048
+               Episode_Reward/feet_slip: -0.0387
+   Episode_Reward/excessive_foot_height: -0.0045
+              Curriculum/terrain_levels: 1.6283
+     Metrics/base_velocity/error_vel_xy: 0.0262
+    Metrics/base_velocity/error_vel_yaw: 0.0576
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.33s
+                           Time elapsed: 00:00:07
+                                    ETA: 00:00:04
+
+################################################################################
+[1m                            Learning iteration 19/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 30720 
+                       Steps per second: 4562 
+                        Collection time: 0.327s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 1.7401
+                      Mean critic2 loss: 0.9558
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 0.45
+            Mean reward + terrain level: 2.08
+                    Mean episode length: 137.52
+                  Mean action noise std: 0.14
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1199
+     Episode_Reward/track_ang_vel_z_exp: 0.0392
+            Episode_Reward/lin_vel_z_l2: -0.1060
+              Episode_Reward/dof_acc_l2: -0.8810
+      Episode_Reward/undesired_contacts: -0.1288
+          Episode_Reward/dof_pos_limits: -0.0329
+             Episode_Reward/head_height: 0.0601
+                Episode_Reward/moving_y: 0.1041
+                    Episode_Reward/roll: -0.0819
+            Episode_Reward/gait_contact: 0.0636
+         Episode_Reward/swing_clearance: 0.0050
+               Episode_Reward/feet_slip: -0.0336
+   Episode_Reward/excessive_foot_height: -0.0046
+              Curriculum/terrain_levels: 1.6250
+     Metrics/base_velocity/error_vel_xy: 0.0255
+    Metrics/base_velocity/error_vel_yaw: 0.0623
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.34s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:00:03
+
+################################################################################
+[1m                            Learning iteration 20/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 32256 
+                       Steps per second: 4676 
+                        Collection time: 0.320s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 1.4083
+                      Mean critic2 loss: 0.7739
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.03
+            Mean reward + terrain level: 1.59
+                    Mean episode length: 138.88
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1098
+     Episode_Reward/track_ang_vel_z_exp: 0.0367
+            Episode_Reward/lin_vel_z_l2: -0.1038
+              Episode_Reward/dof_acc_l2: -0.8181
+      Episode_Reward/undesired_contacts: -0.1021
+          Episode_Reward/dof_pos_limits: -0.0299
+             Episode_Reward/head_height: 0.0612
+                Episode_Reward/moving_y: 0.0969
+                    Episode_Reward/roll: -0.0716
+            Episode_Reward/gait_contact: 0.0612
+         Episode_Reward/swing_clearance: 0.0053
+               Episode_Reward/feet_slip: -0.0398
+   Episode_Reward/excessive_foot_height: -0.0043
+              Curriculum/terrain_levels: 1.6204
+     Metrics/base_velocity/error_vel_xy: 0.0263
+    Metrics/base_velocity/error_vel_yaw: 0.0687
+           Episode_Termination/time_out: 0.0736
+       Episode_Termination/base_contact: 0.0514
+Episode_Termination/invalid_upright_state: 0.1406
+--------------------------------------------------------------------------------
+                         Iteration time: 0.33s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:00:03
+
+################################################################################
+[1m                            Learning iteration 21/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 33792 
+                       Steps per second: 5423 
+                        Collection time: 0.275s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 0.7613
+                      Mean critic2 loss: 0.7015
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.68
+            Mean reward + terrain level: 0.93
+                    Mean episode length: 141.15
+                  Mean action noise std: 0.13
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0693
+     Episode_Reward/track_ang_vel_z_exp: 0.0432
+            Episode_Reward/lin_vel_z_l2: -0.1055
+              Episode_Reward/dof_acc_l2: -0.6639
+      Episode_Reward/undesired_contacts: -0.1697
+          Episode_Reward/dof_pos_limits: -0.0355
+             Episode_Reward/head_height: 0.0554
+                Episode_Reward/moving_y: 0.1326
+                    Episode_Reward/roll: -0.1282
+            Episode_Reward/gait_contact: 0.0655
+         Episode_Reward/swing_clearance: 0.0044
+               Episode_Reward/feet_slip: -0.0682
+   Episode_Reward/excessive_foot_height: -0.0042
+              Curriculum/terrain_levels: 1.6094
+     Metrics/base_velocity/error_vel_xy: 0.0299
+    Metrics/base_velocity/error_vel_yaw: 0.0569
+           Episode_Termination/time_out: 0.0625
+       Episode_Termination/base_contact: 0.0508
+Episode_Termination/invalid_upright_state: 0.1523
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:00:02
+
+################################################################################
+[1m                            Learning iteration 22/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 35328 
+                       Steps per second: 5510 
+                        Collection time: 0.271s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 0.7965
+                      Mean critic2 loss: 0.8397
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.68
+            Mean reward + terrain level: 0.93
+                    Mean episode length: 141.15
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0640
+     Episode_Reward/track_ang_vel_z_exp: 0.0474
+            Episode_Reward/lin_vel_z_l2: -0.1078
+              Episode_Reward/dof_acc_l2: -0.6634
+      Episode_Reward/undesired_contacts: -0.2137
+          Episode_Reward/dof_pos_limits: -0.0398
+             Episode_Reward/head_height: 0.0527
+                Episode_Reward/moving_y: 0.1503
+                    Episode_Reward/roll: -0.1554
+            Episode_Reward/gait_contact: 0.0689
+         Episode_Reward/swing_clearance: 0.0039
+               Episode_Reward/feet_slip: -0.0726
+   Episode_Reward/excessive_foot_height: -0.0044
+              Curriculum/terrain_levels: 1.6094
+     Metrics/base_velocity/error_vel_xy: 0.0304
+    Metrics/base_velocity/error_vel_yaw: 0.0478
+           Episode_Termination/time_out: 0.0625
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1562
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:00:02
+
+################################################################################
+[1m                            Learning iteration 23/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 36864 
+                       Steps per second: 5563 
+                        Collection time: 0.268s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 0.4957
+                      Mean critic2 loss: 0.8495
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.68
+            Mean reward + terrain level: 0.93
+                    Mean episode length: 141.15
+                  Mean action noise std: 0.12
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0640
+     Episode_Reward/track_ang_vel_z_exp: 0.0474
+            Episode_Reward/lin_vel_z_l2: -0.1078
+              Episode_Reward/dof_acc_l2: -0.6634
+      Episode_Reward/undesired_contacts: -0.2137
+          Episode_Reward/dof_pos_limits: -0.0398
+             Episode_Reward/head_height: 0.0527
+                Episode_Reward/moving_y: 0.1503
+                    Episode_Reward/roll: -0.1554
+            Episode_Reward/gait_contact: 0.0689
+         Episode_Reward/swing_clearance: 0.0039
+               Episode_Reward/feet_slip: -0.0726
+   Episode_Reward/excessive_foot_height: -0.0044
+              Curriculum/terrain_levels: 1.6094
+     Metrics/base_velocity/error_vel_xy: 0.0304
+    Metrics/base_velocity/error_vel_yaw: 0.0478
+           Episode_Termination/time_out: 0.0625
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1562
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:09
+                                    ETA: 00:00:01
+
+################################################################################
+[1m                            Learning iteration 24/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 38400 
+                       Steps per second: 5472 
+                        Collection time: 0.273s 
+                          Learning time: 0.008s 
+                      Mean critic1 loss: 0.3502
+                      Mean critic2 loss: 0.3104
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: -0.68
+            Mean reward + terrain level: 0.93
+                    Mean episode length: 141.15
+                  Mean action noise std: 0.09
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.0640
+     Episode_Reward/track_ang_vel_z_exp: 0.0474
+            Episode_Reward/lin_vel_z_l2: -0.1078
+              Episode_Reward/dof_acc_l2: -0.6634
+      Episode_Reward/undesired_contacts: -0.2137
+          Episode_Reward/dof_pos_limits: -0.0398
+             Episode_Reward/head_height: 0.0527
+                Episode_Reward/moving_y: 0.1503
+                    Episode_Reward/roll: -0.1554
+            Episode_Reward/gait_contact: 0.0689
+         Episode_Reward/swing_clearance: 0.0039
+               Episode_Reward/feet_slip: -0.0726
+   Episode_Reward/excessive_foot_height: -0.0044
+              Curriculum/terrain_levels: 1.6094
+     Metrics/base_velocity/error_vel_xy: 0.0304
+    Metrics/base_velocity/error_vel_yaw: 0.0478
+           Episode_Termination/time_out: 0.0625
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1562
+--------------------------------------------------------------------------------
+                         Iteration time: 0.28s
+                           Time elapsed: 00:00:09
+                                    ETA: 00:00:01
+
+################################################################################
+[1m                            Learning iteration 25/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 39936 
+                       Steps per second: 5387 
+                        Collection time: 0.276s 
+                          Learning time: 0.009s 
+                      Mean critic1 loss: 0.7194
+                      Mean critic2 loss: 0.7891
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 0.0000
+                            Mean reward: 1.62
+            Mean reward + terrain level: 3.22
+                    Mean episode length: 158.21
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.3824
+     Episode_Reward/track_ang_vel_z_exp: 0.1825
+            Episode_Reward/lin_vel_z_l2: -0.0867
+              Episode_Reward/dof_acc_l2: -0.6264
+      Episode_Reward/undesired_contacts: -0.1603
+          Episode_Reward/dof_pos_limits: -0.0299
+             Episode_Reward/head_height: 0.1539
+                Episode_Reward/moving_y: 0.2875
+                    Episode_Reward/roll: -0.1253
+            Episode_Reward/gait_contact: 0.2068
+         Episode_Reward/swing_clearance: 0.0201
+               Episode_Reward/feet_slip: -0.0581
+   Episode_Reward/excessive_foot_height: -0.0042
+              Curriculum/terrain_levels: 1.6055
+     Metrics/base_velocity/error_vel_xy: 0.0252
+    Metrics/base_velocity/error_vel_yaw: 0.0390
+           Episode_Termination/time_out: 0.0664
+       Episode_Termination/base_contact: 0.0469
+Episode_Termination/invalid_upright_state: 0.1562
+--------------------------------------------------------------------------------
+                         Iteration time: 0.29s
+                           Time elapsed: 00:00:09
+                                    ETA: 00:00:01
+
+################################################################################
+[1m                            Learning iteration 26/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 41472 
+                       Steps per second: 4815 
+                        Collection time: 0.281s 
+                          Learning time: 0.038s 
+                      Mean critic1 loss: 4.0779
+                      Mean critic2 loss: 0.3376
+                        Mean actor loss: -10.6856
+                        Mean alpha loss: 0.1547
+                            Mean reward: 1.22
+            Mean reward + terrain level: 2.82
+                    Mean episode length: 159.66
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.8077
+     Episode_Reward/track_ang_vel_z_exp: 0.3602
+            Episode_Reward/lin_vel_z_l2: -0.0347
+              Episode_Reward/dof_acc_l2: -0.6106
+      Episode_Reward/undesired_contacts: -0.0498
+          Episode_Reward/dof_pos_limits: -0.0120
+             Episode_Reward/head_height: 0.2816
+                Episode_Reward/moving_y: 0.4499
+                    Episode_Reward/roll: -0.0724
+            Episode_Reward/gait_contact: 0.3669
+         Episode_Reward/swing_clearance: 0.0392
+               Episode_Reward/feet_slip: -0.0259
+   Episode_Reward/excessive_foot_height: -0.0037
+              Curriculum/terrain_levels: 1.5938
+     Metrics/base_velocity/error_vel_xy: 0.0146
+    Metrics/base_velocity/error_vel_yaw: 0.0239
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0397
+Episode_Termination/invalid_upright_state: 0.1634
+--------------------------------------------------------------------------------
+                         Iteration time: 0.32s
+                           Time elapsed: 00:00:10
+                                    ETA: 00:00:00
+
+################################################################################
+[1m                            Learning iteration 27/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 43008 
+                       Steps per second: 4905 
+                        Collection time: 0.301s 
+                          Learning time: 0.012s 
+                      Mean critic1 loss: 0.5837
+                      Mean critic2 loss: 0.7504
+                        Mean actor loss: -10.6931
+                        Mean alpha loss: 4.9802
+                            Mean reward: 1.22
+            Mean reward + terrain level: 2.82
+                    Mean episode length: 159.66
+                  Mean action noise std: 0.09
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1814
+     Episode_Reward/track_ang_vel_z_exp: 0.0916
+            Episode_Reward/lin_vel_z_l2: -0.0481
+              Episode_Reward/dof_acc_l2: -0.7230
+      Episode_Reward/undesired_contacts: -0.1087
+          Episode_Reward/dof_pos_limits: -0.0261
+             Episode_Reward/head_height: 0.0737
+                Episode_Reward/moving_y: 0.1551
+                    Episode_Reward/roll: -0.1167
+            Episode_Reward/gait_contact: 0.0672
+         Episode_Reward/swing_clearance: 0.0042
+               Episode_Reward/feet_slip: -0.0394
+   Episode_Reward/excessive_foot_height: -0.0038
+              Curriculum/terrain_levels: 1.5938
+     Metrics/base_velocity/error_vel_xy: 0.0206
+    Metrics/base_velocity/error_vel_yaw: 0.0376
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0312
+Episode_Termination/invalid_upright_state: 0.1719
+--------------------------------------------------------------------------------
+                         Iteration time: 0.31s
+                           Time elapsed: 00:00:10
+                                    ETA: 00:00:00
+
+################################################################################
+[1m                            Learning iteration 28/29                            [0m 
+
+                               Run name: smoke_20260917T211724Z
+                            Total steps: 44544 
+                       Steps per second: 4690 
+                        Collection time: 0.315s 
+                          Learning time: 0.013s 
+                      Mean critic1 loss: 0.6757
+                      Mean critic2 loss: 0.5693
+                        Mean actor loss: -10.5437
+                        Mean alpha loss: 5.0053
+                            Mean reward: 1.22
+            Mean reward + terrain level: 2.82
+                    Mean episode length: 159.66
+                  Mean action noise std: 0.10
+                                  Alpha: 0.001539
+    Episode_Reward/track_lin_vel_xy_exp: 0.1814
+     Episode_Reward/track_ang_vel_z_exp: 0.0916
+            Episode_Reward/lin_vel_z_l2: -0.0481
+              Episode_Reward/dof_acc_l2: -0.7230
+      Episode_Reward/undesired_contacts: -0.1087
+          Episode_Reward/dof_pos_limits: -0.0261
+             Episode_Reward/head_height: 0.0737
+                Episode_Reward/moving_y: 0.1551
+                    Episode_Reward/roll: -0.1167
+            Episode_Reward/gait_contact: 0.0672
+         Episode_Reward/swing_clearance: 0.0042
+               Episode_Reward/feet_slip: -0.0394
+   Episode_Reward/excessive_foot_height: -0.0038
+              Curriculum/terrain_levels: 1.5938
+     Metrics/base_velocity/error_vel_xy: 0.0206
+    Metrics/base_velocity/error_vel_yaw: 0.0376
+           Episode_Termination/time_out: 0.0781
+       Episode_Termination/base_contact: 0.0312
+Episode_Termination/invalid_upright_state: 0.1719
+--------------------------------------------------------------------------------
+                         Iteration time: 0.33s
+                           Time elapsed: 00:00:10
+                                    ETA: 00:00:00
+
+[V26_AUDIT] {'iteration': 28, 'update_calls': 28, 'finite': True, 'actor_change': 0.00028938427567481995}
+Training time: 11.44 seconds

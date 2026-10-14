@@ -1,0 +1,1257 @@
+Loading user config located at: '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260815_175826.log
+2026-08-15T17:58:26Z [86ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-08-15T17:58:27Z [531ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-08-15T17:58:27Z [539ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-08-15T17:58:30Z [3,759ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-08-15T17:58:30Z [3,759ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-08-15T17:58:30Z [3,759ms] [Error] [gpu.foundation.plugin] Multiple Installable Client Drivers (ICDs) are found for the same GPU on the system. This causes the same GPU to be reported multiple times by more than one driver and leads to instability or crash. 
+It requires multi-gpu mode to be disabled and the correct device with the correct driver to be set via activeGpu setting.
+For NVIDIA drivers, please follow troubleshooting docs to uninstall and completely purge Linux-distribution-provided driver packages, and then reinstall your driver cleanly via .run package. Otherwise, updating Ubuntu software may reinstall a secondary ICD or override the existing NVIDIA driver.
+
+To verify the proper NVIDIA driver installation, only one of the following icd.d folders should contain nvidia_icd.json file:
+/etc/vulkan/icd.d: Location of ICDs installed from non-Linux-distribution-provided packages
+/usr/share/vulkan/icd.d : Location of ICDs installed from Linux-distribution-provided packages
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/eth_sac/isaaclab-sac/apps/isaaclab.python.headless.kit
+[INFO]: Parsing configuration from: eth_fixed05_v2:Go2Fixed05Upright200HzEnvCfg
+[INFO]: Parsing configuration from: eth_fixed05_v2:Go2Fixed05Upright200HzSACRunnerCfg
+[INFO] Logging experiment in directory: /data/sac/logs/rsl_rl/eth_sac_go2_fixed_05_upright_200hz_v3
+Exact experiment name requested from command line: 2026-08-15_17-58-33
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-08-15_17-58-33.log[0m
+[36m======================================================================================[0m
+
+[33m17:58:33 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 1
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.005
+	Environment step-size : 0.005
+[33m17:58:39 [terrain_importer.py] WARNING: Visual material specified for ground plane but no diffuse color found. Using default color: (0.0, 0.0, 0.0)[0m
+[INFO]: Time taken for scene creation : 7.994888 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 2048
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 1.751127 seconds
+[33m17:58:43 [velocity_command.py] WARNING: The velocity command has the 'ranges.heading' attribute set to '(0.0, 0.0)' but the heading command is not active. Consider setting the flag for the heading command to True.[0m
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:284: UserWarning: The observation configuration dictionary 'obs_groups' is empty and thus likely not configured. Consider configuring the 'obs_groups' dictionary explicitly
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'actor' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'actor' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'critic' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++---------------------------------------+
+|  Active Event Terms in Mode: 'reset'  |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | base_external_force_torque   |
+|   1    | reset_base                   |
+|   2    | reset_robot_joints           |
++--------+------------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 12)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          12 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++-------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (62,)) |
++-------------+---------------------------+-------------+
+|    Index    | Name                      |    Shape    |
++-------------+---------------------------+-------------+
+|      0      | base_lin_vel              |    (62,)    |
++-------------+---------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 3 active terms.
++---------------------------------+
+|     Active Termination Terms    |
++-------+--------------+----------+
+| Index | Name         | Time Out |
++-------+--------------+----------+
+|   0   | time_out     |   True   |
+|   1   | base_contact |  False   |
+|   2   | low_base     |  False   |
++-------+--------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 13 active terms.
++-----------------------------------------+
+|           Active Reward Terms           |
++-------+----------------------+----------+
+| Index | Name                 |   Weight |
++-------+----------------------+----------+
+|   0   | track_lin_vel_xy_exp |      1.5 |
+|   1   | track_ang_vel_z_exp  |     0.75 |
+|   2   | lin_vel_z_l2         |     -2.0 |
+|   3   | ang_vel_xy_l2        |    -0.05 |
+|   4   | dof_torques_l2       |  -0.0002 |
+|   5   | dof_acc_l2           | -2.5e-07 |
+|   6   | action_rate_l2       |    -0.01 |
+|   7   | feet_air_time        |      0.5 |
+|   8   | undesired_contacts   |     -1.0 |
+|   9   | flat_orientation_l2  |     -2.5 |
+|   10  | dof_pos_limits       |      0.0 |
+|   11  | base_height_l2       |    -12.0 |
+|   12  | feet_slide           |    -0.25 |
++-------+----------------------+----------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+SAC Actor: SACActorModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): MLP(
+    (0): Linear(in_features=62, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=24, bias=True)
+    (7): Unflatten(dim=-1, unflattened_size=[2, 12])
+  )
+)
+SAC: Computed physics-based action scaling factors.
+  Global action scale from ActionManager: 0.25
+  Scaling factors lower limits: tensor([4.1699, 3.3699, 4.1699, 3.3699, 8.4709, 8.4709, 5.0821, 5.0821, 4.5138,
+        4.5138, 4.5138, 4.5138], device='cuda:0')
+  Scaling factors upper limits: tensor([ 3.3699,  4.1699,  3.3699,  4.1699,  9.7505,  9.7505, 13.1393, 13.1393,
+         2.2720,  2.2720,  2.2720,  2.2720], device='cuda:0')
+SAC Critic: SACCriticModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): None
+  (critic1): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic1_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+Storing git diff for 'rsl_rl_sac' in: /data/sac/logs/rsl_rl/eth_sac_go2_fixed_05_upright_200hz_v3/2026-08-15_17-58-33_sata_obs62_200hz_2048env_seed1/git/rsl_rl_sac.diff
+################################################################################
+[1m                           Learning iteration 0/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 49152 
+                       Steps per second: 40853 
+                        Collection time: 1.203s 
+                          Learning time: 0.000s 
+                            Mean reward: -0.21
+                    Mean episode length: 11.12
+                  Mean action noise std: 0.15
+                                  Alpha: 0.001000
+    Episode_Reward/track_lin_vel_xy_exp: 0.0014
+     Episode_Reward/track_ang_vel_z_exp: 0.0019
+            Episode_Reward/lin_vel_z_l2: -0.0015
+           Episode_Reward/ang_vel_xy_l2: -0.0007
+          Episode_Reward/dof_torques_l2: -0.0003
+              Episode_Reward/dof_acc_l2: -0.0105
+          Episode_Reward/action_rate_l2: -0.0006
+           Episode_Reward/feet_air_time: 0.0000
+      Episode_Reward/undesired_contacts: 0.0000
+     Episode_Reward/flat_orientation_l2: -0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0000
+              Episode_Reward/feet_slide: 0.0000
+     Metrics/base_velocity/error_vel_xy: 0.0013
+    Metrics/base_velocity/error_vel_yaw: 0.0003
+           Episode_Termination/time_out: 0.0023
+       Episode_Termination/base_contact: 0.0000
+           Episode_Termination/low_base: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 1.20s
+                           Time elapsed: 00:00:01
+                                    ETA: 00:24:02
+
+################################################################################
+[1m                           Learning iteration 1/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 98304 
+                       Steps per second: 22875 
+                        Collection time: 0.524s 
+                          Learning time: 1.625s 
+                      Mean critic1 loss: 0.0013
+                      Mean critic2 loss: 0.0020
+                        Mean actor loss: 0.0572
+                        Mean alpha loss: -47.1192
+                            Mean reward: -1.04
+                    Mean episode length: 41.15
+                  Mean action noise std: 0.45
+                                  Alpha: 0.000998
+    Episode_Reward/track_lin_vel_xy_exp: 0.0031
+     Episode_Reward/track_ang_vel_z_exp: 0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0175
+           Episode_Reward/ang_vel_xy_l2: -0.0015
+          Episode_Reward/dof_torques_l2: -0.0009
+              Episode_Reward/dof_acc_l2: -0.0262
+          Episode_Reward/action_rate_l2: -0.0016
+           Episode_Reward/feet_air_time: -0.0001
+      Episode_Reward/undesired_contacts: -0.0000
+     Episode_Reward/flat_orientation_l2: -0.0003
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0005
+              Episode_Reward/feet_slide: -0.0004
+     Metrics/base_velocity/error_vel_xy: 0.0050
+    Metrics/base_velocity/error_vel_yaw: 0.0008
+           Episode_Termination/time_out: 0.0059
+       Episode_Termination/base_contact: 0.0000
+           Episode_Termination/low_base: 0.3315
+--------------------------------------------------------------------------------
+                         Iteration time: 2.15s
+                           Time elapsed: 00:00:03
+                                    ETA: 00:33:27
+
+################################################################################
+[1m                           Learning iteration 2/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 147456 
+                       Steps per second: 29344 
+                        Collection time: 0.208s 
+                          Learning time: 1.467s 
+                      Mean critic1 loss: 0.0085
+                      Mean critic2 loss: 0.0091
+                        Mean actor loss: 0.1925
+                        Mean alpha loss: -99.3262
+                            Mean reward: -1.63
+                    Mean episode length: 48.36
+                  Mean action noise std: 0.17
+                                  Alpha: 0.000993
+    Episode_Reward/track_lin_vel_xy_exp: 0.0044
+     Episode_Reward/track_ang_vel_z_exp: 0.0086
+            Episode_Reward/lin_vel_z_l2: -0.0352
+           Episode_Reward/ang_vel_xy_l2: -0.0198
+          Episode_Reward/dof_torques_l2: -0.0032
+              Episode_Reward/dof_acc_l2: -0.0517
+          Episode_Reward/action_rate_l2: -0.0064
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0031
+     Episode_Reward/flat_orientation_l2: -0.0021
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0035
+              Episode_Reward/feet_slide: -0.0045
+     Metrics/base_velocity/error_vel_xy: 0.0098
+    Metrics/base_velocity/error_vel_yaw: 0.0046
+           Episode_Termination/time_out: 0.0078
+       Episode_Termination/base_contact: 0.0184
+           Episode_Termination/low_base: 0.8998
+--------------------------------------------------------------------------------
+                         Iteration time: 1.68s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:33:25
+
+################################################################################
+[1m                           Learning iteration 3/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 196608 
+                       Steps per second: 29464 
+                        Collection time: 0.199s 
+                          Learning time: 1.470s 
+                      Mean critic1 loss: 0.0074
+                      Mean critic2 loss: 0.0083
+                        Mean actor loss: 0.3023
+                        Mean alpha loss: -86.8016
+                            Mean reward: -1.67
+                    Mean episode length: 49.10
+                  Mean action noise std: 0.15
+                                  Alpha: 0.000989
+    Episode_Reward/track_lin_vel_xy_exp: 0.0065
+     Episode_Reward/track_ang_vel_z_exp: 0.0097
+            Episode_Reward/lin_vel_z_l2: -0.0418
+           Episode_Reward/ang_vel_xy_l2: -0.0351
+          Episode_Reward/dof_torques_l2: -0.0054
+              Episode_Reward/dof_acc_l2: -0.0576
+          Episode_Reward/action_rate_l2: -0.0069
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0089
+     Episode_Reward/flat_orientation_l2: -0.0043
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0071
+              Episode_Reward/feet_slide: -0.0092
+     Metrics/base_velocity/error_vel_xy: 0.0129
+    Metrics/base_velocity/error_vel_yaw: 0.0109
+           Episode_Termination/time_out: 0.0078
+       Episode_Termination/base_contact: 0.0229
+           Episode_Termination/low_base: 0.9021
+--------------------------------------------------------------------------------
+                         Iteration time: 1.67s
+                           Time elapsed: 00:00:06
+                                    ETA: 00:33:21
+
+################################################################################
+[1m                           Learning iteration 4/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 245760 
+                       Steps per second: 29853 
+                        Collection time: 0.192s 
+                          Learning time: 1.454s 
+                      Mean critic1 loss: 0.0057
+                      Mean critic2 loss: 0.0061
+                        Mean actor loss: 0.3337
+                        Mean alpha loss: -71.9065
+                            Mean reward: -1.71
+                    Mean episode length: 49.37
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000986
+    Episode_Reward/track_lin_vel_xy_exp: 0.0063
+     Episode_Reward/track_ang_vel_z_exp: 0.0062
+            Episode_Reward/lin_vel_z_l2: -0.0323
+           Episode_Reward/ang_vel_xy_l2: -0.0531
+          Episode_Reward/dof_torques_l2: -0.0049
+              Episode_Reward/dof_acc_l2: -0.0902
+          Episode_Reward/action_rate_l2: -0.0093
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0115
+     Episode_Reward/flat_orientation_l2: -0.0060
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0055
+              Episode_Reward/feet_slide: -0.0075
+     Metrics/base_velocity/error_vel_xy: 0.0122
+    Metrics/base_velocity/error_vel_yaw: 0.0245
+           Episode_Termination/time_out: 0.0078
+       Episode_Termination/base_contact: 0.0232
+           Episode_Termination/low_base: 0.9021
+--------------------------------------------------------------------------------
+                         Iteration time: 1.65s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:33:13
+
+################################################################################
+[1m                           Learning iteration 5/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 294912 
+                       Steps per second: 29097 
+                        Collection time: 0.220s 
+                          Learning time: 1.470s 
+                      Mean critic1 loss: 0.0050
+                      Mean critic2 loss: 0.0053
+                        Mean actor loss: 0.3494
+                        Mean alpha loss: -70.2823
+                            Mean reward: -2.13
+                    Mean episode length: 61.17
+                  Mean action noise std: 0.15
+                                  Alpha: 0.000982
+    Episode_Reward/track_lin_vel_xy_exp: 0.0066
+     Episode_Reward/track_ang_vel_z_exp: 0.0074
+            Episode_Reward/lin_vel_z_l2: -0.0359
+           Episode_Reward/ang_vel_xy_l2: -0.0509
+          Episode_Reward/dof_torques_l2: -0.0042
+              Episode_Reward/dof_acc_l2: -0.0809
+          Episode_Reward/action_rate_l2: -0.0059
+           Episode_Reward/feet_air_time: -0.0004
+      Episode_Reward/undesired_contacts: -0.0058
+     Episode_Reward/flat_orientation_l2: -0.0057
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0051
+              Episode_Reward/feet_slide: -0.0071
+     Metrics/base_velocity/error_vel_xy: 0.0141
+    Metrics/base_velocity/error_vel_yaw: 0.0207
+           Episode_Termination/time_out: 0.0078
+       Episode_Termination/base_contact: 0.0245
+           Episode_Termination/low_base: 0.9015
+--------------------------------------------------------------------------------
+                         Iteration time: 1.69s
+                           Time elapsed: 00:00:10
+                                    ETA: 00:33:16
+
+################################################################################
+[1m                           Learning iteration 6/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 344064 
+                       Steps per second: 28435 
+                        Collection time: 0.245s 
+                          Learning time: 1.483s 
+                      Mean critic1 loss: 0.0045
+                      Mean critic2 loss: 0.0048
+                        Mean actor loss: 0.3509
+                        Mean alpha loss: -67.0386
+                            Mean reward: -4.29
+                    Mean episode length: 127.89
+                  Mean action noise std: 0.15
+                                  Alpha: 0.000979
+    Episode_Reward/track_lin_vel_xy_exp: 0.0129
+     Episode_Reward/track_ang_vel_z_exp: 0.0137
+            Episode_Reward/lin_vel_z_l2: -0.0545
+           Episode_Reward/ang_vel_xy_l2: -0.0635
+          Episode_Reward/dof_torques_l2: -0.0065
+              Episode_Reward/dof_acc_l2: -0.1011
+          Episode_Reward/action_rate_l2: -0.0072
+           Episode_Reward/feet_air_time: -0.0006
+      Episode_Reward/undesired_contacts: -0.0072
+     Episode_Reward/flat_orientation_l2: -0.0099
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0087
+              Episode_Reward/feet_slide: -0.0143
+     Metrics/base_velocity/error_vel_xy: 0.0242
+    Metrics/base_velocity/error_vel_yaw: 0.0311
+           Episode_Termination/time_out: 0.0073
+       Episode_Termination/base_contact: 0.0288
+           Episode_Termination/low_base: 0.9155
+--------------------------------------------------------------------------------
+                         Iteration time: 1.73s
+                           Time elapsed: 00:00:11
+                                    ETA: 00:33:24
+
+################################################################################
+[1m                           Learning iteration 7/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 393216 
+                       Steps per second: 28285 
+                        Collection time: 0.258s 
+                          Learning time: 1.480s 
+                      Mean critic1 loss: 0.0041
+                      Mean critic2 loss: 0.0044
+                        Mean actor loss: 0.3457
+                        Mean alpha loss: -62.3767
+                            Mean reward: -4.82
+                    Mean episode length: 160.22
+                  Mean action noise std: 0.16
+                                  Alpha: 0.000975
+    Episode_Reward/track_lin_vel_xy_exp: 0.0139
+     Episode_Reward/track_ang_vel_z_exp: 0.0154
+            Episode_Reward/lin_vel_z_l2: -0.0508
+           Episode_Reward/ang_vel_xy_l2: -0.0521
+          Episode_Reward/dof_torques_l2: -0.0064
+              Episode_Reward/dof_acc_l2: -0.0899
+          Episode_Reward/action_rate_l2: -0.0068
+           Episode_Reward/feet_air_time: -0.0008
+      Episode_Reward/undesired_contacts: -0.0068
+     Episode_Reward/flat_orientation_l2: -0.0095
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0103
+              Episode_Reward/feet_slide: -0.0147
+     Metrics/base_velocity/error_vel_xy: 0.0238
+    Metrics/base_velocity/error_vel_yaw: 0.0237
+           Episode_Termination/time_out: 0.0048
+       Episode_Termination/base_contact: 0.0605
+           Episode_Termination/low_base: 0.9194
+--------------------------------------------------------------------------------
+                         Iteration time: 1.74s
+                           Time elapsed: 00:00:13
+                                    ETA: 00:33:31
+
+################################################################################
+[1m                           Learning iteration 8/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 442368 
+                       Steps per second: 28423 
+                        Collection time: 0.250s 
+                          Learning time: 1.480s 
+                      Mean critic1 loss: 0.0038
+                      Mean critic2 loss: 0.0041
+                        Mean actor loss: 0.3431
+                        Mean alpha loss: -61.3424
+                            Mean reward: -3.04
+                    Mean episode length: 100.34
+                  Mean action noise std: 0.15
+                                  Alpha: 0.000972
+    Episode_Reward/track_lin_vel_xy_exp: 0.0122
+     Episode_Reward/track_ang_vel_z_exp: 0.0089
+            Episode_Reward/lin_vel_z_l2: -0.0321
+           Episode_Reward/ang_vel_xy_l2: -0.0336
+          Episode_Reward/dof_torques_l2: -0.0037
+              Episode_Reward/dof_acc_l2: -0.0667
+          Episode_Reward/action_rate_l2: -0.0032
+           Episode_Reward/feet_air_time: -0.0005
+      Episode_Reward/undesired_contacts: -0.0032
+     Episode_Reward/flat_orientation_l2: -0.0065
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0060
+              Episode_Reward/feet_slide: -0.0094
+     Metrics/base_velocity/error_vel_xy: 0.0142
+    Metrics/base_velocity/error_vel_yaw: 0.0208
+           Episode_Termination/time_out: 0.0044
+       Episode_Termination/base_contact: 0.0884
+           Episode_Termination/low_base: 0.9036
+--------------------------------------------------------------------------------
+                         Iteration time: 1.73s
+                           Time elapsed: 00:00:15
+                                    ETA: 00:33:34
+
+################################################################################
+[1m                           Learning iteration 9/1200                            [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 491520 
+                       Steps per second: 28658 
+                        Collection time: 0.256s 
+                          Learning time: 1.459s 
+                      Mean critic1 loss: 0.0036
+                      Mean critic2 loss: 0.0038
+                        Mean actor loss: 0.3433
+                        Mean alpha loss: -61.1403
+                            Mean reward: -2.95
+                    Mean episode length: 100.66
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000969
+    Episode_Reward/track_lin_vel_xy_exp: 0.0113
+     Episode_Reward/track_ang_vel_z_exp: 0.0087
+            Episode_Reward/lin_vel_z_l2: -0.0293
+           Episode_Reward/ang_vel_xy_l2: -0.0312
+          Episode_Reward/dof_torques_l2: -0.0038
+              Episode_Reward/dof_acc_l2: -0.0728
+          Episode_Reward/action_rate_l2: -0.0035
+           Episode_Reward/feet_air_time: -0.0006
+      Episode_Reward/undesired_contacts: -0.0030
+     Episode_Reward/flat_orientation_l2: -0.0070
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0065
+              Episode_Reward/feet_slide: -0.0085
+     Metrics/base_velocity/error_vel_xy: 0.0153
+    Metrics/base_velocity/error_vel_yaw: 0.0219
+           Episode_Termination/time_out: 0.0041
+       Episode_Termination/base_contact: 0.1180
+           Episode_Termination/low_base: 0.8771
+--------------------------------------------------------------------------------
+                         Iteration time: 1.72s
+                           Time elapsed: 00:00:16
+                                    ETA: 00:33:36
+
+################################################################################
+[1m                           Learning iteration 10/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 540672 
+                       Steps per second: 28520 
+                        Collection time: 0.246s 
+                          Learning time: 1.477s 
+                      Mean critic1 loss: 0.0035
+                      Mean critic2 loss: 0.0037
+                        Mean actor loss: 0.3453
+                        Mean alpha loss: -61.1040
+                            Mean reward: -2.04
+                    Mean episode length: 70.00
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000965
+    Episode_Reward/track_lin_vel_xy_exp: 0.0034
+     Episode_Reward/track_ang_vel_z_exp: 0.0063
+            Episode_Reward/lin_vel_z_l2: -0.0324
+           Episode_Reward/ang_vel_xy_l2: -0.0058
+          Episode_Reward/dof_torques_l2: -0.0024
+              Episode_Reward/dof_acc_l2: -0.0360
+          Episode_Reward/action_rate_l2: -0.0017
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0001
+     Episode_Reward/flat_orientation_l2: -0.0015
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0023
+              Episode_Reward/feet_slide: -0.0040
+     Metrics/base_velocity/error_vel_xy: 0.0096
+    Metrics/base_velocity/error_vel_yaw: 0.0052
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1257
+           Episode_Termination/low_base: 0.8704
+--------------------------------------------------------------------------------
+                         Iteration time: 1.72s
+                           Time elapsed: 00:00:18
+                                    ETA: 00:33:37
+
+################################################################################
+[1m                           Learning iteration 11/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 589824 
+                       Steps per second: 28222 
+                        Collection time: 0.262s 
+                          Learning time: 1.480s 
+                      Mean critic1 loss: 0.0032
+                      Mean critic2 loss: 0.0034
+                        Mean actor loss: 0.3452
+                        Mean alpha loss: -60.5067
+                            Mean reward: -1.47
+                    Mean episode length: 53.18
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000962
+    Episode_Reward/track_lin_vel_xy_exp: 0.0037
+     Episode_Reward/track_ang_vel_z_exp: 0.0066
+            Episode_Reward/lin_vel_z_l2: -0.0327
+           Episode_Reward/ang_vel_xy_l2: -0.0058
+          Episode_Reward/dof_torques_l2: -0.0027
+              Episode_Reward/dof_acc_l2: -0.0337
+          Episode_Reward/action_rate_l2: -0.0017
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0002
+     Episode_Reward/flat_orientation_l2: -0.0014
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0024
+              Episode_Reward/feet_slide: -0.0036
+     Metrics/base_velocity/error_vel_xy: 0.0095
+    Metrics/base_velocity/error_vel_yaw: 0.0052
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1265
+           Episode_Termination/low_base: 0.8695
+--------------------------------------------------------------------------------
+                         Iteration time: 1.74s
+                           Time elapsed: 00:00:20
+                                    ETA: 00:33:40
+
+################################################################################
+[1m                           Learning iteration 12/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 638976 
+                       Steps per second: 28438 
+                        Collection time: 0.246s 
+                          Learning time: 1.482s 
+                      Mean critic1 loss: 0.0030
+                      Mean critic2 loss: 0.0032
+                        Mean actor loss: 0.3423
+                        Mean alpha loss: -59.6845
+                            Mean reward: -1.48
+                    Mean episode length: 52.44
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000958
+    Episode_Reward/track_lin_vel_xy_exp: 0.0034
+     Episode_Reward/track_ang_vel_z_exp: 0.0059
+            Episode_Reward/lin_vel_z_l2: -0.0343
+           Episode_Reward/ang_vel_xy_l2: -0.0064
+          Episode_Reward/dof_torques_l2: -0.0024
+              Episode_Reward/dof_acc_l2: -0.0317
+          Episode_Reward/action_rate_l2: -0.0016
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0001
+     Episode_Reward/flat_orientation_l2: -0.0014
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0024
+              Episode_Reward/feet_slide: -0.0034
+     Metrics/base_velocity/error_vel_xy: 0.0095
+    Metrics/base_velocity/error_vel_yaw: 0.0058
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1270
+           Episode_Termination/low_base: 0.8691
+--------------------------------------------------------------------------------
+                         Iteration time: 1.73s
+                           Time elapsed: 00:00:22
+                                    ETA: 00:33:41
+
+################################################################################
+[1m                           Learning iteration 13/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 688128 
+                       Steps per second: 28471 
+                        Collection time: 0.259s 
+                          Learning time: 1.467s 
+                      Mean critic1 loss: 0.0028
+                      Mean critic2 loss: 0.0030
+                        Mean actor loss: 0.3376
+                        Mean alpha loss: -58.2543
+                            Mean reward: -1.49
+                    Mean episode length: 55.78
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000955
+    Episode_Reward/track_lin_vel_xy_exp: 0.0038
+     Episode_Reward/track_ang_vel_z_exp: 0.0061
+            Episode_Reward/lin_vel_z_l2: -0.0326
+           Episode_Reward/ang_vel_xy_l2: -0.0063
+          Episode_Reward/dof_torques_l2: -0.0020
+              Episode_Reward/dof_acc_l2: -0.0325
+          Episode_Reward/action_rate_l2: -0.0015
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0006
+     Episode_Reward/flat_orientation_l2: -0.0015
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0025
+              Episode_Reward/feet_slide: -0.0037
+     Metrics/base_velocity/error_vel_xy: 0.0099
+    Metrics/base_velocity/error_vel_yaw: 0.0066
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1270
+           Episode_Termination/low_base: 0.8692
+--------------------------------------------------------------------------------
+                         Iteration time: 1.73s
+                           Time elapsed: 00:00:23
+                                    ETA: 00:33:41
+
+################################################################################
+[1m                           Learning iteration 14/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 737280 
+                       Steps per second: 28964 
+                        Collection time: 0.248s 
+                          Learning time: 1.449s 
+                      Mean critic1 loss: 0.0027
+                      Mean critic2 loss: 0.0028
+                        Mean actor loss: 0.3336
+                        Mean alpha loss: -57.2678
+                            Mean reward: -1.44
+                    Mean episode length: 55.62
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000951
+    Episode_Reward/track_lin_vel_xy_exp: 0.0037
+     Episode_Reward/track_ang_vel_z_exp: 0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0321
+           Episode_Reward/ang_vel_xy_l2: -0.0061
+          Episode_Reward/dof_torques_l2: -0.0018
+              Episode_Reward/dof_acc_l2: -0.0295
+          Episode_Reward/action_rate_l2: -0.0013
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0001
+     Episode_Reward/flat_orientation_l2: -0.0012
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0022
+              Episode_Reward/feet_slide: -0.0029
+     Metrics/base_velocity/error_vel_xy: 0.0091
+    Metrics/base_velocity/error_vel_yaw: 0.0060
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1270
+           Episode_Termination/low_base: 0.8696
+--------------------------------------------------------------------------------
+                         Iteration time: 1.70s
+                           Time elapsed: 00:00:25
+                                    ETA: 00:33:39
+
+################################################################################
+[1m                           Learning iteration 15/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 786432 
+                       Steps per second: 29010 
+                        Collection time: 0.244s 
+                          Learning time: 1.450s 
+                      Mean critic1 loss: 0.0025
+                      Mean critic2 loss: 0.0026
+                        Mean actor loss: 0.3321
+                        Mean alpha loss: -56.4295
+                            Mean reward: -1.26
+                    Mean episode length: 55.60
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000948
+    Episode_Reward/track_lin_vel_xy_exp: 0.0048
+     Episode_Reward/track_ang_vel_z_exp: 0.0067
+            Episode_Reward/lin_vel_z_l2: -0.0305
+           Episode_Reward/ang_vel_xy_l2: -0.0067
+          Episode_Reward/dof_torques_l2: -0.0020
+              Episode_Reward/dof_acc_l2: -0.0283
+          Episode_Reward/action_rate_l2: -0.0013
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: -0.0001
+     Episode_Reward/flat_orientation_l2: -0.0016
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0028
+              Episode_Reward/feet_slide: -0.0026
+     Metrics/base_velocity/error_vel_xy: 0.0093
+    Metrics/base_velocity/error_vel_yaw: 0.0060
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1270
+           Episode_Termination/low_base: 0.8701
+--------------------------------------------------------------------------------
+                         Iteration time: 1.69s
+                           Time elapsed: 00:00:27
+                                    ETA: 00:33:36
+
+################################################################################
+[1m                           Learning iteration 16/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 835584 
+                       Steps per second: 28970 
+                        Collection time: 0.242s 
+                          Learning time: 1.455s 
+                      Mean critic1 loss: 0.0024
+                      Mean critic2 loss: 0.0025
+                        Mean actor loss: 0.3299
+                        Mean alpha loss: -55.3850
+                            Mean reward: -1.31
+                    Mean episode length: 55.14
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000944
+    Episode_Reward/track_lin_vel_xy_exp: 0.0042
+     Episode_Reward/track_ang_vel_z_exp: 0.0062
+            Episode_Reward/lin_vel_z_l2: -0.0300
+           Episode_Reward/ang_vel_xy_l2: -0.0073
+          Episode_Reward/dof_torques_l2: -0.0021
+              Episode_Reward/dof_acc_l2: -0.0287
+          Episode_Reward/action_rate_l2: -0.0013
+           Episode_Reward/feet_air_time: -0.0002
+      Episode_Reward/undesired_contacts: 0.0000
+     Episode_Reward/flat_orientation_l2: -0.0012
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0025
+              Episode_Reward/feet_slide: -0.0027
+     Metrics/base_velocity/error_vel_xy: 0.0091
+    Metrics/base_velocity/error_vel_yaw: 0.0058
+           Episode_Termination/time_out: 0.0039
+       Episode_Termination/base_contact: 0.1274
+           Episode_Termination/low_base: 0.8697
+--------------------------------------------------------------------------------
+                         Iteration time: 1.70s
+                           Time elapsed: 00:00:28
+                                    ETA: 00:33:34
+
+################################################################################
+[1m                           Learning iteration 17/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 884736 
+                       Steps per second: 28955 
+                        Collection time: 0.241s 
+                          Learning time: 1.456s 
+                      Mean critic1 loss: 0.0022
+                      Mean critic2 loss: 0.0023
+                        Mean actor loss: 0.3264
+                        Mean alpha loss: -54.3801
+                            Mean reward: -1.34
+                    Mean episode length: 57.82
+                  Mean action noise std: 0.13
+                                  Alpha: 0.000941
+    Episode_Reward/track_lin_vel_xy_exp: 0.0065
+     Episode_Reward/track_ang_vel_z_exp: 0.0076
+            Episode_Reward/lin_vel_z_l2: -0.0310
+           Episode_Reward/ang_vel_xy_l2: -0.0092
+          Episode_Reward/dof_torques_l2: -0.0024
+              Episode_Reward/dof_acc_l2: -0.0342
+          Episode_Reward/action_rate_l2: -0.0016
+           Episode_Reward/feet_air_time: -0.0003
+      Episode_Reward/undesired_contacts: -0.0005
+     Episode_Reward/flat_orientation_l2: -0.0029
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0034
+              Episode_Reward/feet_slide: -0.0038
+     Metrics/base_velocity/error_vel_xy: 0.0105
+    Metrics/base_velocity/error_vel_yaw: 0.0077
+           Episode_Termination/time_out: 0.0035
+       Episode_Termination/base_contact: 0.1278
+           Episode_Termination/low_base: 0.8697
+--------------------------------------------------------------------------------
+                         Iteration time: 1.70s
+                           Time elapsed: 00:00:30
+                                    ETA: 00:33:32
+
+################################################################################
+[1m                           Learning iteration 18/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 933888 
+                       Steps per second: 29047 
+                        Collection time: 0.246s 
+                          Learning time: 1.446s 
+                      Mean critic1 loss: 0.0027
+                      Mean critic2 loss: 0.0028
+                        Mean actor loss: 0.3187
+                        Mean alpha loss: -52.5806
+                            Mean reward: -6.52
+                    Mean episode length: 340.92
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000937
+    Episode_Reward/track_lin_vel_xy_exp: 0.0362
+     Episode_Reward/track_ang_vel_z_exp: 0.0295
+            Episode_Reward/lin_vel_z_l2: -0.0265
+           Episode_Reward/ang_vel_xy_l2: -0.0433
+          Episode_Reward/dof_torques_l2: -0.0102
+              Episode_Reward/dof_acc_l2: -0.1421
+          Episode_Reward/action_rate_l2: -0.0066
+           Episode_Reward/feet_air_time: -0.0011
+      Episode_Reward/undesired_contacts: -0.0044
+     Episode_Reward/flat_orientation_l2: -0.0423
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0251
+              Episode_Reward/feet_slide: -0.0178
+     Metrics/base_velocity/error_vel_xy: 0.0330
+    Metrics/base_velocity/error_vel_yaw: 0.0375
+           Episode_Termination/time_out: 0.0010
+       Episode_Termination/base_contact: 0.1264
+           Episode_Termination/low_base: 0.8732
+--------------------------------------------------------------------------------
+                         Iteration time: 1.69s
+                           Time elapsed: 00:00:32
+                                    ETA: 00:33:30
+
+################################################################################
+[1m                           Learning iteration 19/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 983040 
+                       Steps per second: 29214 
+                        Collection time: 0.237s 
+                          Learning time: 1.446s 
+                      Mean critic1 loss: 0.0025
+                      Mean critic2 loss: 0.0026
+                        Mean actor loss: 0.3202
+                        Mean alpha loss: -51.4448
+                            Mean reward: -7.69
+                    Mean episode length: 401.31
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000934
+    Episode_Reward/track_lin_vel_xy_exp: 0.0571
+     Episode_Reward/track_ang_vel_z_exp: 0.0469
+            Episode_Reward/lin_vel_z_l2: -0.0231
+           Episode_Reward/ang_vel_xy_l2: -0.0731
+          Episode_Reward/dof_torques_l2: -0.0163
+              Episode_Reward/dof_acc_l2: -0.2352
+          Episode_Reward/action_rate_l2: -0.0111
+           Episode_Reward/feet_air_time: -0.0016
+      Episode_Reward/undesired_contacts: -0.0079
+     Episode_Reward/flat_orientation_l2: -0.0806
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0405
+              Episode_Reward/feet_slide: -0.0270
+     Metrics/base_velocity/error_vel_xy: 0.0551
+    Metrics/base_velocity/error_vel_yaw: 0.0643
+           Episode_Termination/time_out: 0.0005
+       Episode_Termination/base_contact: 0.1119
+           Episode_Termination/low_base: 0.8881
+--------------------------------------------------------------------------------
+                         Iteration time: 1.68s
+                           Time elapsed: 00:00:34
+                                    ETA: 00:33:27
+
+################################################################################
+[1m                           Learning iteration 20/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1032192 
+                       Steps per second: 28878 
+                        Collection time: 0.247s 
+                          Learning time: 1.455s 
+                      Mean critic1 loss: 0.0023
+                      Mean critic2 loss: 0.0025
+                        Mean actor loss: 0.3162
+                        Mean alpha loss: -50.1671
+                            Mean reward: -1.72
+                    Mean episode length: 94.41
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000931
+    Episode_Reward/track_lin_vel_xy_exp: 0.0407
+     Episode_Reward/track_ang_vel_z_exp: 0.0336
+            Episode_Reward/lin_vel_z_l2: -0.0260
+           Episode_Reward/ang_vel_xy_l2: -0.0460
+          Episode_Reward/dof_torques_l2: -0.0118
+              Episode_Reward/dof_acc_l2: -0.1624
+          Episode_Reward/action_rate_l2: -0.0072
+           Episode_Reward/feet_air_time: -0.0011
+      Episode_Reward/undesired_contacts: -0.0037
+     Episode_Reward/flat_orientation_l2: -0.0526
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0278
+              Episode_Reward/feet_slide: -0.0182
+     Metrics/base_velocity/error_vel_xy: 0.0391
+    Metrics/base_velocity/error_vel_yaw: 0.0454
+           Episode_Termination/time_out: 0.0004
+       Episode_Termination/base_contact: 0.1412
+           Episode_Termination/low_base: 0.8588
+--------------------------------------------------------------------------------
+                         Iteration time: 1.70s
+                           Time elapsed: 00:00:35
+                                    ETA: 00:33:25
+
+################################################################################
+[1m                           Learning iteration 21/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1081344 
+                       Steps per second: 29004 
+                        Collection time: 0.241s 
+                          Learning time: 1.454s 
+                      Mean critic1 loss: 0.0024
+                      Mean critic2 loss: 0.0025
+                        Mean actor loss: 0.3085
+                        Mean alpha loss: -39.0589
+                            Mean reward: -6.91
+                    Mean episode length: 377.27
+                  Mean action noise std: 0.18
+                                  Alpha: 0.000928
+    Episode_Reward/track_lin_vel_xy_exp: 0.0367
+     Episode_Reward/track_ang_vel_z_exp: 0.0329
+            Episode_Reward/lin_vel_z_l2: -0.0253
+           Episode_Reward/ang_vel_xy_l2: -0.0369
+          Episode_Reward/dof_torques_l2: -0.0105
+              Episode_Reward/dof_acc_l2: -0.1442
+          Episode_Reward/action_rate_l2: -0.0065
+           Episode_Reward/feet_air_time: -0.0009
+      Episode_Reward/undesired_contacts: -0.0021
+     Episode_Reward/flat_orientation_l2: -0.0526
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0245
+              Episode_Reward/feet_slide: -0.0157
+     Metrics/base_velocity/error_vel_xy: 0.0356
+    Metrics/base_velocity/error_vel_yaw: 0.0358
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4027
+           Episode_Termination/low_base: 0.5973
+--------------------------------------------------------------------------------
+                         Iteration time: 1.69s
+                           Time elapsed: 00:00:37
+                                    ETA: 00:33:23
+
+################################################################################
+[1m                           Learning iteration 22/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1130496 
+                       Steps per second: 30079 
+                        Collection time: 0.184s 
+                          Learning time: 1.450s 
+                      Mean critic1 loss: 0.0020
+                      Mean critic2 loss: 0.0021
+                        Mean actor loss: 0.3108
+                        Mean alpha loss: -49.4099
+                            Mean reward: -6.93
+                    Mean episode length: 380.61
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000925
+    Episode_Reward/track_lin_vel_xy_exp: 0.0274
+     Episode_Reward/track_ang_vel_z_exp: 0.0224
+            Episode_Reward/lin_vel_z_l2: -0.0312
+           Episode_Reward/ang_vel_xy_l2: -0.0085
+          Episode_Reward/dof_torques_l2: -0.0057
+              Episode_Reward/dof_acc_l2: -0.0466
+          Episode_Reward/action_rate_l2: -0.0024
+           Episode_Reward/feet_air_time: -0.0005
+      Episode_Reward/undesired_contacts: -0.0030
+     Episode_Reward/flat_orientation_l2: -0.0087
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0161
+              Episode_Reward/feet_slide: -0.0098
+     Metrics/base_velocity/error_vel_xy: 0.0200
+    Metrics/base_velocity/error_vel_yaw: 0.0120
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4185
+           Episode_Termination/low_base: 0.5815
+--------------------------------------------------------------------------------
+                         Iteration time: 1.63s
+                           Time elapsed: 00:00:39
+                                    ETA: 00:33:18
+
+################################################################################
+[1m                           Learning iteration 23/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1179648 
+                       Steps per second: 30270 
+                        Collection time: 0.167s 
+                          Learning time: 1.457s 
+                      Mean critic1 loss: 0.0019
+                      Mean critic2 loss: 0.0020
+                        Mean actor loss: 0.3037
+                        Mean alpha loss: -49.7514
+                            Mean reward: -6.93
+                    Mean episode length: 380.61
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000921
+    Episode_Reward/track_lin_vel_xy_exp: 0.0669
+     Episode_Reward/track_ang_vel_z_exp: 0.0551
+            Episode_Reward/lin_vel_z_l2: -0.0334
+           Episode_Reward/ang_vel_xy_l2: -0.0199
+          Episode_Reward/dof_torques_l2: -0.0118
+              Episode_Reward/dof_acc_l2: -0.1056
+          Episode_Reward/action_rate_l2: -0.0054
+           Episode_Reward/feet_air_time: -0.0016
+      Episode_Reward/undesired_contacts: -0.0102
+     Episode_Reward/flat_orientation_l2: -0.0262
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0421
+              Episode_Reward/feet_slide: -0.0265
+     Metrics/base_velocity/error_vel_xy: 0.0471
+    Metrics/base_velocity/error_vel_yaw: 0.0272
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4185
+           Episode_Termination/low_base: 0.5815
+--------------------------------------------------------------------------------
+                         Iteration time: 1.62s
+                           Time elapsed: 00:00:40
+                                    ETA: 00:33:13
+
+################################################################################
+[1m                           Learning iteration 24/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1228800 
+                       Steps per second: 30601 
+                        Collection time: 0.175s 
+                          Learning time: 1.432s 
+                      Mean critic1 loss: 0.0017
+                      Mean critic2 loss: 0.0018
+                        Mean actor loss: 0.2978
+                        Mean alpha loss: -49.4921
+                            Mean reward: -6.94
+                    Mean episode length: 381.53
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000918
+    Episode_Reward/track_lin_vel_xy_exp: 0.0624
+     Episode_Reward/track_ang_vel_z_exp: 0.0517
+            Episode_Reward/lin_vel_z_l2: -0.0330
+           Episode_Reward/ang_vel_xy_l2: -0.0194
+          Episode_Reward/dof_torques_l2: -0.0114
+              Episode_Reward/dof_acc_l2: -0.1026
+          Episode_Reward/action_rate_l2: -0.0053
+           Episode_Reward/feet_air_time: -0.0015
+      Episode_Reward/undesired_contacts: -0.0101
+     Episode_Reward/flat_orientation_l2: -0.0246
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0399
+              Episode_Reward/feet_slide: -0.0251
+     Metrics/base_velocity/error_vel_xy: 0.0453
+    Metrics/base_velocity/error_vel_yaw: 0.0272
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4185
+           Episode_Termination/low_base: 0.5815
+--------------------------------------------------------------------------------
+                         Iteration time: 1.61s
+                           Time elapsed: 00:00:42
+                                    ETA: 00:33:07
+
+################################################################################
+[1m                           Learning iteration 25/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1277952 
+                       Steps per second: 29339 
+                        Collection time: 0.215s 
+                          Learning time: 1.460s 
+                      Mean critic1 loss: 0.0017
+                      Mean critic2 loss: 0.0017
+                        Mean actor loss: 0.2907
+                        Mean alpha loss: -46.7622
+                            Mean reward: -5.94
+                    Mean episode length: 333.29
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000914
+    Episode_Reward/track_lin_vel_xy_exp: 0.0163
+     Episode_Reward/track_ang_vel_z_exp: 0.0204
+            Episode_Reward/lin_vel_z_l2: -0.0366
+           Episode_Reward/ang_vel_xy_l2: -0.0149
+          Episode_Reward/dof_torques_l2: -0.0072
+              Episode_Reward/dof_acc_l2: -0.0622
+          Episode_Reward/action_rate_l2: -0.0032
+           Episode_Reward/feet_air_time: -0.0006
+      Episode_Reward/undesired_contacts: -0.0055
+     Episode_Reward/flat_orientation_l2: -0.0107
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0168
+              Episode_Reward/feet_slide: -0.0099
+     Metrics/base_velocity/error_vel_xy: 0.0276
+    Metrics/base_velocity/error_vel_yaw: 0.0186
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4225
+           Episode_Termination/low_base: 0.5775
+--------------------------------------------------------------------------------
+                         Iteration time: 1.68s
+                           Time elapsed: 00:00:43
+                                    ETA: 00:33:04
+
+################################################################################
+[1m                           Learning iteration 26/1200                           [0m 
+
+                               Run name: sata_obs62_200hz_2048env_seed1
+                            Total steps: 1327104 
+                       Steps per second: 24750 
+                        Collection time: 0.391s 
+                          Learning time: 1.595s 
+                      Mean critic1 loss: 0.0016
+                      Mean critic2 loss: 0.0017
+                        Mean actor loss: 0.2844
+                        Mean alpha loss: -46.0447
+                            Mean reward: -2.90
+                    Mean episode length: 204.31
+                  Mean action noise std: 0.14
+                                  Alpha: 0.000911
+    Episode_Reward/track_lin_vel_xy_exp: 0.0214
+     Episode_Reward/track_ang_vel_z_exp: 0.0239
+            Episode_Reward/lin_vel_z_l2: -0.0412
+           Episode_Reward/ang_vel_xy_l2: -0.0195
+          Episode_Reward/dof_torques_l2: -0.0081
+              Episode_Reward/dof_acc_l2: -0.0662
+          Episode_Reward/action_rate_l2: -0.0034
+           Episode_Reward/feet_air_time: -0.0007
+      Episode_Reward/undesired_contacts: -0.0013
+     Episode_Reward/flat_orientation_l2: -0.0207
+          Episode_Reward/dof_pos_limits: 0.0000
+          Episode_Reward/base_height_l2: -0.0172
+              Episode_Reward/feet_slide: -0.0132
+     Metrics/base_velocity/error_vel_xy: 0.0316
+    Metrics/base_velocity/error_vel_yaw: 0.0225
+           Episode_Termination/time_out: 0.0000
+       Episode_Termination/base_contact: 0.4483
+           Episode_Termination/low_base: 0.5517
+--------------------------------------------------------------------------------
+                         Iteration time: 1.99s
+                           Time elapsed: 00:00:45
+                                    ETA: 00:33:15

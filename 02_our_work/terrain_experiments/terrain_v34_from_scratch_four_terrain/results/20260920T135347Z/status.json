@@ -1,0 +1,8 @@
+{
+  "stage": "flat_gate_failed",
+  "updated_at": 1789913063.9433026,
+  "supervisor_pid": 9215,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_flat_foundation/2026-09-20_13-54-18_flat_20260920T135347Z/model_200.pt",
+  "success": 0,
+  "page": "/home/ubuntu22/terrain_v34_from_scratch_four_terrain/results/20260920T135347Z/V34严格从头训练四地形报告.html"
+}

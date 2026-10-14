@@ -1,0 +1,31 @@
+{
+  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v38_official_stairs/2026-09-26_11-55-01_official_5to23cm_resume2900_to3799_20260926T115454Z/model_3798.pt",
+  "source_sha256": "75799b8561129f3d7d8c8dd289131e293a0cf6dd8cece67b9a9f442baf659c8c",
+  "source_physical_success": {
+    "12cm": "31/32",
+    "14cm": "32/32",
+    "16cm": "25/32",
+    "18cm": "2/32"
+  },
+  "actor_observation_dim": 62,
+  "height_scan_in_actor": false,
+  "stair_height_m": [
+    0.1,
+    0.18
+  ],
+  "stair_step_width_m": 0.3,
+  "swing_target_m": {
+    "flat": 0.09,
+    "at_18cm_relief": 0.18
+  },
+  "excessive_foot_height_threshold_m": 0.24,
+  "actor_warmup_update_calls": 50,
+  "optimizer_transfer": false,
+  "fixed_alpha_from_source": true,
+  "actor_learning_rate": 5e-07,
+  "critic_learning_rate": 5e-05,
+  "policy_frequency": 5,
+  "iterations": 250,
+  "save_interval": 10,
+  "num_envs": 4096
+}

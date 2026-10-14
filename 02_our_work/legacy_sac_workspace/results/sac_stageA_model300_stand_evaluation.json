@@ -1,0 +1,11 @@
+{
+  "checkpoint": "/data/sac/src/SATA_sac/legged_gym/logs/SAC_stageA_stand/Aug12_14-55-02_stand_h018_action2p0_seed1_pilot/model_300.pt",
+  "command_mps": 0.0,
+  "samples": 256000,
+  "mean_height_m": 0.26082679629325867,
+  "height_std_m": 0.03448588401079178,
+  "fraction_height_below_0p22": 0.16517578065395355,
+  "mean_abs_forward_speed_mps": 0.034426283091306686,
+  "failure_resets": 8469,
+  "failure_resets_per_1000_env_steps": 33.08203125
+}

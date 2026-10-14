@@ -1,0 +1,890 @@
+[
+  {
+    "terrain": "flat",
+    "difficulty": 0.25,
+    "vertices": 36,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:flat_terrain",
+      "proportion": 2.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null
+    }
+  },
+  {
+    "terrain": "flat",
+    "difficulty": 0.75,
+    "vertices": 36,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:flat_terrain",
+      "proportion": 2.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null
+    }
+  },
+  {
+    "terrain": "rough",
+    "difficulty": 0.25,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.03
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:rough_with_difficulty",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "noise_range": [
+        -0.06,
+        0.06
+      ],
+      "noise_step": 0.01,
+      "downsampled_scale": 0.2
+    }
+  },
+  {
+    "terrain": "rough",
+    "difficulty": 0.75,
+    "vertices": 10232,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.06
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:rough_with_difficulty",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "noise_range": [
+        -0.06,
+        0.06
+      ],
+      "noise_step": 0.01,
+      "downsampled_scale": 0.2
+    }
+  },
+  {
+    "terrain": "grid",
+    "difficulty": 0.25,
+    "vertices": 3857,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.045
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:random_grid_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "grid_width": 0.45,
+      "grid_height_range": [
+        0.02,
+        0.12
+      ],
+      "platform_width": 1.6,
+      "holes": false
+    }
+  },
+  {
+    "terrain": "grid",
+    "difficulty": 0.75,
+    "vertices": 3857,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.095
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:random_grid_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "grid_width": 0.45,
+      "grid_height_range": [
+        0.02,
+        0.12
+      ],
+      "platform_width": 1.6,
+      "holes": false
+    }
+  },
+  {
+    "terrain": "slope_up",
+    "difficulty": 0.25,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          -0.295
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:pyramid_sloped_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "slope_range": [
+        0.05,
+        0.25
+      ],
+      "platform_width": 1.6,
+      "inverted": true
+    }
+  },
+  {
+    "terrain": "slope_up",
+    "difficulty": 0.75,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          -0.59
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:pyramid_sloped_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "slope_range": [
+        0.05,
+        0.25
+      ],
+      "platform_width": 1.6,
+      "inverted": true
+    }
+  },
+  {
+    "terrain": "slope_down",
+    "difficulty": 0.25,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.325
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:pyramid_sloped_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "slope_range": [
+        0.05,
+        0.25
+      ],
+      "platform_width": 1.6,
+      "inverted": false
+    }
+  },
+  {
+    "terrain": "slope_down",
+    "difficulty": 0.75,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.655
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:pyramid_sloped_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "slope_range": [
+        0.05,
+        0.25
+      ],
+      "platform_width": 1.6,
+      "inverted": false
+    }
+  },
+  {
+    "terrain": "wave",
+    "difficulty": 0.25,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.02
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:wave_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "amplitude_range": [
+        0.01,
+        0.08
+      ],
+      "num_waves": 4
+    }
+  },
+  {
+    "terrain": "wave",
+    "difficulty": 0.75,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.06
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:wave_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "amplitude_range": [
+        0.01,
+        0.08
+      ],
+      "num_waves": 4
+    }
+  },
+  {
+    "terrain": "stones",
+    "difficulty": 0.25,
+    "vertices": 10232,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.025
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:stepping_stones_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.0,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "stone_height_max": 0.03,
+      "stone_width_range": [
+        0.35,
+        0.55
+      ],
+      "stone_distance_range": [
+        0.12,
+        0.28
+      ],
+      "holes_depth": -0.5,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "stones",
+    "difficulty": 0.75,
+    "vertices": 8746,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.025
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:stepping_stones_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.0,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "stone_height_max": 0.03,
+      "stone_width_range": [
+        0.35,
+        0.55
+      ],
+      "stone_distance_range": [
+        0.12,
+        0.28
+      ],
+      "holes_depth": -0.5,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "gap",
+    "difficulty": 0.25,
+    "vertices": 80,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:gap_with_floor",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "gap_width_range": [
+        0.05,
+        0.22
+      ],
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "gap",
+    "difficulty": 0.75,
+    "vertices": 80,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:gap_with_floor",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "gap_width_range": [
+        0.05,
+        0.22
+      ],
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "pit",
+    "difficulty": 0.25,
+    "vertices": 72,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          -0.065
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:pit_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "pit_depth_range": [
+        0.04,
+        0.14
+      ],
+      "platform_width": 1.6,
+      "double_pit": false
+    }
+  },
+  {
+    "terrain": "pit",
+    "difficulty": 0.75,
+    "vertices": 72,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          -0.11500000000000002
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:pit_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "pit_depth_range": [
+        0.04,
+        0.14
+      ],
+      "platform_width": 1.6,
+      "double_pit": false
+    }
+  },
+  {
+    "terrain": "platform",
+    "difficulty": 0.25,
+    "vertices": 48,
+    "origin": [
+      [
+        [
+          -2.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:platform_from_ground",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "box_height_range": [
+        0.04,
+        0.14
+      ],
+      "platform_width": 1.5,
+      "double_box": false
+    }
+  },
+  {
+    "terrain": "platform",
+    "difficulty": 0.75,
+    "vertices": 48,
+    "origin": [
+      [
+        [
+          -2.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "terrain_v25.config:platform_from_ground",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "box_height_range": [
+        0.04,
+        0.14
+      ],
+      "platform_width": 1.5,
+      "double_box": false
+    }
+  },
+  {
+    "terrain": "rails",
+    "difficulty": 0.25,
+    "vertices": 104,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:rails_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "rail_thickness_range": [
+        0.04,
+        0.1
+      ],
+      "rail_height_range": [
+        0.04,
+        0.12
+      ],
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "rails",
+    "difficulty": 0.75,
+    "vertices": 104,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:rails_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "rail_thickness_range": [
+        0.04,
+        0.1
+      ],
+      "rail_height_range": [
+        0.04,
+        0.12
+      ],
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "discrete",
+    "difficulty": 0.25,
+    "vertices": 10233,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:discrete_obstacles_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "obstacle_height_mode": "choice",
+      "obstacle_width_range": [
+        0.3,
+        0.7
+      ],
+      "obstacle_height_range": [
+        0.02,
+        0.12
+      ],
+      "num_obstacles": 40,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "discrete",
+    "difficulty": 0.75,
+    "vertices": 10149,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.095
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.height_field.hf_terrains:discrete_obstacles_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "border_width": 0.25,
+      "horizontal_scale": 0.1,
+      "vertical_scale": 0.005,
+      "slope_threshold": null,
+      "obstacle_height_mode": "choice",
+      "obstacle_width_range": [
+        0.3,
+        0.7
+      ],
+      "obstacle_height_range": [
+        0.02,
+        0.12
+      ],
+      "num_obstacles": 40,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "ring",
+    "difficulty": 0.25,
+    "vertices": 72,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:floating_ring_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "ring_width_range": [
+        0.1,
+        0.35
+      ],
+      "ring_height_range": [
+        0.28,
+        0.45
+      ],
+      "ring_thickness": 0.08,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "ring",
+    "difficulty": 0.75,
+    "vertices": 72,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:floating_ring_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "ring_width_range": [
+        0.1,
+        0.35
+      ],
+      "ring_height_range": [
+        0.28,
+        0.45
+      ],
+      "ring_thickness": 0.08,
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "star",
+    "difficulty": 0.25,
+    "vertices": 130,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:star_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "num_bars": 5,
+      "bar_width_range": [
+        0.4,
+        0.7
+      ],
+      "bar_height_range": [
+        0.03,
+        0.12
+      ],
+      "platform_width": 1.6
+    }
+  },
+  {
+    "terrain": "star",
+    "difficulty": 0.75,
+    "vertices": 130,
+    "origin": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    ],
+    "config": {
+      "function": "isaaclab.terrains.trimesh.mesh_terrains:star_terrain",
+      "proportion": 1.0,
+      "size": [
+        10.0,
+        10.0
+      ],
+      "flat_patch_sampling": null,
+      "num_bars": 5,
+      "bar_width_range": [
+        0.4,
+        0.7
+      ],
+      "bar_height_range": [
+        0.03,
+        0.12
+      ],
+      "platform_width": 1.6
+    }
+  }
+]

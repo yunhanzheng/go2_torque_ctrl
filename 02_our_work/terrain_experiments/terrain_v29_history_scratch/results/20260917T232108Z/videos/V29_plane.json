@@ -1,0 +1,228 @@
+{
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v29_history_scratch_multiterrain/2026-09-17_23-21-44_pilot_20260917T232108Z/model_299.pt",
+  "terrain": "plane",
+  "difficulty": 0.0,
+  "terrain_seed": 7,
+  "num_envs": 1,
+  "steps": 600,
+  "dt": 0.02,
+  "success": 0,
+  "terminated": 0,
+  "other_no_success": 1,
+  "max_x_m": [
+    0.0
+  ],
+  "trace_env0": [
+    {
+      "step": 0,
+      "x": -0.00013503432273864746,
+      "z": 0.3938795328140259,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 20,
+      "x": -0.034506555646657944,
+      "z": 0.23742389678955078,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 40,
+      "x": -0.09959015250205994,
+      "z": 0.20754452049732208,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 60,
+      "x": -0.06616035103797913,
+      "z": 0.12055107951164246,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 80,
+      "x": -0.06446058303117752,
+      "z": 0.10752346366643906,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 100,
+      "x": -0.06461521983146667,
+      "z": 0.10737845301628113,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 120,
+      "x": -0.06465807557106018,
+      "z": 0.10734935104846954,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 140,
+      "x": -0.06466621160507202,
+      "z": 0.10733687877655029,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 160,
+      "x": -0.06468667834997177,
+      "z": 0.10731510818004608,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 180,
+      "x": -0.06470149755477905,
+      "z": 0.10730587691068649,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 200,
+      "x": -0.0647120401263237,
+      "z": 0.1072932630777359,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 220,
+      "x": -0.06474018841981888,
+      "z": 0.10727192461490631,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 240,
+      "x": -0.06473640352487564,
+      "z": 0.10727588087320328,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 260,
+      "x": -0.06474660336971283,
+      "z": 0.10726112872362137,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 280,
+      "x": -0.06474617123603821,
+      "z": 0.10726074129343033,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 300,
+      "x": -0.06474605202674866,
+      "z": 0.1072610393166542,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 320,
+      "x": -0.06474615633487701,
+      "z": 0.10726087540388107,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 340,
+      "x": -0.06474605947732925,
+      "z": 0.10726107656955719,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 360,
+      "x": -0.06474608182907104,
+      "z": 0.10726099461317062,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 380,
+      "x": -0.06474608927965164,
+      "z": 0.10726088285446167,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 400,
+      "x": -0.06474598497152328,
+      "z": 0.1072610542178154,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 420,
+      "x": -0.06474604457616806,
+      "z": 0.10726106911897659,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 440,
+      "x": -0.06474619358778,
+      "z": 0.1072608008980751,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 460,
+      "x": -0.06474613398313522,
+      "z": 0.10726086050271988,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 480,
+      "x": -0.06474619358778,
+      "z": 0.10726103186607361,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 500,
+      "x": -0.06474632769823074,
+      "z": 0.10726096481084824,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 520,
+      "x": -0.06474632769823074,
+      "z": 0.10726073384284973,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 540,
+      "x": -0.06474638730287552,
+      "z": 0.10726065188646317,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 560,
+      "x": -0.06474608927965164,
+      "z": 0.107261061668396,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 580,
+      "x": -0.06474634259939194,
+      "z": 0.1072608232498169,
+      "done": false,
+      "active": true
+    }
+  ],
+  "criterion": "first episode; fixed 0.5 m/s forward command; base x > 3.5m, all feet x > 3.05m, gravity_z < -0.85 for 0.5s; abs(y)<=0.75m; no reset"
+}

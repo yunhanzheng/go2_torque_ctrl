@@ -1,0 +1,7 @@
+{
+  "source": "/data/sac/saved_models/ETH_SAC_V23_APPROVED_8CM/model_299.pt",
+  "sha256": "42c70bd7dbca6c3a70be7b5d6434ff8177f171417cd6453a1e6a93ea97ecebda",
+  "warmup_update_calls": 25,
+  "transfer": "actor, critic, optimizer and alpha; fresh replay and iteration counter",
+  "actor_observation_dim": 62
+}

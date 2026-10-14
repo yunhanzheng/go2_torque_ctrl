@@ -1,0 +1,44 @@
+{
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v50_curriculum_recovery/2026-10-08_14-10-57_level6_trial_from_v49_4980_20261008T141051Z/model_5099.pt",
+  "curriculum_level_at_training_end": 6.3861,
+  "fixed_23cm_physical": 24,
+  "generalization_physical_mean": 25.833333333333332,
+  "generalization_physical_min": 7,
+  "by_terrain": {
+    "fixed_upstairs_23cm": {
+      "physical": 24,
+      "strict": 0,
+      "terminated": 8
+    },
+    "plane": {
+      "physical": 32,
+      "strict": 0,
+      "terminated": 0
+    },
+    "stairs_down_18cm": {
+      "physical": 26,
+      "strict": 1,
+      "terminated": 6
+    },
+    "slope_up": {
+      "physical": 32,
+      "strict": 0,
+      "terminated": 0
+    },
+    "slope_down": {
+      "physical": 32,
+      "strict": 0,
+      "terminated": 0
+    },
+    "boxes": {
+      "physical": 7,
+      "strict": 0,
+      "terminated": 24
+    },
+    "random_rough": {
+      "physical": 26,
+      "strict": 0,
+      "terminated": 6
+    }
+  }
+}

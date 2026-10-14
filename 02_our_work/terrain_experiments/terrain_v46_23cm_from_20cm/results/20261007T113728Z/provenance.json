@@ -1,0 +1,27 @@
+{
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_20CM_2026-10-07/V45_20CM_BEST_model_4060.pt",
+  "source_sha256": "e74fac2358697b2b1297e12ef49d86233ce3d3544a2748bcd782fd80ea9124c1",
+  "source_evaluation": {
+    "20cm_physical": "17/32",
+    "20cm_strict": "4/32",
+    "23cm_physical": "0/32"
+  },
+  "main_stair_height_m": [
+    0.18,
+    0.23
+  ],
+  "stair_step_width_m": 0.3,
+  "fixed_20cm_anchor_proportion": 0.25,
+  "fixed_18cm_anchor_proportion": 0.1,
+  "main_upstairs_proportion": 0.5,
+  "initial_max_level": 4,
+  "actor_warmup_update_calls": 30,
+  "optimizer_transfer": false,
+  "fixed_alpha_from_source": true,
+  "actor_learning_rate": 3e-07,
+  "critic_learning_rate": 5e-05,
+  "policy_frequency": 5,
+  "iterations": 300,
+  "save_interval": 5,
+  "num_envs": 4096
+}

@@ -1,0 +1,33 @@
+{
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_22CM_FRONTIER_2026-10-07/V46_22CM_4OF32_model_4180.pt",
+  "source_sha256": "304badf0f2dd551d0344c851b5f70da184c89ff17e951d04ffbd4f17896fa18b",
+  "source_evaluation": {
+    "20cm_physical": "24/32",
+    "21cm_physical": "16/32",
+    "22cm_physical": "4/32",
+    "23cm_physical": "0/32"
+  },
+  "main_stair_height_m": [
+    0.2,
+    0.22
+  ],
+  "stair_step_width_m": 0.3,
+  "anchors": {
+    "20cm": 0.1,
+    "21cm": 0.2,
+    "22cm": 0.15
+  },
+  "main_upstairs_proportion": 0.45,
+  "initial_max_level": 4,
+  "swing_target_at_22cm_m": 0.233,
+  "swing_clearance_weight": 6.0,
+  "actor_warmup_update_calls": 30,
+  "optimizer_transfer": false,
+  "fixed_alpha_from_source": true,
+  "actor_learning_rate": 3e-07,
+  "critic_learning_rate": 5e-05,
+  "policy_frequency": 5,
+  "iterations": 300,
+  "save_interval": 5,
+  "num_envs": 4096
+}

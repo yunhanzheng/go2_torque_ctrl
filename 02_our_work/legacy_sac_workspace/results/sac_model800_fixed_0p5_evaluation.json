@@ -1,0 +1,17 @@
+{
+  "checkpoint": "/data/sac/src/SATA_sac/legged_gym/logs/SAC_stage3_flat_gait/Aug12_14-33-36_stage3_command_curriculum_seed1/model_800.pt",
+  "command_mps": 0.5,
+  "num_envs": 256,
+  "steps_per_env": 2000,
+  "samples": 512000,
+  "mean_velocity_mps": 0.031379129737615585,
+  "velocity_std_mps": 0.10224094986915588,
+  "signed_error_mps": -0.4686208665370941,
+  "mae_mps": 0.4696780741214752,
+  "rmse_mps": 0.4796443581581116,
+  "mean_reward_per_step": 0.018274879083037376,
+  "mean_base_height_m": 0.12355539947748184,
+  "failure_resets": 0,
+  "timeout_resets": 0,
+  "failure_resets_per_1000_env_steps": 0.0
+}

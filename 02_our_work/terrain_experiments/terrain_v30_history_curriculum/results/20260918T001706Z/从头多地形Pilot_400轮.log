@@ -1,0 +1,1395 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/eth_sac/isaaclab-sac/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260918_001734.log
+2026-09-18T00:17:34Z [94ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-18T00:17:35Z [528ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-18T00:17:35Z [535ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-18T00:17:38Z [3,807ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-18T00:17:38Z [3,807ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-18T00:17:38Z [3,807ms] [Error] [gpu.foundation.plugin] Multiple Installable Client Drivers (ICDs) are found for the same GPU on the system. This causes the same GPU to be reported multiple times by more than one driver and leads to instability or crash. 
+It requires multi-gpu mode to be disabled and the correct device with the correct driver to be set via activeGpu setting.
+For NVIDIA drivers, please follow troubleshooting docs to uninstall and completely purge Linux-distribution-provided driver packages, and then reinstall your driver cleanly via .run package. Otherwise, updating Ubuntu software may reinstall a secondary ICD or override the existing NVIDIA driver.
+
+To verify the proper NVIDIA driver installation, only one of the following icd.d folders should contain nvidia_icd.json file:
+/etc/vulkan/icd.d: Location of ICDs installed from non-Linux-distribution-provided packages
+/usr/share/vulkan/icd.d : Location of ICDs installed from Linux-distribution-provided packages
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 0 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 1 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 2   | Intel(R) Graphics (RPL-S)        |        |     | 23845   MB | 8086      | 0          |
+|     |                                  |        |     |            | a788      | 868088a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.4 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.4, Kernel: 6.8.0-110-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Core(TM) i9-14900HX
+| Cores: 24 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 31793 | Free Memory: 26490
+| Total Page/Swap (MB): 7628 | Free Page/Swap: 7628
+|---------------------------------------------------------------------------------------------|
+2026-09-18T00:17:38Z [4,206ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-18T00:17:38Z [4,215ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 0 don't match.
+2026-09-18T00:17:38Z [4,215ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+2026-09-18T00:17:38Z [4,215ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-09-18T00:17:38Z [4,215ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 371.43 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.49 
+
+   CPU     0 
+     0   1.69 
+[INFO]: Parsing configuration from: terrain_v30_history_curriculum.config:HistoryCurriculumEnvCfg
+[INFO]: Parsing configuration from: terrain_v30_history_curriculum.config:HistoryCurriculumRunnerCfg
+[INFO] Logging experiment in directory: /home/ubuntu22/logs/rsl_rl/terrain_v30_history_curriculum_multiterrain
+Exact experiment name requested from command line: 2026-09-18_00-17-40
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-18_00-17-40.log[0m
+[36m======================================================================================[0m
+
+[33m00:17:40 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 1
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains based on curriculum took : 1.083021 seconds
+[INFO]: Time taken for scene creation : 10.557908 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 4096
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 4.338582 seconds
+[33m00:17:56 [velocity_command.py] WARNING: The velocity command has the 'ranges.heading' attribute set to '(0.0, 0.0)' but the heading command is not active. Consider setting the flag for the heading command to True.[0m
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++---------------------------------------+
+|  Active Event Terms in Mode: 'reset'  |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | base_external_force_torque   |
+|   1    | reset_base                   |
+|   2    | reset_robot_joints           |
++--------+------------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 12)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          12 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++--------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (1175,)) |
++------------+--------------------------+----------------+
+|   Index    | Name                     |     Shape      |
++------------+--------------------------+----------------+
+|     0      | base_lin_vel             |    (1175,)     |
++------------+--------------------------+----------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 2 active terms.
++---------------------------------+
+|     Active Termination Terms    |
++-------+--------------+----------+
+| Index | Name         | Time Out |
++-------+--------------+----------+
+|   0   | time_out     |   True   |
+|   1   | base_contact |  False   |
++-------+--------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 10 active terms.
++-----------------------------------------+
+|           Active Reward Terms           |
++-------+----------------------+----------+
+| Index | Name                 |   Weight |
++-------+----------------------+----------+
+|   0   | track_lin_vel_xy_exp |      1.5 |
+|   1   | track_ang_vel_z_exp  |     0.75 |
+|   2   | lin_vel_z_l2         |     -2.0 |
+|   3   | ang_vel_xy_l2        |    -0.05 |
+|   4   | dof_torques_l2       |  -0.0002 |
+|   5   | dof_acc_l2           | -2.5e-07 |
+|   6   | action_rate_l2       |    -0.01 |
+|   7   | feet_air_time        |     0.01 |
+|   8   | flat_orientation_l2  |      0.0 |
+|   9   | dof_pos_limits       |      0.0 |
++-------+----------------------+----------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 1 active terms.
++---------------------------+
+|  Active Curriculum Terms  |
++--------+------------------+
+| Index  | Name             |
++--------+------------------+
+|   0    | terrain_levels   |
++--------+------------------+
+
+[INFO]: Completed setting up the environment...
+2026-09-18T00:17:56Z [22,323ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_goal.
+2026-09-18T00:17:56Z [22,323ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_current.
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+SAC Actor: HistoryActor(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): MLP(
+    (0): Linear(in_features=267, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=24, bias=True)
+    (7): Unflatten(dim=-1, unflattened_size=[2, 12])
+  )
+  (encoder): Sequential(
+    (0): Linear(in_features=940, out_features=256, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=128, out_features=32, bias=True)
+    (5): Tanh()
+  )
+)
+SAC: Computed physics-based action scaling factors.
+  Global action scale from ActionManager: 0.25
+  Scaling factors lower limits: tensor([4.1699, 3.3699, 4.1699, 3.3699, 8.4709, 8.4709, 5.0821, 5.0821, 4.5138,
+        4.5138, 4.5138, 4.5138], device='cuda:0')
+  Scaling factors upper limits: tensor([ 3.3699,  4.1699,  3.3699,  4.1699,  9.7505,  9.7505, 13.1393, 13.1393,
+         2.2720,  2.2720,  2.2720,  2.2720], device='cuda:0')
+SAC Critic: SACCriticModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): None
+  (critic1): MLP(
+    (0): Linear(in_features=1187, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2): MLP(
+    (0): Linear(in_features=1187, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic1_target): MLP(
+    (0): Linear(in_features=1187, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2_target): MLP(
+    (0): Linear(in_features=1187, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+Storing git diff for 'rsl_rl_sac' in: /home/ubuntu22/logs/rsl_rl/terrain_v30_history_curriculum_multiterrain/2026-09-18_00-17-40_pilot_20260918T001706Z/git/rsl_rl_sac.diff
+################################################################################
+[1m                            Learning iteration 0/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 98304 
+                       Steps per second: 18669 
+                        Collection time: 5.265s 
+                          Learning time: 0.000s 
+                            Mean reward: -0.79
+            Mean reward + terrain level: -0.04
+                    Mean episode length: 18.43
+                  Mean action noise std: 0.15
+                                  Alpha: 0.001000
+    Episode_Reward/track_lin_vel_xy_exp: 0.0041
+     Episode_Reward/track_ang_vel_z_exp: 0.0067
+            Episode_Reward/lin_vel_z_l2: -0.0248
+           Episode_Reward/ang_vel_xy_l2: -0.0038
+          Episode_Reward/dof_torques_l2: -0.0011
+              Episode_Reward/dof_acc_l2: -0.0057
+          Episode_Reward/action_rate_l2: -0.0025
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.7529
+     Metrics/base_velocity/error_vel_xy: 0.0139
+    Metrics/base_velocity/error_vel_yaw: 0.0054
+           Episode_Termination/time_out: 0.0086
+       Episode_Termination/base_contact: 0.2367
+--------------------------------------------------------------------------------
+                         Iteration time: 5.27s
+                           Time elapsed: 00:00:05
+                                    ETA: 00:35:00
+
+################################################################################
+[1m                            Learning iteration 1/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 196608 
+                       Steps per second: 12405 
+                        Collection time: 4.096s 
+                          Learning time: 3.828s 
+                      Mean critic1 loss: 0.0047
+                      Mean critic2 loss: 0.0049
+                        Mean actor loss: 0.0821
+                        Mean alpha loss: -95.1281
+                            Mean reward: -0.84
+            Mean reward + terrain level: -0.41
+                    Mean episode length: 19.11
+                  Mean action noise std: 0.62
+                                  Alpha: 0.000996
+    Episode_Reward/track_lin_vel_xy_exp: 0.0064
+     Episode_Reward/track_ang_vel_z_exp: 0.0095
+            Episode_Reward/lin_vel_z_l2: -0.0368
+           Episode_Reward/ang_vel_xy_l2: -0.0062
+          Episode_Reward/dof_torques_l2: -0.0019
+              Episode_Reward/dof_acc_l2: -0.0089
+          Episode_Reward/action_rate_l2: -0.0037
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.4351
+     Metrics/base_velocity/error_vel_xy: 0.0227
+    Metrics/base_velocity/error_vel_yaw: 0.0100
+           Episode_Termination/time_out: 0.0134
+       Episode_Termination/base_contact: 0.5502
+--------------------------------------------------------------------------------
+                         Iteration time: 7.92s
+                           Time elapsed: 00:00:13
+                                    ETA: 00:43:44
+
+################################################################################
+[1m                            Learning iteration 2/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 294912 
+                       Steps per second: 13310 
+                        Collection time: 3.662s 
+                          Learning time: 3.724s 
+                      Mean critic1 loss: 0.0089
+                      Mean critic2 loss: 0.0090
+                        Mean actor loss: 0.0425
+                        Mean alpha loss: -93.1409
+                            Mean reward: -1.78
+            Mean reward + terrain level: -1.37
+                    Mean episode length: 29.25
+                  Mean action noise std: 0.56
+                                  Alpha: 0.000992
+    Episode_Reward/track_lin_vel_xy_exp: 0.0139
+     Episode_Reward/track_ang_vel_z_exp: 0.0130
+            Episode_Reward/lin_vel_z_l2: -0.0347
+           Episode_Reward/ang_vel_xy_l2: -0.0251
+          Episode_Reward/dof_torques_l2: -0.0040
+              Episode_Reward/dof_acc_l2: -0.0194
+          Episode_Reward/action_rate_l2: -0.0113
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.4182
+     Metrics/base_velocity/error_vel_xy: 0.0414
+    Metrics/base_velocity/error_vel_yaw: 0.0317
+           Episode_Termination/time_out: 0.0205
+       Episode_Termination/base_contact: 0.5600
+--------------------------------------------------------------------------------
+                         Iteration time: 7.39s
+                           Time elapsed: 00:00:20
+                                    ETA: 00:45:22
+
+################################################################################
+[1m                            Learning iteration 3/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 393216 
+                       Steps per second: 13655 
+                        Collection time: 3.472s 
+                          Learning time: 3.726s 
+                      Mean critic1 loss: 0.0142
+                      Mean critic2 loss: 0.0144
+                        Mean actor loss: 0.1929
+                        Mean alpha loss: -135.8729
+                            Mean reward: -1.98
+            Mean reward + terrain level: -1.61
+                    Mean episode length: 50.04
+                  Mean action noise std: 0.46
+                                  Alpha: 0.000988
+    Episode_Reward/track_lin_vel_xy_exp: 0.0176
+     Episode_Reward/track_ang_vel_z_exp: 0.0135
+            Episode_Reward/lin_vel_z_l2: -0.0362
+           Episode_Reward/ang_vel_xy_l2: -0.0383
+          Episode_Reward/dof_torques_l2: -0.0054
+              Episode_Reward/dof_acc_l2: -0.0258
+          Episode_Reward/action_rate_l2: -0.0242
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.3752
+     Metrics/base_velocity/error_vel_xy: 0.0515
+    Metrics/base_velocity/error_vel_yaw: 0.0555
+           Episode_Termination/time_out: 0.0182
+       Episode_Termination/base_contact: 0.6056
+--------------------------------------------------------------------------------
+                         Iteration time: 7.20s
+                           Time elapsed: 00:00:27
+                                    ETA: 00:45:49
+
+################################################################################
+[1m                            Learning iteration 4/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 491520 
+                       Steps per second: 13730 
+                        Collection time: 3.408s 
+                          Learning time: 3.751s 
+                      Mean critic1 loss: 0.0144
+                      Mean critic2 loss: 0.0146
+                        Mean actor loss: 0.3444
+                        Mean alpha loss: -120.6727
+                            Mean reward: -1.81
+            Mean reward + terrain level: -1.59
+                    Mean episode length: 23.22
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000983
+    Episode_Reward/track_lin_vel_xy_exp: 0.0105
+     Episode_Reward/track_ang_vel_z_exp: 0.0085
+            Episode_Reward/lin_vel_z_l2: -0.0317
+           Episode_Reward/ang_vel_xy_l2: -0.0325
+          Episode_Reward/dof_torques_l2: -0.0040
+              Episode_Reward/dof_acc_l2: -0.0248
+          Episode_Reward/action_rate_l2: -0.0177
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.2145
+     Metrics/base_velocity/error_vel_xy: 0.0425
+    Metrics/base_velocity/error_vel_yaw: 0.0500
+           Episode_Termination/time_out: 0.0115
+       Episode_Termination/base_contact: 0.7736
+--------------------------------------------------------------------------------
+                         Iteration time: 7.16s
+                           Time elapsed: 00:00:34
+                                    ETA: 00:45:59
+
+################################################################################
+[1m                            Learning iteration 5/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 589824 
+                       Steps per second: 14199 
+                        Collection time: 3.340s 
+                          Learning time: 3.583s 
+                      Mean critic1 loss: 0.0115
+                      Mean critic2 loss: 0.0115
+                        Mean actor loss: 0.3896
+                        Mean alpha loss: -78.9805
+                            Mean reward: -0.99
+            Mean reward + terrain level: -0.81
+                    Mean episode length: 12.79
+                  Mean action noise std: 0.49
+                                  Alpha: 0.000981
+    Episode_Reward/track_lin_vel_xy_exp: 0.0040
+     Episode_Reward/track_ang_vel_z_exp: 0.0044
+            Episode_Reward/lin_vel_z_l2: -0.0303
+           Episode_Reward/ang_vel_xy_l2: -0.0139
+          Episode_Reward/dof_torques_l2: -0.0015
+              Episode_Reward/dof_acc_l2: -0.0120
+          Episode_Reward/action_rate_l2: -0.0101
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1829
+     Metrics/base_velocity/error_vel_xy: 0.0220
+    Metrics/base_velocity/error_vel_yaw: 0.0188
+           Episode_Termination/time_out: 0.0084
+       Episode_Termination/base_contact: 0.8082
+--------------------------------------------------------------------------------
+                         Iteration time: 6.92s
+                           Time elapsed: 00:00:41
+                                    ETA: 00:45:48
+
+################################################################################
+[1m                            Learning iteration 6/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 688128 
+                       Steps per second: 14692 
+                        Collection time: 3.156s 
+                          Learning time: 3.534s 
+                      Mean critic1 loss: 0.0076
+                      Mean critic2 loss: 0.0076
+                        Mean actor loss: 0.3889
+                        Mean alpha loss: -71.4080
+                            Mean reward: -0.99
+            Mean reward + terrain level: -0.83
+                    Mean episode length: 11.33
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000978
+    Episode_Reward/track_lin_vel_xy_exp: 0.0049
+     Episode_Reward/track_ang_vel_z_exp: 0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0323
+           Episode_Reward/ang_vel_xy_l2: -0.0103
+          Episode_Reward/dof_torques_l2: -0.0012
+              Episode_Reward/dof_acc_l2: -0.0087
+          Episode_Reward/action_rate_l2: -0.0084
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1675
+     Metrics/base_velocity/error_vel_xy: 0.0198
+    Metrics/base_velocity/error_vel_yaw: 0.0139
+           Episode_Termination/time_out: 0.0089
+       Episode_Termination/base_contact: 0.8232
+--------------------------------------------------------------------------------
+                         Iteration time: 6.69s
+                           Time elapsed: 00:00:48
+                                    ETA: 00:45:25
+
+################################################################################
+[1m                            Learning iteration 7/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 786432 
+                       Steps per second: 14658 
+                        Collection time: 3.168s 
+                          Learning time: 3.538s 
+                      Mean critic1 loss: 0.0041
+                      Mean critic2 loss: 0.0041
+                        Mean actor loss: 0.3543
+                        Mean alpha loss: -64.6865
+                            Mean reward: -0.84
+            Mean reward + terrain level: -0.69
+                    Mean episode length: 11.03
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000975
+    Episode_Reward/track_lin_vel_xy_exp: 0.0045
+     Episode_Reward/track_ang_vel_z_exp: 0.0053
+            Episode_Reward/lin_vel_z_l2: -0.0309
+           Episode_Reward/ang_vel_xy_l2: -0.0090
+          Episode_Reward/dof_torques_l2: -0.0011
+              Episode_Reward/dof_acc_l2: -0.0070
+          Episode_Reward/action_rate_l2: -0.0077
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1534
+     Metrics/base_velocity/error_vel_xy: 0.0203
+    Metrics/base_velocity/error_vel_yaw: 0.0152
+           Episode_Termination/time_out: 0.0080
+       Episode_Termination/base_contact: 0.8383
+--------------------------------------------------------------------------------
+                         Iteration time: 6.71s
+                           Time elapsed: 00:00:55
+                                    ETA: 00:45:07
+
+################################################################################
+[1m                            Learning iteration 8/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 884736 
+                       Steps per second: 14512 
+                        Collection time: 3.210s 
+                          Learning time: 3.563s 
+                      Mean critic1 loss: 0.0035
+                      Mean critic2 loss: 0.0035
+                        Mean actor loss: 0.3266
+                        Mean alpha loss: -58.5686
+                            Mean reward: -0.90
+            Mean reward + terrain level: -0.76
+                    Mean episode length: 14.69
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000973
+    Episode_Reward/track_lin_vel_xy_exp: 0.0037
+     Episode_Reward/track_ang_vel_z_exp: 0.0044
+            Episode_Reward/lin_vel_z_l2: -0.0279
+           Episode_Reward/ang_vel_xy_l2: -0.0085
+          Episode_Reward/dof_torques_l2: -0.0010
+              Episode_Reward/dof_acc_l2: -0.0071
+          Episode_Reward/action_rate_l2: -0.0074
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1406
+     Metrics/base_velocity/error_vel_xy: 0.0205
+    Metrics/base_velocity/error_vel_yaw: 0.0171
+           Episode_Termination/time_out: 0.0067
+       Episode_Termination/base_contact: 0.8525
+--------------------------------------------------------------------------------
+                         Iteration time: 6.77s
+                           Time elapsed: 00:01:02
+                                    ETA: 00:44:54
+
+################################################################################
+[1m                            Learning iteration 9/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 983040 
+                       Steps per second: 14506 
+                        Collection time: 3.192s 
+                          Learning time: 3.584s 
+                      Mean critic1 loss: 0.0030
+                      Mean critic2 loss: 0.0030
+                        Mean actor loss: 0.2844
+                        Mean alpha loss: -65.7915
+                            Mean reward: -0.85
+            Mean reward + terrain level: -0.72
+                    Mean episode length: 12.86
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000970
+    Episode_Reward/track_lin_vel_xy_exp: 0.0035
+     Episode_Reward/track_ang_vel_z_exp: 0.0051
+            Episode_Reward/lin_vel_z_l2: -0.0264
+           Episode_Reward/ang_vel_xy_l2: -0.0084
+          Episode_Reward/dof_torques_l2: -0.0009
+              Episode_Reward/dof_acc_l2: -0.0067
+          Episode_Reward/action_rate_l2: -0.0069
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1299
+     Metrics/base_velocity/error_vel_xy: 0.0209
+    Metrics/base_velocity/error_vel_yaw: 0.0145
+           Episode_Termination/time_out: 0.0061
+       Episode_Termination/base_contact: 0.8638
+--------------------------------------------------------------------------------
+                         Iteration time: 6.78s
+                           Time elapsed: 00:01:08
+                                    ETA: 00:44:43
+
+################################################################################
+[1m                           Learning iteration 10/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1081344 
+                       Steps per second: 13788 
+                        Collection time: 3.366s 
+                          Learning time: 3.764s 
+                      Mean critic1 loss: 0.0029
+                      Mean critic2 loss: 0.0029
+                        Mean actor loss: 0.2789
+                        Mean alpha loss: -56.3056
+                            Mean reward: -0.85
+            Mean reward + terrain level: -0.73
+                    Mean episode length: 11.01
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000967
+    Episode_Reward/track_lin_vel_xy_exp: 0.0037
+     Episode_Reward/track_ang_vel_z_exp: 0.0043
+            Episode_Reward/lin_vel_z_l2: -0.0282
+           Episode_Reward/ang_vel_xy_l2: -0.0081
+          Episode_Reward/dof_torques_l2: -0.0010
+              Episode_Reward/dof_acc_l2: -0.0064
+          Episode_Reward/action_rate_l2: -0.0072
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1204
+     Metrics/base_velocity/error_vel_xy: 0.0206
+    Metrics/base_velocity/error_vel_yaw: 0.0164
+           Episode_Termination/time_out: 0.0055
+       Episode_Termination/base_contact: 0.8738
+--------------------------------------------------------------------------------
+                         Iteration time: 7.13s
+                           Time elapsed: 00:01:15
+                                    ETA: 00:44:45
+
+################################################################################
+[1m                           Learning iteration 11/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1179648 
+                       Steps per second: 14287 
+                        Collection time: 3.330s 
+                          Learning time: 3.551s 
+                      Mean critic1 loss: 0.0023
+                      Mean critic2 loss: 0.0023
+                        Mean actor loss: 0.2698
+                        Mean alpha loss: -56.2548
+                            Mean reward: -0.74
+            Mean reward + terrain level: -0.62
+                    Mean episode length: 10.89
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000964
+    Episode_Reward/track_lin_vel_xy_exp: 0.0033
+     Episode_Reward/track_ang_vel_z_exp: 0.0050
+            Episode_Reward/lin_vel_z_l2: -0.0267
+           Episode_Reward/ang_vel_xy_l2: -0.0079
+          Episode_Reward/dof_torques_l2: -0.0008
+              Episode_Reward/dof_acc_l2: -0.0063
+          Episode_Reward/action_rate_l2: -0.0061
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1123
+     Metrics/base_velocity/error_vel_xy: 0.0199
+    Metrics/base_velocity/error_vel_yaw: 0.0117
+           Episode_Termination/time_out: 0.0058
+       Episode_Termination/base_contact: 0.8817
+--------------------------------------------------------------------------------
+                         Iteration time: 6.88s
+                           Time elapsed: 00:01:22
+                                    ETA: 00:44:37
+
+################################################################################
+[1m                           Learning iteration 12/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1277952 
+                       Steps per second: 14621 
+                        Collection time: 3.174s 
+                          Learning time: 3.549s 
+                      Mean critic1 loss: 0.0020
+                      Mean critic2 loss: 0.0019
+                        Mean actor loss: 0.2704
+                        Mean alpha loss: -56.5058
+                            Mean reward: -0.93
+            Mean reward + terrain level: -0.83
+                    Mean episode length: 16.42
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000961
+    Episode_Reward/track_lin_vel_xy_exp: 0.0031
+     Episode_Reward/track_ang_vel_z_exp: 0.0050
+            Episode_Reward/lin_vel_z_l2: -0.0269
+           Episode_Reward/ang_vel_xy_l2: -0.0077
+          Episode_Reward/dof_torques_l2: -0.0008
+              Episode_Reward/dof_acc_l2: -0.0057
+          Episode_Reward/action_rate_l2: -0.0066
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1068
+     Metrics/base_velocity/error_vel_xy: 0.0193
+    Metrics/base_velocity/error_vel_yaw: 0.0106
+           Episode_Termination/time_out: 0.0046
+       Episode_Termination/base_contact: 0.8883
+--------------------------------------------------------------------------------
+                         Iteration time: 6.72s
+                           Time elapsed: 00:01:29
+                                    ETA: 00:44:25
+
+################################################################################
+[1m                           Learning iteration 13/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1376256 
+                       Steps per second: 14622 
+                        Collection time: 3.169s 
+                          Learning time: 3.554s 
+                      Mean critic1 loss: 0.0017
+                      Mean critic2 loss: 0.0017
+                        Mean actor loss: 0.2540
+                        Mean alpha loss: -55.4910
+                            Mean reward: -0.69
+            Mean reward + terrain level: -0.58
+                    Mean episode length: 10.75
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000958
+    Episode_Reward/track_lin_vel_xy_exp: 0.0028
+     Episode_Reward/track_ang_vel_z_exp: 0.0050
+            Episode_Reward/lin_vel_z_l2: -0.0248
+           Episode_Reward/ang_vel_xy_l2: -0.0075
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0059
+          Episode_Reward/action_rate_l2: -0.0059
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1037
+     Metrics/base_velocity/error_vel_xy: 0.0189
+    Metrics/base_velocity/error_vel_yaw: 0.0088
+           Episode_Termination/time_out: 0.0045
+       Episode_Termination/base_contact: 0.8916
+--------------------------------------------------------------------------------
+                         Iteration time: 6.72s
+                           Time elapsed: 00:01:36
+                                    ETA: 00:44:14
+
+################################################################################
+[1m                           Learning iteration 14/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1474560 
+                       Steps per second: 14624 
+                        Collection time: 3.167s 
+                          Learning time: 3.555s 
+                      Mean critic1 loss: 0.0018
+                      Mean critic2 loss: 0.0018
+                        Mean actor loss: 0.2440
+                        Mean alpha loss: -56.1365
+                            Mean reward: -0.70
+            Mean reward + terrain level: -0.60
+                    Mean episode length: 10.65
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000955
+    Episode_Reward/track_lin_vel_xy_exp: 0.0029
+     Episode_Reward/track_ang_vel_z_exp: 0.0054
+            Episode_Reward/lin_vel_z_l2: -0.0232
+           Episode_Reward/ang_vel_xy_l2: -0.0076
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0071
+          Episode_Reward/action_rate_l2: -0.0050
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.1009
+     Metrics/base_velocity/error_vel_xy: 0.0193
+    Metrics/base_velocity/error_vel_yaw: 0.0072
+           Episode_Termination/time_out: 0.0047
+       Episode_Termination/base_contact: 0.8942
+--------------------------------------------------------------------------------
+                         Iteration time: 6.72s
+                           Time elapsed: 00:01:42
+                                    ETA: 00:44:03
+
+################################################################################
+[1m                           Learning iteration 15/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1572864 
+                       Steps per second: 14654 
+                        Collection time: 3.159s 
+                          Learning time: 3.549s 
+                      Mean critic1 loss: 0.0017
+                      Mean critic2 loss: 0.0017
+                        Mean actor loss: 0.2309
+                        Mean alpha loss: -50.4276
+                            Mean reward: -0.66
+            Mean reward + terrain level: -0.56
+                    Mean episode length: 10.63
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000952
+    Episode_Reward/track_lin_vel_xy_exp: 0.0027
+     Episode_Reward/track_ang_vel_z_exp: 0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0226
+           Episode_Reward/ang_vel_xy_l2: -0.0075
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0068
+          Episode_Reward/action_rate_l2: -0.0048
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0981
+     Metrics/base_velocity/error_vel_xy: 0.0194
+    Metrics/base_velocity/error_vel_yaw: 0.0056
+           Episode_Termination/time_out: 0.0048
+       Episode_Termination/base_contact: 0.8968
+--------------------------------------------------------------------------------
+                         Iteration time: 6.71s
+                           Time elapsed: 00:01:49
+                                    ETA: 00:43:52
+
+################################################################################
+[1m                           Learning iteration 16/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1671168 
+                       Steps per second: 14782 
+                        Collection time: 3.093s 
+                          Learning time: 3.557s 
+                      Mean critic1 loss: 0.0017
+                      Mean critic2 loss: 0.0017
+                        Mean actor loss: 0.2255
+                        Mean alpha loss: -48.5085
+                            Mean reward: -0.70
+            Mean reward + terrain level: -0.61
+                    Mean episode length: 10.96
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000949
+    Episode_Reward/track_lin_vel_xy_exp: 0.0031
+     Episode_Reward/track_ang_vel_z_exp: 0.0064
+            Episode_Reward/lin_vel_z_l2: -0.0242
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0053
+          Episode_Reward/action_rate_l2: -0.0056
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0937
+     Metrics/base_velocity/error_vel_xy: 0.0204
+    Metrics/base_velocity/error_vel_yaw: 0.0063
+           Episode_Termination/time_out: 0.0057
+       Episode_Termination/base_contact: 0.9003
+--------------------------------------------------------------------------------
+                         Iteration time: 6.65s
+                           Time elapsed: 00:01:56
+                                    ETA: 00:43:41
+
+################################################################################
+[1m                           Learning iteration 17/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1769472 
+                       Steps per second: 14751 
+                        Collection time: 3.107s 
+                          Learning time: 3.557s 
+                      Mean critic1 loss: 0.0016
+                      Mean critic2 loss: 0.0016
+                        Mean actor loss: 0.2137
+                        Mean alpha loss: -50.8785
+                            Mean reward: -0.66
+            Mean reward + terrain level: -0.57
+                    Mean episode length: 10.84
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000945
+    Episode_Reward/track_lin_vel_xy_exp: 0.0030
+     Episode_Reward/track_ang_vel_z_exp: 0.0064
+            Episode_Reward/lin_vel_z_l2: -0.0240
+           Episode_Reward/ang_vel_xy_l2: -0.0071
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0052
+          Episode_Reward/action_rate_l2: -0.0055
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0893
+     Metrics/base_velocity/error_vel_xy: 0.0205
+    Metrics/base_velocity/error_vel_yaw: 0.0062
+           Episode_Termination/time_out: 0.0050
+       Episode_Termination/base_contact: 0.9054
+--------------------------------------------------------------------------------
+                         Iteration time: 6.66s
+                           Time elapsed: 00:02:03
+                                    ETA: 00:43:30
+
+################################################################################
+[1m                           Learning iteration 18/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1867776 
+                       Steps per second: 14793 
+                        Collection time: 3.083s 
+                          Learning time: 3.562s 
+                      Mean critic1 loss: 0.0015
+                      Mean critic2 loss: 0.0015
+                        Mean actor loss: 0.2018
+                        Mean alpha loss: -52.7786
+                            Mean reward: -0.64
+            Mean reward + terrain level: -0.55
+                    Mean episode length: 10.80
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000942
+    Episode_Reward/track_lin_vel_xy_exp: 0.0030
+     Episode_Reward/track_ang_vel_z_exp: 0.0067
+            Episode_Reward/lin_vel_z_l2: -0.0226
+           Episode_Reward/ang_vel_xy_l2: -0.0075
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0055
+          Episode_Reward/action_rate_l2: -0.0051
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0859
+     Metrics/base_velocity/error_vel_xy: 0.0204
+    Metrics/base_velocity/error_vel_yaw: 0.0052
+           Episode_Termination/time_out: 0.0049
+       Episode_Termination/base_contact: 0.9090
+--------------------------------------------------------------------------------
+                         Iteration time: 6.65s
+                           Time elapsed: 00:02:09
+                                    ETA: 00:43:19
+
+################################################################################
+[1m                           Learning iteration 19/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 1966080 
+                       Steps per second: 14682 
+                        Collection time: 3.134s 
+                          Learning time: 3.562s 
+                      Mean critic1 loss: 0.0014
+                      Mean critic2 loss: 0.0014
+                        Mean actor loss: 0.1917
+                        Mean alpha loss: -53.3884
+                            Mean reward: -0.66
+            Mean reward + terrain level: -0.58
+                    Mean episode length: 10.79
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000938
+    Episode_Reward/track_lin_vel_xy_exp: 0.0030
+     Episode_Reward/track_ang_vel_z_exp: 0.0066
+            Episode_Reward/lin_vel_z_l2: -0.0224
+           Episode_Reward/ang_vel_xy_l2: -0.0075
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0055
+          Episode_Reward/action_rate_l2: -0.0050
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0821
+     Metrics/base_velocity/error_vel_xy: 0.0205
+    Metrics/base_velocity/error_vel_yaw: 0.0052
+           Episode_Termination/time_out: 0.0051
+       Episode_Termination/base_contact: 0.9126
+--------------------------------------------------------------------------------
+                         Iteration time: 6.70s
+                           Time elapsed: 00:02:16
+                                    ETA: 00:43:10
+
+################################################################################
+[1m                           Learning iteration 20/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2064384 
+                       Steps per second: 14752 
+                        Collection time: 3.114s 
+                          Learning time: 3.550s 
+                      Mean critic1 loss: 0.0014
+                      Mean critic2 loss: 0.0014
+                        Mean actor loss: 0.1891
+                        Mean alpha loss: -55.0025
+                            Mean reward: -0.63
+            Mean reward + terrain level: -0.55
+                    Mean episode length: 10.75
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000935
+    Episode_Reward/track_lin_vel_xy_exp: 0.0030
+     Episode_Reward/track_ang_vel_z_exp: 0.0069
+            Episode_Reward/lin_vel_z_l2: -0.0227
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0052
+          Episode_Reward/action_rate_l2: -0.0049
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0777
+     Metrics/base_velocity/error_vel_xy: 0.0205
+    Metrics/base_velocity/error_vel_yaw: 0.0048
+           Episode_Termination/time_out: 0.0055
+       Episode_Termination/base_contact: 0.9165
+--------------------------------------------------------------------------------
+                         Iteration time: 6.66s
+                           Time elapsed: 00:02:23
+                                    ETA: 00:43:00
+
+################################################################################
+[1m                           Learning iteration 21/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2162688 
+                       Steps per second: 14632 
+                        Collection time: 3.170s 
+                          Learning time: 3.548s 
+                      Mean critic1 loss: 0.0015
+                      Mean critic2 loss: 0.0015
+                        Mean actor loss: 0.1921
+                        Mean alpha loss: -56.2731
+                            Mean reward: -0.64
+            Mean reward + terrain level: -0.57
+                    Mean episode length: 16.10
+                  Mean action noise std: 0.46
+                                  Alpha: 0.000931
+    Episode_Reward/track_lin_vel_xy_exp: 0.0032
+     Episode_Reward/track_ang_vel_z_exp: 0.0070
+            Episode_Reward/lin_vel_z_l2: -0.0232
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0052
+          Episode_Reward/action_rate_l2: -0.0047
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0736
+     Metrics/base_velocity/error_vel_xy: 0.0211
+    Metrics/base_velocity/error_vel_yaw: 0.0054
+           Episode_Termination/time_out: 0.0053
+       Episode_Termination/base_contact: 0.9209
+--------------------------------------------------------------------------------
+                         Iteration time: 6.72s
+                           Time elapsed: 00:02:29
+                                    ETA: 00:42:52
+
+################################################################################
+[1m                           Learning iteration 22/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2260992 
+                       Steps per second: 14588 
+                        Collection time: 3.189s 
+                          Learning time: 3.549s 
+                      Mean critic1 loss: 0.0016
+                      Mean critic2 loss: 0.0015
+                        Mean actor loss: 0.1904
+                        Mean alpha loss: -56.7210
+                            Mean reward: -0.62
+            Mean reward + terrain level: -0.55
+                    Mean episode length: 10.88
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000927
+    Episode_Reward/track_lin_vel_xy_exp: 0.0035
+     Episode_Reward/track_ang_vel_z_exp: 0.0071
+            Episode_Reward/lin_vel_z_l2: -0.0233
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0051
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0698
+     Metrics/base_velocity/error_vel_xy: 0.0214
+    Metrics/base_velocity/error_vel_yaw: 0.0058
+           Episode_Termination/time_out: 0.0049
+       Episode_Termination/base_contact: 0.9250
+--------------------------------------------------------------------------------
+                         Iteration time: 6.74s
+                           Time elapsed: 00:02:36
+                                    ETA: 00:42:44
+
+################################################################################
+[1m                           Learning iteration 23/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2359296 
+                       Steps per second: 14554 
+                        Collection time: 3.206s 
+                          Learning time: 3.549s 
+                      Mean critic1 loss: 0.0015
+                      Mean critic2 loss: 0.0015
+                        Mean actor loss: 0.1819
+                        Mean alpha loss: -53.4975
+                            Mean reward: -0.63
+            Mean reward + terrain level: -0.56
+                    Mean episode length: 10.82
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000924
+    Episode_Reward/track_lin_vel_xy_exp: 0.0033
+     Episode_Reward/track_ang_vel_z_exp: 0.0066
+            Episode_Reward/lin_vel_z_l2: -0.0226
+           Episode_Reward/ang_vel_xy_l2: -0.0074
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0054
+          Episode_Reward/action_rate_l2: -0.0044
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0648
+     Metrics/base_velocity/error_vel_xy: 0.0209
+    Metrics/base_velocity/error_vel_yaw: 0.0060
+           Episode_Termination/time_out: 0.0058
+       Episode_Termination/base_contact: 0.9291
+--------------------------------------------------------------------------------
+                         Iteration time: 6.75s
+                           Time elapsed: 00:02:43
+                                    ETA: 00:42:37
+
+################################################################################
+[1m                           Learning iteration 24/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2457600 
+                       Steps per second: 14554 
+                        Collection time: 3.203s 
+                          Learning time: 3.551s 
+                      Mean critic1 loss: 0.0013
+                      Mean critic2 loss: 0.0013
+                        Mean actor loss: 0.1744
+                        Mean alpha loss: -53.2100
+                            Mean reward: -0.61
+            Mean reward + terrain level: -0.55
+                    Mean episode length: 16.59
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000920
+    Episode_Reward/track_lin_vel_xy_exp: 0.0032
+     Episode_Reward/track_ang_vel_z_exp: 0.0068
+            Episode_Reward/lin_vel_z_l2: -0.0225
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0050
+          Episode_Reward/action_rate_l2: -0.0044
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0611
+     Metrics/base_velocity/error_vel_xy: 0.0207
+    Metrics/base_velocity/error_vel_yaw: 0.0051
+           Episode_Termination/time_out: 0.0051
+       Episode_Termination/base_contact: 0.9335
+--------------------------------------------------------------------------------
+                         Iteration time: 6.75s
+                           Time elapsed: 00:02:49
+                                    ETA: 00:42:29
+
+################################################################################
+[1m                           Learning iteration 25/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2555904 
+                       Steps per second: 14495 
+                        Collection time: 3.231s 
+                          Learning time: 3.550s 
+                      Mean critic1 loss: 0.0013
+                      Mean critic2 loss: 0.0013
+                        Mean actor loss: 0.1761
+                        Mean alpha loss: -54.1336
+                            Mean reward: -0.62
+            Mean reward + terrain level: -0.56
+                    Mean episode length: 10.87
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000917
+    Episode_Reward/track_lin_vel_xy_exp: 0.0031
+     Episode_Reward/track_ang_vel_z_exp: 0.0066
+            Episode_Reward/lin_vel_z_l2: -0.0226
+           Episode_Reward/ang_vel_xy_l2: -0.0073
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0051
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0580
+     Metrics/base_velocity/error_vel_xy: 0.0207
+    Metrics/base_velocity/error_vel_yaw: 0.0056
+           Episode_Termination/time_out: 0.0048
+       Episode_Termination/base_contact: 0.9370
+--------------------------------------------------------------------------------
+                         Iteration time: 6.78s
+                           Time elapsed: 00:02:56
+                                    ETA: 00:42:22
+
+################################################################################
+[1m                           Learning iteration 26/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2654208 
+                       Steps per second: 13893 
+                        Collection time: 3.314s 
+                          Learning time: 3.761s 
+                      Mean critic1 loss: 0.0013
+                      Mean critic2 loss: 0.0013
+                        Mean actor loss: 0.1714
+                        Mean alpha loss: -55.8075
+                            Mean reward: -0.66
+            Mean reward + terrain level: -0.60
+                    Mean episode length: 17.07
+                  Mean action noise std: 0.46
+                                  Alpha: 0.000913
+    Episode_Reward/track_lin_vel_xy_exp: 0.0035
+     Episode_Reward/track_ang_vel_z_exp: 0.0073
+            Episode_Reward/lin_vel_z_l2: -0.0228
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0008
+              Episode_Reward/dof_acc_l2: -0.0049
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0551
+     Metrics/base_velocity/error_vel_xy: 0.0215
+    Metrics/base_velocity/error_vel_yaw: 0.0054
+           Episode_Termination/time_out: 0.0053
+       Episode_Termination/base_contact: 0.9394
+--------------------------------------------------------------------------------
+                         Iteration time: 7.08s
+                           Time elapsed: 00:03:03
+                                    ETA: 00:42:19
+
+################################################################################
+[1m                           Learning iteration 27/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2752512 
+                       Steps per second: 13719 
+                        Collection time: 3.378s 
+                          Learning time: 3.787s 
+                      Mean critic1 loss: 0.0012
+                      Mean critic2 loss: 0.0012
+                        Mean actor loss: 0.1734
+                        Mean alpha loss: -51.4416
+                            Mean reward: -0.64
+            Mean reward + terrain level: -0.58
+                    Mean episode length: 10.92
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000910
+    Episode_Reward/track_lin_vel_xy_exp: 0.0033
+     Episode_Reward/track_ang_vel_z_exp: 0.0059
+            Episode_Reward/lin_vel_z_l2: -0.0232
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0048
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0508
+     Metrics/base_velocity/error_vel_xy: 0.0210
+    Metrics/base_velocity/error_vel_yaw: 0.0078
+           Episode_Termination/time_out: 0.0054
+       Episode_Termination/base_contact: 0.9436
+--------------------------------------------------------------------------------
+                         Iteration time: 7.17s
+                           Time elapsed: 00:03:10
+                                    ETA: 00:42:17
+
+################################################################################
+[1m                           Learning iteration 28/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2850816 
+                       Steps per second: 14410 
+                        Collection time: 3.251s 
+                          Learning time: 3.571s 
+                      Mean critic1 loss: 0.0012
+                      Mean critic2 loss: 0.0012
+                        Mean actor loss: 0.1730
+                        Mean alpha loss: -51.8047
+                            Mean reward: -0.61
+            Mean reward + terrain level: -0.56
+                    Mean episode length: 10.86
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000906
+    Episode_Reward/track_lin_vel_xy_exp: 0.0032
+     Episode_Reward/track_ang_vel_z_exp: 0.0068
+            Episode_Reward/lin_vel_z_l2: -0.0229
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0048
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0483
+     Metrics/base_velocity/error_vel_xy: 0.0207
+    Metrics/base_velocity/error_vel_yaw: 0.0052
+           Episode_Termination/time_out: 0.0045
+       Episode_Termination/base_contact: 0.9470
+--------------------------------------------------------------------------------
+                         Iteration time: 6.82s
+                           Time elapsed: 00:03:17
+                                    ETA: 00:42:10
+
+################################################################################
+[1m                           Learning iteration 29/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 2949120 
+                       Steps per second: 14492 
+                        Collection time: 3.212s 
+                          Learning time: 3.571s 
+                      Mean critic1 loss: 0.0012
+                      Mean critic2 loss: 0.0012
+                        Mean actor loss: 0.1744
+                        Mean alpha loss: -48.5580
+                            Mean reward: -0.61
+            Mean reward + terrain level: -0.57
+                    Mean episode length: 10.83
+                  Mean action noise std: 0.48
+                                  Alpha: 0.000903
+    Episode_Reward/track_lin_vel_xy_exp: 0.0031
+     Episode_Reward/track_ang_vel_z_exp: 0.0067
+            Episode_Reward/lin_vel_z_l2: -0.0225
+           Episode_Reward/ang_vel_xy_l2: -0.0072
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0049
+          Episode_Reward/action_rate_l2: -0.0044
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0447
+     Metrics/base_velocity/error_vel_xy: 0.0206
+    Metrics/base_velocity/error_vel_yaw: 0.0051
+           Episode_Termination/time_out: 0.0051
+       Episode_Termination/base_contact: 0.9499
+--------------------------------------------------------------------------------
+                         Iteration time: 6.78s
+                           Time elapsed: 00:03:24
+                                    ETA: 00:42:03
+
+################################################################################
+[1m                           Learning iteration 30/400                            [0m 
+
+                               Run name: pilot_20260918T001706Z
+                            Total steps: 3047424 
+                       Steps per second: 14477 
+                        Collection time: 3.218s 
+                          Learning time: 3.572s 
+                      Mean critic1 loss: 0.0011
+                      Mean critic2 loss: 0.0011
+                        Mean actor loss: 0.1695
+                        Mean alpha loss: -52.0030
+                            Mean reward: -0.56
+            Mean reward + terrain level: -0.52
+                    Mean episode length: 18.16
+                  Mean action noise std: 0.47
+                                  Alpha: 0.000900
+    Episode_Reward/track_lin_vel_xy_exp: 0.0035
+     Episode_Reward/track_ang_vel_z_exp: 0.0073
+            Episode_Reward/lin_vel_z_l2: -0.0225
+           Episode_Reward/ang_vel_xy_l2: -0.0073
+          Episode_Reward/dof_torques_l2: -0.0007
+              Episode_Reward/dof_acc_l2: -0.0048
+          Episode_Reward/action_rate_l2: -0.0045
+           Episode_Reward/feet_air_time: -0.0000
+     Episode_Reward/flat_orientation_l2: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+              Curriculum/terrain_levels: 0.0417
+     Metrics/base_velocity/error_vel_xy: 0.0214
+    Metrics/base_velocity/error_vel_yaw: 0.0050
+           Episode_Termination/time_out: 0.0053
+       Episode_Termination/base_contact: 0.9528
+--------------------------------------------------------------------------------
+                         Iteration time: 6.79s
+                           Time elapsed: 00:03:31
+                                    ETA: 00:41:56
+

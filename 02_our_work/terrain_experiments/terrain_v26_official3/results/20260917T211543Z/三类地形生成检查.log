@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/ubuntu22/terrain_v26_official3/preflight.py", line 5, in <module>
+    from isaaclab.terrains import TerrainGenerator, TerrainGeneratorCfg
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/terrains/__init__.py", line 26, in <module>
+    from .terrain_importer import TerrainImporter
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/terrains/terrain_importer.py", line 15, in <module>
+    import isaaclab.sim as sim_utils
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/sim/__init__.py", line 29, in <module>
+    from .converters import *  # noqa: F401, F403
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/sim/converters/__init__.py", line 19, in <module>
+    from .asset_converter_base import AssetConverterBase
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/sim/converters/asset_converter_base.py", line 15, in <module>
+    from isaaclab.utils.assets import check_file_path
+  File "/data/eth_sac/isaaclab-sac/source/isaaclab/isaaclab/utils/assets.py", line 24, in <module>
+    import carb
+ModuleNotFoundError: No module named 'carb'

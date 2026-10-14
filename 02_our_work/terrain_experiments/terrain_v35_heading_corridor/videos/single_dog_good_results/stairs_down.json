@@ -1,0 +1,193 @@
+{
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v35_stair_boxes/2026-09-21_08-10-08_stair_boxes_focus_200/model_744.pt",
+  "terrain": "stairs_down",
+  "difficulty": 0.2,
+  "terrain_seed": 7,
+  "num_envs": 1,
+  "steps": 500,
+  "dt": 0.02,
+  "success": 1,
+  "terminated": 0,
+  "other_no_success": 0,
+  "max_x_m": [
+    3.749162435531616
+  ],
+  "trace_env0": [
+    {
+      "step": 0,
+      "x": 0.0009371340274810791,
+      "z": 0.3981829881668091,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 20,
+      "x": 0.13906748592853546,
+      "z": 0.28663814067840576,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 40,
+      "x": 0.3382214903831482,
+      "z": 0.297946572303772,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 60,
+      "x": 0.5382645130157471,
+      "z": 0.2976406216621399,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 80,
+      "x": 0.7372176647186279,
+      "z": 0.3023262619972229,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 100,
+      "x": 0.9365402460098267,
+      "z": 0.3030436038970947,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 120,
+      "x": 1.143031358718872,
+      "z": 0.2592161297798157,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 140,
+      "x": 1.3377385139465332,
+      "z": 0.20569193363189697,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 160,
+      "x": 1.5363116264343262,
+      "z": 0.19691789150238037,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 180,
+      "x": 1.7365390062332153,
+      "z": 0.16945064067840576,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 200,
+      "x": 1.934317946434021,
+      "z": 0.113596111536026,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 220,
+      "x": 2.1375606060028076,
+      "z": 0.09043669700622559,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 240,
+      "x": 2.3342318534851074,
+      "z": 0.047791481018066406,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 260,
+      "x": 2.532050609588623,
+      "z": 0.03181487321853638,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 280,
+      "x": 2.718322515487671,
+      "z": 0.001229792833328247,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 300,
+      "x": 2.9108386039733887,
+      "z": -0.029359042644500732,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 320,
+      "x": 3.1259982585906982,
+      "z": -0.07031822204589844,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 340,
+      "x": 3.325432300567627,
+      "z": -0.1151852011680603,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 360,
+      "x": 3.528775453567505,
+      "z": -0.08892372250556946,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 380,
+      "x": 3.7288331985473633,
+      "z": -0.08301633596420288,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 400,
+      "x": 3.92942214012146,
+      "z": -0.08144500851631165,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 420,
+      "x": 4.130073547363281,
+      "z": -0.08786255121231079,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 440,
+      "x": 4.329034328460693,
+      "z": -0.08449724316596985,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 460,
+      "x": 4.529879093170166,
+      "z": -0.08639493584632874,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 480,
+      "x": 4.728271007537842,
+      "z": -0.08154290914535522,
+      "done": false,
+      "active": false
+    }
+  ],
+  "criterion": "first episode; fixed 0.5 m/s; base x > 3.5m, all feet x > 3.05m, gravity_z < -0.85 for 0.5s; abs(y)<=0.75m; no reset"
+}

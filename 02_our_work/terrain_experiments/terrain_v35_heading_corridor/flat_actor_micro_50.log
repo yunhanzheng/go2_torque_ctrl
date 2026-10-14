@@ -1,0 +1,2361 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/eth_sac/isaaclab-sac/apps/isaaclab.python.headless.kit
+Loading user config located at: '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260921_004014.log
+2026-09-21T00:40:14Z [84ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-21T00:40:15Z [596ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-09-21T00:40:15Z [604ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-09-21T00:40:18Z [4,308ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-21T00:40:18Z [4,308ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-09-21T00:40:18Z [4,308ms] [Error] [gpu.foundation.plugin] Multiple Installable Client Drivers (ICDs) are found for the same GPU on the system. This causes the same GPU to be reported multiple times by more than one driver and leads to instability or crash. 
+It requires multi-gpu mode to be disabled and the correct device with the correct driver to be set via activeGpu setting.
+For NVIDIA drivers, please follow troubleshooting docs to uninstall and completely purge Linux-distribution-provided driver packages, and then reinstall your driver cleanly via .run package. Otherwise, updating Ubuntu software may reinstall a secondary ICD or override the existing NVIDIA driver.
+
+To verify the proper NVIDIA driver installation, only one of the following icd.d folders should contain nvidia_icd.json file:
+/etc/vulkan/icd.d: Location of ICDs installed from non-Linux-distribution-provided packages
+/usr/share/vulkan/icd.d : Location of ICDs installed from Linux-distribution-provided packages
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 0 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA GeForce RTX 4080 Laptop.. | Yes: 1 |     | 12282   MB | 10de      | 0          |
+|     |                                  |        |     |            | 27e0      | b25bcd7f.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 2   | Intel(R) Graphics (RPL-S)        |        |     | 23845   MB | 8086      | 0          |
+|     |                                  |        |     |            | a788      | 868088a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.4 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.4, Kernel: 6.8.0-110-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Core(TM) i9-14900HX
+| Cores: 24 | Logical Cores: 32
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 31793 | Free Memory: 27162
+| Total Page/Swap (MB): 7628 | Free Page/Swap: 7628
+|---------------------------------------------------------------------------------------------|
+2026-09-21T00:40:19Z [4,738ms] [Warning] [gpu.foundation.plugin] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-09-21T00:40:19Z [4,749ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 0 don't match.
+2026-09-21T00:40:19Z [4,749ms] [Warning] [gpu.foundation.plugin] PCIe link width current (8) and maximum (16) for device 1 don't match.
+2026-09-21T00:40:19Z [4,749ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-09-21T00:40:19Z [4,749ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 311.01 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.42 
+
+   CPU     0 
+     0   2.18 
+[INFO]: Parsing configuration from: terrain_v35_heading_corridor.config:V35HeadingFlatEnvCfg
+[INFO]: Parsing configuration from: terrain_v35_heading_corridor.config:V35HeadingFlatRunnerCfg
+[INFO] Logging experiment in directory: /home/ubuntu22/logs/rsl_rl/terrain_v35_heading_flat
+Exact experiment name requested from command line: 2026-09-21_00-40-21
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-09-21_00-40-21.log[0m
+[36m======================================================================================[0m
+
+[33m00:40:21 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 1
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO] Generating terrains randomly took : 0.001300 seconds
+[INFO]: Time taken for scene creation : 4.757534 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 4096
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 4.479755 seconds
+[33m00:40:31 [velocity_command.py] WARNING: The velocity command has the 'ranges.heading' attribute set to '(0.0, 0.0)' but the heading command is not active. Consider setting the flag for the heading command to True.[0m
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++--------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++----------+---------------------------+
+|  Index   | Name                      |
++----------+---------------------------+
+|    0     | physics_material          |
+|    1     | add_base_mass             |
++----------+---------------------------+
++---------------------------------------+
+|  Active Event Terms in Mode: 'reset'  |
++--------+------------------------------+
+| Index  | Name                         |
++--------+------------------------------+
+|   0    | base_external_force_torque   |
+|   1    | reset_base                   |
+|   2    | reset_robot_joints           |
++--------+------------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 12)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          12 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++-------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (62,)) |
++-------------+---------------------------+-------------+
+|    Index    | Name                      |    Shape    |
++-------------+---------------------------+-------------+
+|      0      | base_lin_vel              |    (62,)    |
++-------------+---------------------------+-------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.
++-------------------------------------------+
+|          Active Termination Terms         |
++-------+------------------------+----------+
+| Index | Name                   | Time Out |
++-------+------------------------+----------+
+|   0   | time_out               |   True   |
+|   1   | base_contact           |  False   |
+|   2   | invalid_upright_state  |  False   |
+|   3   | outside_route_corridor |  False   |
++-------+------------------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 15 active terms.
++----------------------------------------+
+|          Active Reward Terms           |
++-------+-----------------------+--------+
+| Index | Name                  | Weight |
++-------+-----------------------+--------+
+|   0   | track_lin_vel_xy_exp  |   20.0 |
+|   1   | track_ang_vel_z_exp   |   -2.0 |
+|   2   | lin_vel_z_l2          |   -5.0 |
+|   3   | dof_acc_l2            | -1e-06 |
+|   4   | undesired_contacts    |   -5.0 |
+|   5   | dof_pos_limits        |   -5.0 |
+|   6   | head_height           |    5.0 |
+|   7   | moving_y              |   -4.0 |
+|   8   | roll                  |   -5.0 |
+|   9   | gait_contact          |    5.0 |
+|   10  | swing_clearance       |    2.0 |
+|   11  | feet_slip             |   -0.5 |
+|   12  | excessive_foot_height |  -0.03 |
+|   13  | heading_error         |   -4.0 |
+|   14  | cross_track_error     |   -4.0 |
++-------+-----------------------+--------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+2026-09-21T00:40:32Z [17,574ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_goal.
+2026-09-21T00:40:32Z [17,574ms] [Warning] [omni.physx.fabric.plugin] FabricManager::initializePointInstancer mismatched prototypes on point instancer: /Visuals/Command/velocity_current.
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:284: UserWarning: The observation configuration dictionary 'obs_groups' is empty and thus likely not configured. Consider configuring the 'obs_groups' dictionary explicitly
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'actor' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'actor' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/data/eth_sac/rsl_rl_sac/rsl_rl/utils/utils.py:315: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'critic' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+SAC Actor: SACActorModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): MLP(
+    (0): Linear(in_features=62, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=24, bias=True)
+    (7): Unflatten(dim=-1, unflattened_size=[2, 12])
+  )
+)
+SAC: Computed physics-based action scaling factors.
+  Global action scale from ActionManager: 0.25
+  Scaling factors lower limits: tensor([4.1699, 3.3699, 4.1699, 3.3699, 8.4709, 8.4709, 5.0821, 5.0821, 4.5138,
+        4.5138, 4.5138, 4.5138], device='cuda:0')
+  Scaling factors upper limits: tensor([ 3.3699,  4.1699,  3.3699,  4.1699,  9.7505,  9.7505, 13.1393, 13.1393,
+         2.2720,  2.2720,  2.2720,  2.2720], device='cuda:0')
+SAC Critic: SACCriticModel(
+  (obs_normalizer): EmpiricalNormalization()
+  (mlp): None
+  (critic1): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic1_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (critic2_target): MLP(
+    (0): Linear(in_features=74, out_features=512, bias=True)
+    (1): SiLU()
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): SiLU()
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): SiLU()
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+[V34_FRESH_INIT] no checkpoint loaded
+[V34_FRESH_INIT] initial deterministic action: [0.0, 0.0, 0.0, 0.0, 5.960464477539063e-08, 5.960464477539063e-08, 0.0, 0.0, -1.1920928955078125e-07, -1.1920928955078125e-07, -1.1920928955078125e-07, -1.1920928955078125e-07]
+Storing git diff for 'rsl_rl_sac' in: /home/ubuntu22/logs/rsl_rl/terrain_v35_heading_flat/2026-09-21_00-40-21_flat_actor_micro_50/git/rsl_rl_sac.diff
+[INFO]: Loading model checkpoint from: /home/ubuntu22/logs/rsl_rl/terrain_v35_heading_flat/2026-09-21_00-26-52_flat_critic_warmup_50/model_49.pt
+[V35_TRAIN] actor learning rate overridden after load: 1e-06
+################################################################################
+[1m                            Learning iteration 49/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 98304 
+                       Steps per second: 11355 
+                        Collection time: 7.280s 
+                          Learning time: 1.377s 
+                      Mean critic1 loss: 1.3321
+                      Mean critic2 loss: 1.3520
+                        Mean actor loss: -7.0499
+                        Mean alpha loss: 93.5574
+                            Mean reward: 4.68
+                    Mean episode length: 22.98
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001220
+    Episode_Reward/track_lin_vel_xy_exp: 0.0843
+     Episode_Reward/track_ang_vel_z_exp: -0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0211
+              Episode_Reward/dof_acc_l2: -0.0202
+      Episode_Reward/undesired_contacts: -0.0000
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.0334
+                Episode_Reward/moving_y: -0.0027
+                    Episode_Reward/roll: -0.0074
+            Episode_Reward/gait_contact: 0.0225
+         Episode_Reward/swing_clearance: 0.0078
+               Episode_Reward/feet_slip: -0.0175
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0003
+       Episode_Reward/cross_track_error: -0.0002
+     Metrics/base_velocity/error_vel_xy: 0.0051
+    Metrics/base_velocity/error_vel_yaw: 0.0043
+           Episode_Termination/time_out: 0.0096
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.1975
+Episode_Termination/outside_route_corridor: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 8.66s
+                           Time elapsed: 00:00:08
+                                    ETA: 00:07:04
+
+################################################################################
+[1m                            Learning iteration 50/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 196608 
+                       Steps per second: 14584 
+                        Collection time: 5.528s 
+                          Learning time: 1.212s 
+                      Mean critic1 loss: 0.7651
+                      Mean critic2 loss: 0.7749
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 83.7916
+                            Mean reward: 3.99
+                    Mean episode length: 41.57
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001226
+    Episode_Reward/track_lin_vel_xy_exp: 0.3674
+     Episode_Reward/track_ang_vel_z_exp: -0.0349
+            Episode_Reward/lin_vel_z_l2: -0.0286
+              Episode_Reward/dof_acc_l2: -0.0392
+      Episode_Reward/undesired_contacts: -0.0242
+          Episode_Reward/dof_pos_limits: -0.0021
+             Episode_Reward/head_height: 0.0733
+                Episode_Reward/moving_y: -0.0139
+                    Episode_Reward/roll: -0.0295
+            Episode_Reward/gait_contact: 0.0850
+         Episode_Reward/swing_clearance: 0.0226
+               Episode_Reward/feet_slip: -0.0390
+   Episode_Reward/excessive_foot_height: -0.0007
+           Episode_Reward/heading_error: -0.0044
+       Episode_Reward/cross_track_error: -0.0019
+     Metrics/base_velocity/error_vel_xy: 0.0142
+    Metrics/base_velocity/error_vel_yaw: 0.0161
+           Episode_Termination/time_out: 0.0216
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5106
+Episode_Termination/outside_route_corridor: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 6.74s
+                           Time elapsed: 00:00:15
+                                    ETA: 00:06:09
+
+################################################################################
+[1m                            Learning iteration 51/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 294912 
+                       Steps per second: 14583 
+                        Collection time: 5.497s 
+                          Learning time: 1.243s 
+                      Mean critic1 loss: 0.5236
+                      Mean critic2 loss: 0.5291
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 79.8731
+                            Mean reward: 18.74
+                    Mean episode length: 62.19
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001231
+    Episode_Reward/track_lin_vel_xy_exp: 0.7576
+     Episode_Reward/track_ang_vel_z_exp: -0.0482
+            Episode_Reward/lin_vel_z_l2: -0.0342
+              Episode_Reward/dof_acc_l2: -0.0500
+      Episode_Reward/undesired_contacts: -0.0273
+          Episode_Reward/dof_pos_limits: -0.0026
+             Episode_Reward/head_height: 0.1291
+                Episode_Reward/moving_y: -0.0164
+                    Episode_Reward/roll: -0.0348
+            Episode_Reward/gait_contact: 0.1788
+         Episode_Reward/swing_clearance: 0.0532
+               Episode_Reward/feet_slip: -0.0403
+   Episode_Reward/excessive_foot_height: -0.0009
+           Episode_Reward/heading_error: -0.0081
+       Episode_Reward/cross_track_error: -0.0050
+     Metrics/base_velocity/error_vel_xy: 0.0165
+    Metrics/base_velocity/error_vel_yaw: 0.0218
+           Episode_Termination/time_out: 0.0297
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5333
+Episode_Termination/outside_route_corridor: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 6.74s
+                           Time elapsed: 00:00:22
+                                    ETA: 00:05:46
+
+################################################################################
+[1m                            Learning iteration 52/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 393216 
+                       Steps per second: 14222 
+                        Collection time: 5.643s 
+                          Learning time: 1.269s 
+                      Mean critic1 loss: 0.4075
+                      Mean critic2 loss: 0.4112
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 77.7826
+                            Mean reward: 10.10
+                    Mean episode length: 81.37
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001236
+    Episode_Reward/track_lin_vel_xy_exp: 0.8078
+     Episode_Reward/track_ang_vel_z_exp: -0.1288
+            Episode_Reward/lin_vel_z_l2: -0.0506
+              Episode_Reward/dof_acc_l2: -0.0868
+      Episode_Reward/undesired_contacts: -0.0865
+          Episode_Reward/dof_pos_limits: -0.0080
+             Episode_Reward/head_height: 0.1436
+                Episode_Reward/moving_y: -0.0217
+                    Episode_Reward/roll: -0.0804
+            Episode_Reward/gait_contact: 0.1896
+         Episode_Reward/swing_clearance: 0.0492
+               Episode_Reward/feet_slip: -0.0815
+   Episode_Reward/excessive_foot_height: -0.0026
+           Episode_Reward/heading_error: -0.0684
+       Episode_Reward/cross_track_error: -0.0068
+     Metrics/base_velocity/error_vel_xy: 0.0310
+    Metrics/base_velocity/error_vel_yaw: 0.0468
+           Episode_Termination/time_out: 0.0384
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5495
+Episode_Termination/outside_route_corridor: 0.0000
+--------------------------------------------------------------------------------
+                         Iteration time: 6.91s
+                           Time elapsed: 00:00:29
+                                    ETA: 00:05:34
+
+################################################################################
+[1m                            Learning iteration 53/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 491520 
+                       Steps per second: 14129 
+                        Collection time: 5.737s 
+                          Learning time: 1.221s 
+                      Mean critic1 loss: 0.3304
+                      Mean critic2 loss: 0.3321
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 76.5797
+                            Mean reward: 14.74
+                    Mean episode length: 107.70
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001241
+    Episode_Reward/track_lin_vel_xy_exp: 1.0862
+     Episode_Reward/track_ang_vel_z_exp: -0.1379
+            Episode_Reward/lin_vel_z_l2: -0.0453
+              Episode_Reward/dof_acc_l2: -0.0945
+      Episode_Reward/undesired_contacts: -0.1335
+          Episode_Reward/dof_pos_limits: -0.0114
+             Episode_Reward/head_height: 0.2042
+                Episode_Reward/moving_y: -0.0244
+                    Episode_Reward/roll: -0.1069
+            Episode_Reward/gait_contact: 0.2916
+         Episode_Reward/swing_clearance: 0.0842
+               Episode_Reward/feet_slip: -0.0783
+   Episode_Reward/excessive_foot_height: -0.0038
+           Episode_Reward/heading_error: -0.1027
+       Episode_Reward/cross_track_error: -0.0150
+     Metrics/base_velocity/error_vel_xy: 0.0368
+    Metrics/base_velocity/error_vel_yaw: 0.0509
+           Episode_Termination/time_out: 0.0492
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5604
+Episode_Termination/outside_route_corridor: 0.0002
+--------------------------------------------------------------------------------
+                         Iteration time: 6.96s
+                           Time elapsed: 00:00:36
+                                    ETA: 00:05:24
+
+################################################################################
+[1m                            Learning iteration 54/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 589824 
+                       Steps per second: 14564 
+                        Collection time: 5.519s 
+                          Learning time: 1.231s 
+                      Mean critic1 loss: 0.2789
+                      Mean critic2 loss: 0.2812
+                        Mean actor loss: -12.0814
+                        Mean alpha loss: 75.5303
+                            Mean reward: 25.15
+                    Mean episode length: 128.33
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001246
+    Episode_Reward/track_lin_vel_xy_exp: 1.5414
+     Episode_Reward/track_ang_vel_z_exp: -0.1385
+            Episode_Reward/lin_vel_z_l2: -0.0371
+              Episode_Reward/dof_acc_l2: -0.0948
+      Episode_Reward/undesired_contacts: -0.1441
+          Episode_Reward/dof_pos_limits: -0.0127
+             Episode_Reward/head_height: 0.2775
+                Episode_Reward/moving_y: -0.0215
+                    Episode_Reward/roll: -0.1116
+            Episode_Reward/gait_contact: 0.4094
+         Episode_Reward/swing_clearance: 0.1283
+               Episode_Reward/feet_slip: -0.0654
+   Episode_Reward/excessive_foot_height: -0.0040
+           Episode_Reward/heading_error: -0.1588
+       Episode_Reward/cross_track_error: -0.0128
+     Metrics/base_velocity/error_vel_xy: 0.0385
+    Metrics/base_velocity/error_vel_yaw: 0.0542
+           Episode_Termination/time_out: 0.0568
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5713
+Episode_Termination/outside_route_corridor: 0.0004
+--------------------------------------------------------------------------------
+                         Iteration time: 6.75s
+                           Time elapsed: 00:00:42
+                                    ETA: 00:05:13
+
+################################################################################
+[1m                            Learning iteration 55/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 688128 
+                       Steps per second: 14284 
+                        Collection time: 5.580s 
+                          Learning time: 1.302s 
+                      Mean critic1 loss: 0.2479
+                      Mean critic2 loss: 0.2502
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 74.7634
+                            Mean reward: 30.33
+                    Mean episode length: 155.38
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001251
+    Episode_Reward/track_lin_vel_xy_exp: 1.6581
+     Episode_Reward/track_ang_vel_z_exp: -0.1668
+            Episode_Reward/lin_vel_z_l2: -0.0514
+              Episode_Reward/dof_acc_l2: -0.1121
+      Episode_Reward/undesired_contacts: -0.1885
+          Episode_Reward/dof_pos_limits: -0.0167
+             Episode_Reward/head_height: 0.2970
+                Episode_Reward/moving_y: -0.0299
+                    Episode_Reward/roll: -0.1476
+            Episode_Reward/gait_contact: 0.4411
+         Episode_Reward/swing_clearance: 0.1317
+               Episode_Reward/feet_slip: -0.0878
+   Episode_Reward/excessive_foot_height: -0.0057
+           Episode_Reward/heading_error: -0.1861
+       Episode_Reward/cross_track_error: -0.0249
+     Metrics/base_velocity/error_vel_xy: 0.0474
+    Metrics/base_velocity/error_vel_yaw: 0.0670
+           Episode_Termination/time_out: 0.0640
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5825
+Episode_Termination/outside_route_corridor: 0.0007
+--------------------------------------------------------------------------------
+                         Iteration time: 6.88s
+                           Time elapsed: 00:00:49
+                                    ETA: 00:05:04
+
+################################################################################
+[1m                            Learning iteration 56/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 786432 
+                       Steps per second: 13889 
+                        Collection time: 5.793s 
+                          Learning time: 1.285s 
+                      Mean critic1 loss: 0.2213
+                      Mean critic2 loss: 0.2236
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 74.1219
+                            Mean reward: 15.40
+                    Mean episode length: 178.29
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001256
+    Episode_Reward/track_lin_vel_xy_exp: 1.3603
+     Episode_Reward/track_ang_vel_z_exp: -0.2672
+            Episode_Reward/lin_vel_z_l2: -0.0612
+              Episode_Reward/dof_acc_l2: -0.1691
+      Episode_Reward/undesired_contacts: -0.3549
+          Episode_Reward/dof_pos_limits: -0.0283
+             Episode_Reward/head_height: 0.2879
+                Episode_Reward/moving_y: -0.0401
+                    Episode_Reward/roll: -0.2586
+            Episode_Reward/gait_contact: 0.4070
+         Episode_Reward/swing_clearance: 0.1007
+               Episode_Reward/feet_slip: -0.1244
+   Episode_Reward/excessive_foot_height: -0.0100
+           Episode_Reward/heading_error: -0.4359
+       Episode_Reward/cross_track_error: -0.0465
+     Metrics/base_velocity/error_vel_xy: 0.0737
+    Metrics/base_velocity/error_vel_yaw: 0.1012
+           Episode_Termination/time_out: 0.0758
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5932
+Episode_Termination/outside_route_corridor: 0.0015
+--------------------------------------------------------------------------------
+                         Iteration time: 7.08s
+                           Time elapsed: 00:00:56
+                                    ETA: 00:04:57
+
+################################################################################
+[1m                            Learning iteration 57/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 884736 
+                       Steps per second: 13984 
+                        Collection time: 5.732s 
+                          Learning time: 1.297s 
+                      Mean critic1 loss: 0.2014
+                      Mean critic2 loss: 0.2032
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 73.5433
+                            Mean reward: 54.67
+                    Mean episode length: 192.86
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001260
+    Episode_Reward/track_lin_vel_xy_exp: 3.6889
+     Episode_Reward/track_ang_vel_z_exp: -0.0125
+            Episode_Reward/lin_vel_z_l2: -0.0218
+              Episode_Reward/dof_acc_l2: -0.0501
+      Episode_Reward/undesired_contacts: -0.0029
+          Episode_Reward/dof_pos_limits: -0.0002
+             Episode_Reward/head_height: 0.5804
+                Episode_Reward/moving_y: -0.0145
+                    Episode_Reward/roll: -0.0139
+            Episode_Reward/gait_contact: 0.9073
+         Episode_Reward/swing_clearance: 0.3317
+               Episode_Reward/feet_slip: -0.0188
+   Episode_Reward/excessive_foot_height: -0.0001
+           Episode_Reward/heading_error: -0.0185
+       Episode_Reward/cross_track_error: -0.0450
+     Metrics/base_velocity/error_vel_xy: 0.0170
+    Metrics/base_velocity/error_vel_yaw: 0.0183
+           Episode_Termination/time_out: 0.0858
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0027
+--------------------------------------------------------------------------------
+                         Iteration time: 7.03s
+                           Time elapsed: 00:01:03
+                                    ETA: 00:04:50
+
+################################################################################
+[1m                            Learning iteration 58/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 983040 
+                       Steps per second: 14400 
+                        Collection time: 5.577s 
+                          Learning time: 1.249s 
+                      Mean critic1 loss: 0.1845
+                      Mean critic2 loss: 0.1865
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 73.0824
+                            Mean reward: 116.31
+                    Mean episode length: 217.08
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001265
+    Episode_Reward/track_lin_vel_xy_exp: 4.1940
+     Episode_Reward/track_ang_vel_z_exp: -0.0085
+            Episode_Reward/lin_vel_z_l2: -0.0223
+              Episode_Reward/dof_acc_l2: -0.0565
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 0.6572
+                Episode_Reward/moving_y: -0.0207
+                    Episode_Reward/roll: -0.0119
+            Episode_Reward/gait_contact: 1.0391
+         Episode_Reward/swing_clearance: 0.3751
+               Episode_Reward/feet_slip: -0.0232
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0159
+       Episode_Reward/cross_track_error: -0.1135
+     Metrics/base_velocity/error_vel_xy: 0.0197
+    Metrics/base_velocity/error_vel_yaw: 0.0179
+           Episode_Termination/time_out: 0.0936
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0039
+--------------------------------------------------------------------------------
+                         Iteration time: 6.83s
+                           Time elapsed: 00:01:10
+                                    ETA: 00:04:42
+
+################################################################################
+[1m                            Learning iteration 59/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1081344 
+                       Steps per second: 14086 
+                        Collection time: 5.652s 
+                          Learning time: 1.326s 
+                      Mean critic1 loss: 0.1708
+                      Mean critic2 loss: 0.1723
+                        Mean actor loss: -12.9536
+                        Mean alpha loss: 72.6766
+                            Mean reward: 125.65
+                    Mean episode length: 232.96
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001270
+    Episode_Reward/track_lin_vel_xy_exp: 4.5673
+     Episode_Reward/track_ang_vel_z_exp: -0.0108
+            Episode_Reward/lin_vel_z_l2: -0.0292
+              Episode_Reward/dof_acc_l2: -0.0648
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0003
+             Episode_Reward/head_height: 0.7191
+                Episode_Reward/moving_y: -0.0152
+                    Episode_Reward/roll: -0.0133
+            Episode_Reward/gait_contact: 1.1309
+         Episode_Reward/swing_clearance: 0.4099
+               Episode_Reward/feet_slip: -0.0310
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0258
+       Episode_Reward/cross_track_error: -0.0883
+     Metrics/base_velocity/error_vel_xy: 0.0173
+    Metrics/base_velocity/error_vel_yaw: 0.0203
+           Episode_Termination/time_out: 0.1028
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0044
+--------------------------------------------------------------------------------
+                         Iteration time: 6.98s
+                           Time elapsed: 00:01:17
+                                    ETA: 00:04:34
+
+################################################################################
+[1m                            Learning iteration 60/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1179648 
+                       Steps per second: 13955 
+                        Collection time: 5.719s 
+                          Learning time: 1.325s 
+                      Mean critic1 loss: 0.1566
+                      Mean critic2 loss: 0.1582
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 72.3659
+                            Mean reward: 138.88
+                    Mean episode length: 256.19
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001275
+    Episode_Reward/track_lin_vel_xy_exp: 5.0865
+     Episode_Reward/track_ang_vel_z_exp: -0.0102
+            Episode_Reward/lin_vel_z_l2: -0.0284
+              Episode_Reward/dof_acc_l2: -0.0614
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0001
+             Episode_Reward/head_height: 0.7895
+                Episode_Reward/moving_y: -0.0188
+                    Episode_Reward/roll: -0.0133
+            Episode_Reward/gait_contact: 1.2502
+         Episode_Reward/swing_clearance: 0.4548
+               Episode_Reward/feet_slip: -0.0284
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0286
+       Episode_Reward/cross_track_error: -0.1224
+     Metrics/base_velocity/error_vel_xy: 0.0184
+    Metrics/base_velocity/error_vel_yaw: 0.0200
+           Episode_Termination/time_out: 0.1135
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0055
+--------------------------------------------------------------------------------
+                         Iteration time: 7.04s
+                           Time elapsed: 00:01:24
+                                    ETA: 00:04:27
+
+################################################################################
+[1m                            Learning iteration 61/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1277952 
+                       Steps per second: 13898 
+                        Collection time: 5.740s 
+                          Learning time: 1.333s 
+                      Mean critic1 loss: 0.1510
+                      Mean critic2 loss: 0.1524
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 72.0729
+                            Mean reward: 157.84
+                    Mean episode length: 289.45
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001280
+    Episode_Reward/track_lin_vel_xy_exp: 5.5932
+     Episode_Reward/track_ang_vel_z_exp: -0.0093
+            Episode_Reward/lin_vel_z_l2: -0.0244
+              Episode_Reward/dof_acc_l2: -0.0528
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 0.8673
+                Episode_Reward/moving_y: -0.0153
+                    Episode_Reward/roll: -0.0127
+            Episode_Reward/gait_contact: 1.3757
+         Episode_Reward/swing_clearance: 0.5036
+               Episode_Reward/feet_slip: -0.0208
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0205
+       Episode_Reward/cross_track_error: -0.0890
+     Metrics/base_velocity/error_vel_xy: 0.0190
+    Metrics/base_velocity/error_vel_yaw: 0.0209
+           Episode_Termination/time_out: 0.1233
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0073
+--------------------------------------------------------------------------------
+                         Iteration time: 7.07s
+                           Time elapsed: 00:01:31
+                                    ETA: 00:04:20
+
+################################################################################
+[1m                            Learning iteration 62/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1376256 
+                       Steps per second: 14342 
+                        Collection time: 5.595s 
+                          Learning time: 1.259s 
+                      Mean critic1 loss: 0.1444
+                      Mean critic2 loss: 0.1459
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 71.8238
+                            Mean reward: 172.92
+                    Mean episode length: 314.25
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001285
+    Episode_Reward/track_lin_vel_xy_exp: 6.0596
+     Episode_Reward/track_ang_vel_z_exp: -0.0069
+            Episode_Reward/lin_vel_z_l2: -0.0266
+              Episode_Reward/dof_acc_l2: -0.0507
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 0.9417
+                Episode_Reward/moving_y: -0.0155
+                    Episode_Reward/roll: -0.0131
+            Episode_Reward/gait_contact: 1.4966
+         Episode_Reward/swing_clearance: 0.5481
+               Episode_Reward/feet_slip: -0.0208
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0252
+       Episode_Reward/cross_track_error: -0.1144
+     Metrics/base_velocity/error_vel_xy: 0.0184
+    Metrics/base_velocity/error_vel_yaw: 0.0190
+           Episode_Termination/time_out: 0.1316
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0094
+--------------------------------------------------------------------------------
+                         Iteration time: 6.85s
+                           Time elapsed: 00:01:38
+                                    ETA: 00:04:13
+
+################################################################################
+[1m                            Learning iteration 63/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1474560 
+                       Steps per second: 13819 
+                        Collection time: 5.803s 
+                          Learning time: 1.311s 
+                      Mean critic1 loss: 0.1422
+                      Mean critic2 loss: 0.1438
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 71.5985
+                            Mean reward: 177.43
+                    Mean episode length: 325.26
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001290
+    Episode_Reward/track_lin_vel_xy_exp: 6.4582
+     Episode_Reward/track_ang_vel_z_exp: -0.0110
+            Episode_Reward/lin_vel_z_l2: -0.0316
+              Episode_Reward/dof_acc_l2: -0.0729
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0002
+             Episode_Reward/head_height: 0.9953
+                Episode_Reward/moving_y: -0.0218
+                    Episode_Reward/roll: -0.0150
+            Episode_Reward/gait_contact: 1.5966
+         Episode_Reward/swing_clearance: 0.5831
+               Episode_Reward/feet_slip: -0.0292
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0378
+       Episode_Reward/cross_track_error: -0.2232
+     Metrics/base_velocity/error_vel_xy: 0.0219
+    Metrics/base_velocity/error_vel_yaw: 0.0240
+           Episode_Termination/time_out: 0.1410
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0108
+--------------------------------------------------------------------------------
+                         Iteration time: 7.11s
+                           Time elapsed: 00:01:45
+                                    ETA: 00:04:06
+
+################################################################################
+[1m                            Learning iteration 64/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1572864 
+                       Steps per second: 13811 
+                        Collection time: 5.754s 
+                          Learning time: 1.363s 
+                      Mean critic1 loss: 0.1348
+                      Mean critic2 loss: 0.1362
+                        Mean actor loss: -13.3755
+                        Mean alpha loss: 71.3593
+                            Mean reward: 196.31
+                    Mean episode length: 358.19
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001295
+    Episode_Reward/track_lin_vel_xy_exp: 6.9450
+     Episode_Reward/track_ang_vel_z_exp: -0.0108
+            Episode_Reward/lin_vel_z_l2: -0.0282
+              Episode_Reward/dof_acc_l2: -0.0603
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0004
+             Episode_Reward/head_height: 1.0797
+                Episode_Reward/moving_y: -0.0175
+                    Episode_Reward/roll: -0.0138
+            Episode_Reward/gait_contact: 1.7311
+         Episode_Reward/swing_clearance: 0.6341
+               Episode_Reward/feet_slip: -0.0209
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0473
+       Episode_Reward/cross_track_error: -0.1663
+     Metrics/base_velocity/error_vel_xy: 0.0199
+    Metrics/base_velocity/error_vel_yaw: 0.0240
+           Episode_Termination/time_out: 0.1521
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6008
+Episode_Termination/outside_route_corridor: 0.0134
+--------------------------------------------------------------------------------
+                         Iteration time: 7.12s
+                           Time elapsed: 00:01:52
+                                    ETA: 00:03:59
+
+################################################################################
+[1m                            Learning iteration 65/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1671168 
+                       Steps per second: 13898 
+                        Collection time: 5.775s 
+                          Learning time: 1.297s 
+                      Mean critic1 loss: 0.1372
+                      Mean critic2 loss: 0.1385
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 71.2133
+                            Mean reward: 213.24
+                    Mean episode length: 386.66
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001301
+    Episode_Reward/track_lin_vel_xy_exp: 7.4607
+     Episode_Reward/track_ang_vel_z_exp: -0.0063
+            Episode_Reward/lin_vel_z_l2: -0.0256
+              Episode_Reward/dof_acc_l2: -0.0566
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.1507
+                Episode_Reward/moving_y: -0.0116
+                    Episode_Reward/roll: -0.0136
+            Episode_Reward/gait_contact: 1.8470
+         Episode_Reward/swing_clearance: 0.6779
+               Episode_Reward/feet_slip: -0.0208
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0265
+       Episode_Reward/cross_track_error: -0.1273
+     Metrics/base_velocity/error_vel_xy: 0.0187
+    Metrics/base_velocity/error_vel_yaw: 0.0219
+           Episode_Termination/time_out: 0.1598
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.6007
+Episode_Termination/outside_route_corridor: 0.0164
+--------------------------------------------------------------------------------
+                         Iteration time: 7.07s
+                           Time elapsed: 00:01:59
+                                    ETA: 00:03:52
+
+################################################################################
+[1m                            Learning iteration 66/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1769472 
+                       Steps per second: 14480 
+                        Collection time: 5.540s 
+                          Learning time: 1.248s 
+                      Mean critic1 loss: 0.1402
+                      Mean critic2 loss: 0.1413
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 71.0291
+                            Mean reward: 225.54
+                    Mean episode length: 409.18
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001306
+    Episode_Reward/track_lin_vel_xy_exp: 7.8962
+     Episode_Reward/track_ang_vel_z_exp: -0.0065
+            Episode_Reward/lin_vel_z_l2: -0.0248
+              Episode_Reward/dof_acc_l2: -0.0595
+      Episode_Reward/undesired_contacts: -0.0002
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.2160
+                Episode_Reward/moving_y: -0.0162
+                    Episode_Reward/roll: -0.0149
+            Episode_Reward/gait_contact: 1.9605
+         Episode_Reward/swing_clearance: 0.7176
+               Episode_Reward/feet_slip: -0.0183
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0480
+       Episode_Reward/cross_track_error: -0.1887
+     Metrics/base_velocity/error_vel_xy: 0.0198
+    Metrics/base_velocity/error_vel_yaw: 0.0236
+           Episode_Termination/time_out: 0.1671
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5992
+Episode_Termination/outside_route_corridor: 0.0210
+--------------------------------------------------------------------------------
+                         Iteration time: 6.79s
+                           Time elapsed: 00:02:06
+                                    ETA: 00:03:45
+
+################################################################################
+[1m                            Learning iteration 67/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1867776 
+                       Steps per second: 14048 
+                        Collection time: 5.722s 
+                          Learning time: 1.275s 
+                      Mean critic1 loss: 0.1421
+                      Mean critic2 loss: 0.1435
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.9001
+                            Mean reward: 235.32
+                    Mean episode length: 428.35
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001311
+    Episode_Reward/track_lin_vel_xy_exp: 8.3475
+     Episode_Reward/track_ang_vel_z_exp: -0.0069
+            Episode_Reward/lin_vel_z_l2: -0.0243
+              Episode_Reward/dof_acc_l2: -0.0609
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0001
+             Episode_Reward/head_height: 1.2815
+                Episode_Reward/moving_y: -0.0159
+                    Episode_Reward/roll: -0.0152
+            Episode_Reward/gait_contact: 2.0679
+         Episode_Reward/swing_clearance: 0.7585
+               Episode_Reward/feet_slip: -0.0150
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0479
+       Episode_Reward/cross_track_error: -0.2489
+     Metrics/base_velocity/error_vel_xy: 0.0204
+    Metrics/base_velocity/error_vel_yaw: 0.0242
+           Episode_Termination/time_out: 0.1754
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5972
+Episode_Termination/outside_route_corridor: 0.0268
+--------------------------------------------------------------------------------
+                         Iteration time: 7.00s
+                           Time elapsed: 00:02:13
+                                    ETA: 00:03:37
+
+################################################################################
+[1m                            Learning iteration 68/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 1966080 
+                       Steps per second: 13996 
+                        Collection time: 5.738s 
+                          Learning time: 1.285s 
+                      Mean critic1 loss: 0.1509
+                      Mean critic2 loss: 0.1521
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.7426
+                            Mean reward: 253.74
+                    Mean episode length: 460.75
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001316
+    Episode_Reward/track_lin_vel_xy_exp: 8.8197
+     Episode_Reward/track_ang_vel_z_exp: -0.0055
+            Episode_Reward/lin_vel_z_l2: -0.0226
+              Episode_Reward/dof_acc_l2: -0.0622
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.3536
+                Episode_Reward/moving_y: -0.0136
+                    Episode_Reward/roll: -0.0150
+            Episode_Reward/gait_contact: 2.1852
+         Episode_Reward/swing_clearance: 0.8036
+               Episode_Reward/feet_slip: -0.0129
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0416
+       Episode_Reward/cross_track_error: -0.2277
+     Metrics/base_velocity/error_vel_xy: 0.0196
+    Metrics/base_velocity/error_vel_yaw: 0.0236
+           Episode_Termination/time_out: 0.1836
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5924
+Episode_Termination/outside_route_corridor: 0.0357
+--------------------------------------------------------------------------------
+                         Iteration time: 7.02s
+                           Time elapsed: 00:02:20
+                                    ETA: 00:03:30
+
+################################################################################
+[1m                            Learning iteration 69/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2064384 
+                       Steps per second: 13850 
+                        Collection time: 5.799s 
+                          Learning time: 1.298s 
+                      Mean critic1 loss: 0.1700
+                      Mean critic2 loss: 0.1710
+                        Mean actor loss: -13.4860
+                        Mean alpha loss: 70.6352
+                            Mean reward: 269.22
+                    Mean episode length: 487.24
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001321
+    Episode_Reward/track_lin_vel_xy_exp: 9.2639
+     Episode_Reward/track_ang_vel_z_exp: -0.0055
+            Episode_Reward/lin_vel_z_l2: -0.0220
+              Episode_Reward/dof_acc_l2: -0.0649
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.4279
+                Episode_Reward/moving_y: -0.0140
+                    Episode_Reward/roll: -0.0158
+            Episode_Reward/gait_contact: 2.2951
+         Episode_Reward/swing_clearance: 0.8437
+               Episode_Reward/feet_slip: -0.0129
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0373
+       Episode_Reward/cross_track_error: -0.2298
+     Metrics/base_velocity/error_vel_xy: 0.0202
+    Metrics/base_velocity/error_vel_yaw: 0.0243
+           Episode_Termination/time_out: 0.1899
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5853
+Episode_Termination/outside_route_corridor: 0.0484
+--------------------------------------------------------------------------------
+                         Iteration time: 7.10s
+                           Time elapsed: 00:02:27
+                                    ETA: 00:03:24
+
+################################################################################
+[1m                            Learning iteration 70/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2162688 
+                       Steps per second: 13880 
+                        Collection time: 5.817s 
+                          Learning time: 1.265s 
+                      Mean critic1 loss: 0.1896
+                      Mean critic2 loss: 0.1905
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.4962
+                            Mean reward: 278.76
+                    Mean episode length: 505.97
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001326
+    Episode_Reward/track_lin_vel_xy_exp: 9.6539
+     Episode_Reward/track_ang_vel_z_exp: -0.0054
+            Episode_Reward/lin_vel_z_l2: -0.0240
+              Episode_Reward/dof_acc_l2: -0.0662
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0001
+             Episode_Reward/head_height: 1.4835
+                Episode_Reward/moving_y: -0.0152
+                    Episode_Reward/roll: -0.0165
+            Episode_Reward/gait_contact: 2.3892
+         Episode_Reward/swing_clearance: 0.8788
+               Episode_Reward/feet_slip: -0.0146
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0479
+       Episode_Reward/cross_track_error: -0.2933
+     Metrics/base_velocity/error_vel_xy: 0.0204
+    Metrics/base_velocity/error_vel_yaw: 0.0248
+           Episode_Termination/time_out: 0.1964
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5753
+Episode_Termination/outside_route_corridor: 0.0637
+--------------------------------------------------------------------------------
+                         Iteration time: 7.08s
+                           Time elapsed: 00:02:34
+                                    ETA: 00:03:17
+
+################################################################################
+[1m                            Learning iteration 71/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2260992 
+                       Steps per second: 14214 
+                        Collection time: 5.579s 
+                          Learning time: 1.337s 
+                      Mean critic1 loss: 0.2048
+                      Mean critic2 loss: 0.2056
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.4112
+                            Mean reward: 292.67
+                    Mean episode length: 529.91
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001332
+    Episode_Reward/track_lin_vel_xy_exp: 10.1137
+     Episode_Reward/track_ang_vel_z_exp: -0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0240
+              Episode_Reward/dof_acc_l2: -0.0709
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.5515
+                Episode_Reward/moving_y: -0.0144
+                    Episode_Reward/roll: -0.0167
+            Episode_Reward/gait_contact: 2.5055
+         Episode_Reward/swing_clearance: 0.9214
+               Episode_Reward/feet_slip: -0.0118
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0456
+       Episode_Reward/cross_track_error: -0.2746
+     Metrics/base_velocity/error_vel_xy: 0.0209
+    Metrics/base_velocity/error_vel_yaw: 0.0260
+           Episode_Termination/time_out: 0.2036
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5612
+Episode_Termination/outside_route_corridor: 0.0843
+--------------------------------------------------------------------------------
+                         Iteration time: 6.92s
+                           Time elapsed: 00:02:41
+                                    ETA: 00:03:09
+
+################################################################################
+[1m                            Learning iteration 72/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2359296 
+                       Steps per second: 14366 
+                        Collection time: 5.591s 
+                          Learning time: 1.251s 
+                      Mean critic1 loss: 0.2280
+                      Mean critic2 loss: 0.2289
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.3326
+                            Mean reward: 308.04
+                    Mean episode length: 555.86
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001337
+    Episode_Reward/track_lin_vel_xy_exp: 10.5260
+     Episode_Reward/track_ang_vel_z_exp: -0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0231
+              Episode_Reward/dof_acc_l2: -0.0729
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.6151
+                Episode_Reward/moving_y: -0.0147
+                    Episode_Reward/roll: -0.0177
+            Episode_Reward/gait_contact: 2.6051
+         Episode_Reward/swing_clearance: 0.9583
+               Episode_Reward/feet_slip: -0.0130
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0432
+       Episode_Reward/cross_track_error: -0.2800
+     Metrics/base_velocity/error_vel_xy: 0.0223
+    Metrics/base_velocity/error_vel_yaw: 0.0270
+           Episode_Termination/time_out: 0.2095
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5470
+Episode_Termination/outside_route_corridor: 0.1059
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:02:48
+                                    ETA: 00:03:02
+
+################################################################################
+[1m                            Learning iteration 73/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2457600 
+                       Steps per second: 13936 
+                        Collection time: 5.768s 
+                          Learning time: 1.286s 
+                      Mean critic1 loss: 0.2626
+                      Mean critic2 loss: 0.2634
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.1921
+                            Mean reward: 317.18
+                    Mean episode length: 572.40
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001342
+    Episode_Reward/track_lin_vel_xy_exp: 10.8019
+     Episode_Reward/track_ang_vel_z_exp: -0.0050
+            Episode_Reward/lin_vel_z_l2: -0.0221
+              Episode_Reward/dof_acc_l2: -0.0709
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.6572
+                Episode_Reward/moving_y: -0.0139
+                    Episode_Reward/roll: -0.0174
+            Episode_Reward/gait_contact: 2.6772
+         Episode_Reward/swing_clearance: 0.9850
+               Episode_Reward/feet_slip: -0.0105
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0486
+       Episode_Reward/cross_track_error: -0.2908
+     Metrics/base_velocity/error_vel_xy: 0.0211
+    Metrics/base_velocity/error_vel_yaw: 0.0268
+           Episode_Termination/time_out: 0.2137
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5288
+Episode_Termination/outside_route_corridor: 0.1301
+--------------------------------------------------------------------------------
+                         Iteration time: 7.05s
+                           Time elapsed: 00:02:55
+                                    ETA: 00:02:55
+
+################################################################################
+[1m                            Learning iteration 74/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2555904 
+                       Steps per second: 13906 
+                        Collection time: 5.725s 
+                          Learning time: 1.344s 
+                      Mean critic1 loss: 0.2739
+                      Mean critic2 loss: 0.2749
+                        Mean actor loss: -13.5639
+                        Mean alpha loss: 70.1467
+                            Mean reward: 329.03
+                    Mean episode length: 594.18
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001348
+    Episode_Reward/track_lin_vel_xy_exp: 11.3766
+     Episode_Reward/track_ang_vel_z_exp: -0.0051
+            Episode_Reward/lin_vel_z_l2: -0.0225
+              Episode_Reward/dof_acc_l2: -0.0752
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.7443
+                Episode_Reward/moving_y: -0.0143
+                    Episode_Reward/roll: -0.0182
+            Episode_Reward/gait_contact: 2.8175
+         Episode_Reward/swing_clearance: 1.0374
+               Episode_Reward/feet_slip: -0.0109
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0465
+       Episode_Reward/cross_track_error: -0.3003
+     Metrics/base_velocity/error_vel_xy: 0.0225
+    Metrics/base_velocity/error_vel_yaw: 0.0275
+           Episode_Termination/time_out: 0.2193
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.5080
+Episode_Termination/outside_route_corridor: 0.1568
+--------------------------------------------------------------------------------
+                         Iteration time: 7.07s
+                           Time elapsed: 00:03:02
+                                    ETA: 00:02:48
+
+################################################################################
+[1m                            Learning iteration 75/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2654208 
+                       Steps per second: 13772 
+                        Collection time: 5.770s 
+                          Learning time: 1.368s 
+                      Mean critic1 loss: 0.2909
+                      Mean critic2 loss: 0.2917
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 70.0479
+                            Mean reward: 341.18
+                    Mean episode length: 613.93
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001353
+    Episode_Reward/track_lin_vel_xy_exp: 11.6690
+     Episode_Reward/track_ang_vel_z_exp: -0.0056
+            Episode_Reward/lin_vel_z_l2: -0.0232
+              Episode_Reward/dof_acc_l2: -0.0766
+      Episode_Reward/undesired_contacts: -0.0001
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.7890
+                Episode_Reward/moving_y: -0.0140
+                    Episode_Reward/roll: -0.0184
+            Episode_Reward/gait_contact: 2.8938
+         Episode_Reward/swing_clearance: 1.0652
+               Episode_Reward/feet_slip: -0.0115
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0448
+       Episode_Reward/cross_track_error: -0.2764
+     Metrics/base_velocity/error_vel_xy: 0.0236
+    Metrics/base_velocity/error_vel_yaw: 0.0286
+           Episode_Termination/time_out: 0.2232
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4911
+Episode_Termination/outside_route_corridor: 0.1796
+--------------------------------------------------------------------------------
+                         Iteration time: 7.14s
+                           Time elapsed: 00:03:09
+                                    ETA: 00:02:41
+
+################################################################################
+[1m                            Learning iteration 76/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2752512 
+                       Steps per second: 14190 
+                        Collection time: 5.671s 
+                          Learning time: 1.256s 
+                      Mean critic1 loss: 0.3080
+                      Mean critic2 loss: 0.3088
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.9405
+                            Mean reward: 357.15
+                    Mean episode length: 643.27
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001358
+    Episode_Reward/track_lin_vel_xy_exp: 12.2721
+     Episode_Reward/track_ang_vel_z_exp: -0.0056
+            Episode_Reward/lin_vel_z_l2: -0.0224
+              Episode_Reward/dof_acc_l2: -0.0792
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.8841
+                Episode_Reward/moving_y: -0.0137
+                    Episode_Reward/roll: -0.0195
+            Episode_Reward/gait_contact: 3.0423
+         Episode_Reward/swing_clearance: 1.1200
+               Episode_Reward/feet_slip: -0.0106
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0440
+       Episode_Reward/cross_track_error: -0.3065
+     Metrics/base_velocity/error_vel_xy: 0.0239
+    Metrics/base_velocity/error_vel_yaw: 0.0298
+           Episode_Termination/time_out: 0.2269
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4745
+Episode_Termination/outside_route_corridor: 0.2016
+--------------------------------------------------------------------------------
+                         Iteration time: 6.93s
+                           Time elapsed: 00:03:16
+                                    ETA: 00:02:34
+
+################################################################################
+[1m                            Learning iteration 77/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2850816 
+                       Steps per second: 14115 
+                        Collection time: 5.683s 
+                          Learning time: 1.281s 
+                      Mean critic1 loss: 0.3170
+                      Mean critic2 loss: 0.3177
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.8787
+                            Mean reward: 364.96
+                    Mean episode length: 657.61
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001364
+    Episode_Reward/track_lin_vel_xy_exp: 12.5738
+     Episode_Reward/track_ang_vel_z_exp: -0.0053
+            Episode_Reward/lin_vel_z_l2: -0.0228
+              Episode_Reward/dof_acc_l2: -0.0810
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 1.9283
+                Episode_Reward/moving_y: -0.0141
+                    Episode_Reward/roll: -0.0197
+            Episode_Reward/gait_contact: 3.1169
+         Episode_Reward/swing_clearance: 1.1479
+               Episode_Reward/feet_slip: -0.0106
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0480
+       Episode_Reward/cross_track_error: -0.3349
+     Metrics/base_velocity/error_vel_xy: 0.0243
+    Metrics/base_velocity/error_vel_yaw: 0.0301
+           Episode_Termination/time_out: 0.2299
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4594
+Episode_Termination/outside_route_corridor: 0.2231
+--------------------------------------------------------------------------------
+                         Iteration time: 6.96s
+                           Time elapsed: 00:03:23
+                                    ETA: 00:02:27
+
+################################################################################
+[1m                            Learning iteration 78/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 2949120 
+                       Steps per second: 14221 
+                        Collection time: 5.639s 
+                          Learning time: 1.273s 
+                      Mean critic1 loss: 0.3349
+                      Mean critic2 loss: 0.3358
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.7658
+                            Mean reward: 374.04
+                    Mean episode length: 673.08
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001369
+    Episode_Reward/track_lin_vel_xy_exp: 12.9337
+     Episode_Reward/track_ang_vel_z_exp: -0.0056
+            Episode_Reward/lin_vel_z_l2: -0.0237
+              Episode_Reward/dof_acc_l2: -0.0831
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 1.9862
+                Episode_Reward/moving_y: -0.0134
+                    Episode_Reward/roll: -0.0204
+            Episode_Reward/gait_contact: 3.2060
+         Episode_Reward/swing_clearance: 1.1803
+               Episode_Reward/feet_slip: -0.0124
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0393
+       Episode_Reward/cross_track_error: -0.3382
+     Metrics/base_velocity/error_vel_xy: 0.0250
+    Metrics/base_velocity/error_vel_yaw: 0.0306
+           Episode_Termination/time_out: 0.2333
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4441
+Episode_Termination/outside_route_corridor: 0.2452
+--------------------------------------------------------------------------------
+                         Iteration time: 6.91s
+                           Time elapsed: 00:03:30
+                                    ETA: 00:02:20
+
+################################################################################
+[1m                            Learning iteration 79/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3047424 
+                       Steps per second: 14365 
+                        Collection time: 5.614s 
+                          Learning time: 1.229s 
+                      Mean critic1 loss: 0.3457
+                      Mean critic2 loss: 0.3464
+                        Mean actor loss: -13.5202
+                        Mean alpha loss: 69.7174
+                            Mean reward: 398.30
+                    Mean episode length: 714.67
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001375
+    Episode_Reward/track_lin_vel_xy_exp: 13.5570
+     Episode_Reward/track_ang_vel_z_exp: -0.0055
+            Episode_Reward/lin_vel_z_l2: -0.0234
+              Episode_Reward/dof_acc_l2: -0.0856
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.0802
+                Episode_Reward/moving_y: -0.0130
+                    Episode_Reward/roll: -0.0210
+            Episode_Reward/gait_contact: 3.3620
+         Episode_Reward/swing_clearance: 1.2385
+               Episode_Reward/feet_slip: -0.0121
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0424
+       Episode_Reward/cross_track_error: -0.3216
+     Metrics/base_velocity/error_vel_xy: 0.0258
+    Metrics/base_velocity/error_vel_yaw: 0.0316
+           Episode_Termination/time_out: 0.2354
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4278
+Episode_Termination/outside_route_corridor: 0.2671
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:03:37
+                                    ETA: 00:02:13
+
+################################################################################
+[1m                            Learning iteration 80/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3145728 
+                       Steps per second: 14104 
+                        Collection time: 5.746s 
+                          Learning time: 1.224s 
+                      Mean critic1 loss: 0.3659
+                      Mean critic2 loss: 0.3666
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.6244
+                            Mean reward: 399.06
+                    Mean episode length: 717.29
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001380
+    Episode_Reward/track_lin_vel_xy_exp: 13.8001
+     Episode_Reward/track_ang_vel_z_exp: -0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0246
+              Episode_Reward/dof_acc_l2: -0.0884
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.1201
+                Episode_Reward/moving_y: -0.0133
+                    Episode_Reward/roll: -0.0218
+            Episode_Reward/gait_contact: 3.4232
+         Episode_Reward/swing_clearance: 1.2605
+               Episode_Reward/feet_slip: -0.0148
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0402
+       Episode_Reward/cross_track_error: -0.3055
+     Metrics/base_velocity/error_vel_xy: 0.0264
+    Metrics/base_velocity/error_vel_yaw: 0.0331
+           Episode_Termination/time_out: 0.2374
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.4119
+Episode_Termination/outside_route_corridor: 0.2886
+--------------------------------------------------------------------------------
+                         Iteration time: 6.97s
+                           Time elapsed: 00:03:44
+                                    ETA: 00:02:06
+
+################################################################################
+[1m                            Learning iteration 81/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3244032 
+                       Steps per second: 14376 
+                        Collection time: 5.562s 
+                          Learning time: 1.275s 
+                      Mean critic1 loss: 0.3787
+                      Mean critic2 loss: 0.3796
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.5550
+                            Mean reward: 407.82
+                    Mean episode length: 733.89
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001386
+    Episode_Reward/track_lin_vel_xy_exp: 13.9918
+     Episode_Reward/track_ang_vel_z_exp: -0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0237
+              Episode_Reward/dof_acc_l2: -0.0888
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.1435
+                Episode_Reward/moving_y: -0.0141
+                    Episode_Reward/roll: -0.0214
+            Episode_Reward/gait_contact: 3.4695
+         Episode_Reward/swing_clearance: 1.2779
+               Episode_Reward/feet_slip: -0.0115
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0495
+       Episode_Reward/cross_track_error: -0.3623
+     Metrics/base_velocity/error_vel_xy: 0.0265
+    Metrics/base_velocity/error_vel_yaw: 0.0330
+           Episode_Termination/time_out: 0.2403
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3958
+Episode_Termination/outside_route_corridor: 0.3088
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:03:51
+                                    ETA: 00:01:59
+
+################################################################################
+[1m                            Learning iteration 82/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3342336 
+                       Steps per second: 13312 
+                        Collection time: 6.107s 
+                          Learning time: 1.277s 
+                      Mean critic1 loss: 0.3749
+                      Mean critic2 loss: 0.3755
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.4726
+                            Mean reward: 427.82
+                    Mean episode length: 767.73
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001391
+    Episode_Reward/track_lin_vel_xy_exp: 14.6978
+     Episode_Reward/track_ang_vel_z_exp: -0.0058
+            Episode_Reward/lin_vel_z_l2: -0.0240
+              Episode_Reward/dof_acc_l2: -0.0926
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.2575
+                Episode_Reward/moving_y: -0.0126
+                    Episode_Reward/roll: -0.0225
+            Episode_Reward/gait_contact: 3.6497
+         Episode_Reward/swing_clearance: 1.3444
+               Episode_Reward/feet_slip: -0.0125
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0449
+       Episode_Reward/cross_track_error: -0.3322
+     Metrics/base_velocity/error_vel_xy: 0.0277
+    Metrics/base_velocity/error_vel_yaw: 0.0342
+           Episode_Termination/time_out: 0.2447
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3800
+Episode_Termination/outside_route_corridor: 0.3288
+--------------------------------------------------------------------------------
+                         Iteration time: 7.38s
+                           Time elapsed: 00:03:58
+                                    ETA: 00:01:52
+
+################################################################################
+[1m                            Learning iteration 83/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3440640 
+                       Steps per second: 14150 
+                        Collection time: 5.660s 
+                          Learning time: 1.287s 
+                      Mean critic1 loss: 0.3870
+                      Mean critic2 loss: 0.3876
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.4097
+                            Mean reward: 440.19
+                    Mean episode length: 790.89
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001397
+    Episode_Reward/track_lin_vel_xy_exp: 15.0969
+     Episode_Reward/track_ang_vel_z_exp: -0.0065
+            Episode_Reward/lin_vel_z_l2: -0.0245
+              Episode_Reward/dof_acc_l2: -0.0960
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.3158
+                Episode_Reward/moving_y: -0.0144
+                    Episode_Reward/roll: -0.0233
+            Episode_Reward/gait_contact: 3.7487
+         Episode_Reward/swing_clearance: 1.3804
+               Episode_Reward/feet_slip: -0.0134
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0474
+       Episode_Reward/cross_track_error: -0.3503
+     Metrics/base_velocity/error_vel_xy: 0.0291
+    Metrics/base_velocity/error_vel_yaw: 0.0360
+           Episode_Termination/time_out: 0.2472
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3637
+Episode_Termination/outside_route_corridor: 0.3497
+--------------------------------------------------------------------------------
+                         Iteration time: 6.95s
+                           Time elapsed: 00:04:05
+                                    ETA: 00:01:45
+
+################################################################################
+[1m                            Learning iteration 84/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3538944 
+                       Steps per second: 14311 
+                        Collection time: 5.589s 
+                          Learning time: 1.280s 
+                      Mean critic1 loss: 0.3949
+                      Mean critic2 loss: 0.3955
+                        Mean actor loss: -13.5436
+                        Mean alpha loss: 69.3492
+                            Mean reward: 436.73
+                    Mean episode length: 784.92
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001403
+    Episode_Reward/track_lin_vel_xy_exp: 14.7667
+     Episode_Reward/track_ang_vel_z_exp: -0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0246
+              Episode_Reward/dof_acc_l2: -0.0930
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.2652
+                Episode_Reward/moving_y: -0.0139
+                    Episode_Reward/roll: -0.0226
+            Episode_Reward/gait_contact: 3.6671
+         Episode_Reward/swing_clearance: 1.3499
+               Episode_Reward/feet_slip: -0.0128
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0492
+       Episode_Reward/cross_track_error: -0.3408
+     Metrics/base_velocity/error_vel_xy: 0.0276
+    Metrics/base_velocity/error_vel_yaw: 0.0346
+           Episode_Termination/time_out: 0.2487
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3485
+Episode_Termination/outside_route_corridor: 0.3698
+--------------------------------------------------------------------------------
+                         Iteration time: 6.87s
+                           Time elapsed: 00:04:12
+                                    ETA: 00:01:38
+
+################################################################################
+[1m                            Learning iteration 85/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3637248 
+                       Steps per second: 13999 
+                        Collection time: 5.737s 
+                          Learning time: 1.285s 
+                      Mean critic1 loss: 0.4116
+                      Mean critic2 loss: 0.4120
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.2838
+                            Mean reward: 433.07
+                    Mean episode length: 778.53
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001408
+    Episode_Reward/track_lin_vel_xy_exp: 14.9002
+     Episode_Reward/track_ang_vel_z_exp: -0.0059
+            Episode_Reward/lin_vel_z_l2: -0.0238
+              Episode_Reward/dof_acc_l2: -0.0932
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.2896
+                Episode_Reward/moving_y: -0.0134
+                    Episode_Reward/roll: -0.0231
+            Episode_Reward/gait_contact: 3.6981
+         Episode_Reward/swing_clearance: 1.3615
+               Episode_Reward/feet_slip: -0.0122
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0433
+       Episode_Reward/cross_track_error: -0.3546
+     Metrics/base_velocity/error_vel_xy: 0.0277
+    Metrics/base_velocity/error_vel_yaw: 0.0348
+           Episode_Termination/time_out: 0.2491
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3356
+Episode_Termination/outside_route_corridor: 0.3891
+--------------------------------------------------------------------------------
+                         Iteration time: 7.02s
+                           Time elapsed: 00:04:19
+                                    ETA: 00:01:31
+
+################################################################################
+[1m                            Learning iteration 86/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3735552 
+                       Steps per second: 14479 
+                        Collection time: 5.550s 
+                          Learning time: 1.239s 
+                      Mean critic1 loss: 0.3946
+                      Mean critic2 loss: 0.3953
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.2111
+                            Mean reward: 447.53
+                    Mean episode length: 802.29
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001414
+    Episode_Reward/track_lin_vel_xy_exp: 15.4003
+     Episode_Reward/track_ang_vel_z_exp: -0.0059
+            Episode_Reward/lin_vel_z_l2: -0.0236
+              Episode_Reward/dof_acc_l2: -0.0948
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.3660
+                Episode_Reward/moving_y: -0.0139
+                    Episode_Reward/roll: -0.0236
+            Episode_Reward/gait_contact: 3.8270
+         Episode_Reward/swing_clearance: 1.4091
+               Episode_Reward/feet_slip: -0.0119
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0466
+       Episode_Reward/cross_track_error: -0.3242
+     Metrics/base_velocity/error_vel_xy: 0.0287
+    Metrics/base_velocity/error_vel_yaw: 0.0357
+           Episode_Termination/time_out: 0.2485
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3216
+Episode_Termination/outside_route_corridor: 0.4093
+--------------------------------------------------------------------------------
+                         Iteration time: 6.79s
+                           Time elapsed: 00:04:26
+                                    ETA: 00:01:24
+
+################################################################################
+[1m                            Learning iteration 87/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3833856 
+                       Steps per second: 14438 
+                        Collection time: 5.561s 
+                          Learning time: 1.248s 
+                      Mean critic1 loss: 0.4145
+                      Mean critic2 loss: 0.4152
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.1630
+                            Mean reward: 484.66
+                    Mean episode length: 867.93
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001420
+    Episode_Reward/track_lin_vel_xy_exp: 16.3730
+     Episode_Reward/track_ang_vel_z_exp: -0.0062
+            Episode_Reward/lin_vel_z_l2: -0.0247
+              Episode_Reward/dof_acc_l2: -0.1018
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.5114
+                Episode_Reward/moving_y: -0.0147
+                    Episode_Reward/roll: -0.0247
+            Episode_Reward/gait_contact: 4.0689
+         Episode_Reward/swing_clearance: 1.4985
+               Episode_Reward/feet_slip: -0.0132
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0515
+       Episode_Reward/cross_track_error: -0.3181
+     Metrics/base_velocity/error_vel_xy: 0.0305
+    Metrics/base_velocity/error_vel_yaw: 0.0378
+           Episode_Termination/time_out: 0.2490
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.3074
+Episode_Termination/outside_route_corridor: 0.4280
+--------------------------------------------------------------------------------
+                         Iteration time: 6.81s
+                           Time elapsed: 00:04:33
+                                    ETA: 00:01:17
+
+################################################################################
+[1m                            Learning iteration 88/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 3932160 
+                       Steps per second: 14220 
+                        Collection time: 5.629s 
+                          Learning time: 1.284s 
+                      Mean critic1 loss: 0.4211
+                      Mean critic2 loss: 0.4219
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 69.1005
+                            Mean reward: 463.61
+                    Mean episode length: 832.00
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001425
+    Episode_Reward/track_lin_vel_xy_exp: 15.8357
+     Episode_Reward/track_ang_vel_z_exp: -0.0060
+            Episode_Reward/lin_vel_z_l2: -0.0244
+              Episode_Reward/dof_acc_l2: -0.0986
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.4296
+                Episode_Reward/moving_y: -0.0148
+                    Episode_Reward/roll: -0.0243
+            Episode_Reward/gait_contact: 3.9318
+         Episode_Reward/swing_clearance: 1.4475
+               Episode_Reward/feet_slip: -0.0130
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0534
+       Episode_Reward/cross_track_error: -0.3539
+     Metrics/base_velocity/error_vel_xy: 0.0290
+    Metrics/base_velocity/error_vel_yaw: 0.0368
+           Episode_Termination/time_out: 0.2503
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.2944
+Episode_Termination/outside_route_corridor: 0.4462
+--------------------------------------------------------------------------------
+                         Iteration time: 6.91s
+                           Time elapsed: 00:04:40
+                                    ETA: 00:01:10
+
+################################################################################
+[1m                            Learning iteration 89/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4030464 
+                       Steps per second: 14370 
+                        Collection time: 5.562s 
+                          Learning time: 1.279s 
+                      Mean critic1 loss: 0.4198
+                      Mean critic2 loss: 0.4204
+                        Mean actor loss: -13.5396
+                        Mean alpha loss: 69.0202
+                            Mean reward: 455.56
+                    Mean episode length: 818.33
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001431
+    Episode_Reward/track_lin_vel_xy_exp: 15.6969
+     Episode_Reward/track_ang_vel_z_exp: -0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0238
+              Episode_Reward/dof_acc_l2: -0.0972
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.4125
+                Episode_Reward/moving_y: -0.0133
+                    Episode_Reward/roll: -0.0238
+            Episode_Reward/gait_contact: 3.9026
+         Episode_Reward/swing_clearance: 1.4369
+               Episode_Reward/feet_slip: -0.0115
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0464
+       Episode_Reward/cross_track_error: -0.3826
+     Metrics/base_velocity/error_vel_xy: 0.0291
+    Metrics/base_velocity/error_vel_yaw: 0.0357
+           Episode_Termination/time_out: 0.2488
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.2838
+Episode_Termination/outside_route_corridor: 0.4627
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:04:46
+                                    ETA: 00:01:02
+
+################################################################################
+[1m                            Learning iteration 90/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4128768 
+                       Steps per second: 14523 
+                        Collection time: 5.545s 
+                          Learning time: 1.224s 
+                      Mean critic1 loss: 0.4288
+                      Mean critic2 loss: 0.4293
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.9601
+                            Mean reward: 493.79
+                    Mean episode length: 886.35
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001437
+    Episode_Reward/track_lin_vel_xy_exp: 16.7364
+     Episode_Reward/track_ang_vel_z_exp: -0.0065
+            Episode_Reward/lin_vel_z_l2: -0.0251
+              Episode_Reward/dof_acc_l2: -0.1048
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: -0.0000
+             Episode_Reward/head_height: 2.5770
+                Episode_Reward/moving_y: -0.0137
+                    Episode_Reward/roll: -0.0259
+            Episode_Reward/gait_contact: 4.1608
+         Episode_Reward/swing_clearance: 1.5319
+               Episode_Reward/feet_slip: -0.0144
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0436
+       Episode_Reward/cross_track_error: -0.3991
+     Metrics/base_velocity/error_vel_xy: 0.0307
+    Metrics/base_velocity/error_vel_yaw: 0.0383
+           Episode_Termination/time_out: 0.2453
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.2727
+Episode_Termination/outside_route_corridor: 0.4814
+--------------------------------------------------------------------------------
+                         Iteration time: 6.77s
+                           Time elapsed: 00:04:53
+                                    ETA: 00:00:55
+
+################################################################################
+[1m                            Learning iteration 91/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4227072 
+                       Steps per second: 14225 
+                        Collection time: 5.609s 
+                          Learning time: 1.301s 
+                      Mean critic1 loss: 0.4304
+                      Mean critic2 loss: 0.4311
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.9657
+                            Mean reward: 533.03
+                    Mean episode length: 950.26
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001443
+    Episode_Reward/track_lin_vel_xy_exp: 18.0208
+     Episode_Reward/track_ang_vel_z_exp: -0.0057
+            Episode_Reward/lin_vel_z_l2: -0.0234
+              Episode_Reward/dof_acc_l2: -0.1081
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.7875
+                Episode_Reward/moving_y: -0.0091
+                    Episode_Reward/roll: -0.0273
+            Episode_Reward/gait_contact: 4.4909
+         Episode_Reward/swing_clearance: 1.6546
+               Episode_Reward/feet_slip: -0.0117
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0251
+       Episode_Reward/cross_track_error: -0.2733
+     Metrics/base_velocity/error_vel_xy: 0.0320
+    Metrics/base_velocity/error_vel_yaw: 0.0390
+           Episode_Termination/time_out: 0.3989
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.1044
+Episode_Termination/outside_route_corridor: 0.4973
+--------------------------------------------------------------------------------
+                         Iteration time: 6.91s
+                           Time elapsed: 00:05:00
+                                    ETA: 00:00:48
+
+################################################################################
+[1m                            Learning iteration 92/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4325376 
+                       Steps per second: 13931 
+                        Collection time: 5.780s 
+                          Learning time: 1.277s 
+                      Mean critic1 loss: 0.4301
+                      Mean critic2 loss: 0.4308
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.8720
+                            Mean reward: 478.33
+                    Mean episode length: 855.01
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001448
+    Episode_Reward/track_lin_vel_xy_exp: 16.4259
+     Episode_Reward/track_ang_vel_z_exp: -0.0055
+            Episode_Reward/lin_vel_z_l2: -0.0232
+              Episode_Reward/dof_acc_l2: -0.0990
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.5323
+                Episode_Reward/moving_y: -0.0108
+                    Episode_Reward/roll: -0.0249
+            Episode_Reward/gait_contact: 4.0924
+         Episode_Reward/swing_clearance: 1.5069
+               Episode_Reward/feet_slip: -0.0112
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0353
+       Episode_Reward/cross_track_error: -0.2627
+     Metrics/base_velocity/error_vel_xy: 0.0294
+    Metrics/base_velocity/error_vel_yaw: 0.0366
+           Episode_Termination/time_out: 0.4599
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0363
+Episode_Termination/outside_route_corridor: 0.5043
+--------------------------------------------------------------------------------
+                         Iteration time: 7.06s
+                           Time elapsed: 00:05:07
+                                    ETA: 00:00:41
+
+################################################################################
+[1m                            Learning iteration 93/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4423680 
+                       Steps per second: 14278 
+                        Collection time: 5.650s 
+                          Learning time: 1.235s 
+                      Mean critic1 loss: 0.4179
+                      Mean critic2 loss: 0.4184
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.8327
+                            Mean reward: 444.56
+                    Mean episode length: 796.90
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001454
+    Episode_Reward/track_lin_vel_xy_exp: 15.5515
+     Episode_Reward/track_ang_vel_z_exp: -0.0054
+            Episode_Reward/lin_vel_z_l2: -0.0228
+              Episode_Reward/dof_acc_l2: -0.0945
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.3995
+                Episode_Reward/moving_y: -0.0117
+                    Episode_Reward/roll: -0.0238
+            Episode_Reward/gait_contact: 3.8757
+         Episode_Reward/swing_clearance: 1.4271
+               Episode_Reward/feet_slip: -0.0109
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0393
+       Episode_Reward/cross_track_error: -0.3024
+     Metrics/base_velocity/error_vel_xy: 0.0281
+    Metrics/base_velocity/error_vel_yaw: 0.0353
+           Episode_Termination/time_out: 0.4636
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0274
+Episode_Termination/outside_route_corridor: 0.5095
+--------------------------------------------------------------------------------
+                         Iteration time: 6.88s
+                           Time elapsed: 00:05:14
+                                    ETA: 00:00:34
+
+################################################################################
+[1m                            Learning iteration 94/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4521984 
+                       Steps per second: 14378 
+                        Collection time: 5.574s 
+                          Learning time: 1.263s 
+                      Mean critic1 loss: 0.4124
+                      Mean critic2 loss: 0.4131
+                        Mean actor loss: -13.5291
+                        Mean alpha loss: 68.7573
+                            Mean reward: 437.90
+                    Mean episode length: 786.49
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001460
+    Episode_Reward/track_lin_vel_xy_exp: 15.1338
+     Episode_Reward/track_ang_vel_z_exp: -0.0051
+            Episode_Reward/lin_vel_z_l2: -0.0227
+              Episode_Reward/dof_acc_l2: -0.0923
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.3340
+                Episode_Reward/moving_y: -0.0114
+                    Episode_Reward/roll: -0.0232
+            Episode_Reward/gait_contact: 3.7732
+         Episode_Reward/swing_clearance: 1.3885
+               Episode_Reward/feet_slip: -0.0104
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0394
+       Episode_Reward/cross_track_error: -0.3258
+     Metrics/base_velocity/error_vel_xy: 0.0277
+    Metrics/base_velocity/error_vel_yaw: 0.0336
+           Episode_Termination/time_out: 0.4638
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0211
+Episode_Termination/outside_route_corridor: 0.5155
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:05:21
+                                    ETA: 00:00:27
+
+################################################################################
+[1m                            Learning iteration 95/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4620288 
+                       Steps per second: 14374 
+                        Collection time: 5.559s 
+                          Learning time: 1.280s 
+                      Mean critic1 loss: 0.4243
+                      Mean critic2 loss: 0.4246
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.7168
+                            Mean reward: 425.84
+                    Mean episode length: 764.91
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001466
+    Episode_Reward/track_lin_vel_xy_exp: 14.7533
+     Episode_Reward/track_ang_vel_z_exp: -0.0052
+            Episode_Reward/lin_vel_z_l2: -0.0225
+              Episode_Reward/dof_acc_l2: -0.0908
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.2741
+                Episode_Reward/moving_y: -0.0123
+                    Episode_Reward/roll: -0.0227
+            Episode_Reward/gait_contact: 3.6789
+         Episode_Reward/swing_clearance: 1.3538
+               Episode_Reward/feet_slip: -0.0102
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0424
+       Episode_Reward/cross_track_error: -0.2991
+     Metrics/base_velocity/error_vel_xy: 0.0271
+    Metrics/base_velocity/error_vel_yaw: 0.0339
+           Episode_Termination/time_out: 0.4632
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0155
+Episode_Termination/outside_route_corridor: 0.5217
+--------------------------------------------------------------------------------
+                         Iteration time: 6.84s
+                           Time elapsed: 00:05:28
+                                    ETA: 00:00:20
+
+################################################################################
+[1m                            Learning iteration 96/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4718592 
+                       Steps per second: 13958 
+                        Collection time: 5.770s 
+                          Learning time: 1.273s 
+                      Mean critic1 loss: 0.4390
+                      Mean critic2 loss: 0.4396
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.6658
+                            Mean reward: 423.96
+                    Mean episode length: 761.70
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001472
+    Episode_Reward/track_lin_vel_xy_exp: 14.3828
+     Episode_Reward/track_ang_vel_z_exp: -0.0050
+            Episode_Reward/lin_vel_z_l2: -0.0222
+              Episode_Reward/dof_acc_l2: -0.0882
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.2201
+                Episode_Reward/moving_y: -0.0121
+                    Episode_Reward/roll: -0.0224
+            Episode_Reward/gait_contact: 3.5858
+         Episode_Reward/swing_clearance: 1.3192
+               Episode_Reward/feet_slip: -0.0100
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0415
+       Episode_Reward/cross_track_error: -0.3148
+     Metrics/base_velocity/error_vel_xy: 0.0263
+    Metrics/base_velocity/error_vel_yaw: 0.0327
+           Episode_Termination/time_out: 0.4610
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0114
+Episode_Termination/outside_route_corridor: 0.5281
+--------------------------------------------------------------------------------
+                         Iteration time: 7.04s
+                           Time elapsed: 00:05:35
+                                    ETA: 00:00:13
+
+################################################################################
+[1m                            Learning iteration 97/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4816896 
+                       Steps per second: 13990 
+                        Collection time: 5.775s 
+                          Learning time: 1.251s 
+                      Mean critic1 loss: 0.4280
+                      Mean critic2 loss: 0.4284
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.5869
+                            Mean reward: 448.93
+                    Mean episode length: 804.96
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001478
+    Episode_Reward/track_lin_vel_xy_exp: 15.2028
+     Episode_Reward/track_ang_vel_z_exp: -0.0052
+            Episode_Reward/lin_vel_z_l2: -0.0223
+              Episode_Reward/dof_acc_l2: -0.0927
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.3492
+                Episode_Reward/moving_y: -0.0116
+                    Episode_Reward/roll: -0.0236
+            Episode_Reward/gait_contact: 3.7926
+         Episode_Reward/swing_clearance: 1.3959
+               Episode_Reward/feet_slip: -0.0103
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0365
+       Episode_Reward/cross_track_error: -0.2610
+     Metrics/base_velocity/error_vel_xy: 0.0277
+    Metrics/base_velocity/error_vel_yaw: 0.0344
+           Episode_Termination/time_out: 0.4596
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0070
+Episode_Termination/outside_route_corridor: 0.5339
+--------------------------------------------------------------------------------
+                         Iteration time: 7.03s
+                           Time elapsed: 00:05:42
+                                    ETA: 00:00:06
+
+################################################################################
+[1m                            Learning iteration 98/99                            [0m 
+
+                               Run name: flat_actor_micro_50
+                            Total steps: 4915200 
+                       Steps per second: 13976 
+                        Collection time: 5.752s 
+                          Learning time: 1.282s 
+                      Mean critic1 loss: 0.4266
+                      Mean critic2 loss: 0.4272
+                        Mean actor loss: 0.0000
+                        Mean alpha loss: 68.5624
+                            Mean reward: 437.05
+                    Mean episode length: 784.07
+                  Mean action noise std: 0.02
+                                  Alpha: 0.001484
+    Episode_Reward/track_lin_vel_xy_exp: 15.3095
+     Episode_Reward/track_ang_vel_z_exp: -0.0053
+            Episode_Reward/lin_vel_z_l2: -0.0227
+              Episode_Reward/dof_acc_l2: -0.0931
+      Episode_Reward/undesired_contacts: 0.0000
+          Episode_Reward/dof_pos_limits: 0.0000
+             Episode_Reward/head_height: 2.3630
+                Episode_Reward/moving_y: -0.0116
+                    Episode_Reward/roll: -0.0236
+            Episode_Reward/gait_contact: 3.8234
+         Episode_Reward/swing_clearance: 1.4064
+               Episode_Reward/feet_slip: -0.0108
+   Episode_Reward/excessive_foot_height: -0.0000
+           Episode_Reward/heading_error: -0.0413
+       Episode_Reward/cross_track_error: -0.2542
+     Metrics/base_velocity/error_vel_xy: 0.0282
+    Metrics/base_velocity/error_vel_yaw: 0.0347
+           Episode_Termination/time_out: 0.4611
+       Episode_Termination/base_contact: 0.0000
+Episode_Termination/invalid_upright_state: 0.0014
+Episode_Termination/outside_route_corridor: 0.5380
+--------------------------------------------------------------------------------
+                         Iteration time: 7.03s
+                           Time elapsed: 00:05:49
+                                    ETA: 00:00:00
+
+Training time: 350.43 seconds

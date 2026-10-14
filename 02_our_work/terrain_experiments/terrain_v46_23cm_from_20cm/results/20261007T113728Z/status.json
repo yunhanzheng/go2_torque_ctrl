@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1791374772.873208,
+  "supervisor_pid": 6231,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v46_23cm_from_20cm/2026-10-07_11-37-37_height_18to23cm_anchor20_from_v45_4060_20261007T113728Z/model_4359.pt",
+  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_20CM_2026-10-07/V45_20CM_BEST_model_4060.pt",
+  "log": "/home/ubuntu22/terrain_v46_23cm_from_20cm/results/20261007T113728Z/V46_从20cm续训到23cm_300轮.log"
+}

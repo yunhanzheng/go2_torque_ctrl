@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": 1789690892.7557425,
+  "supervisor_pid": 59042,
+  "error": "AssertionError([])"
+}

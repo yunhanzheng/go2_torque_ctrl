@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "updated_at": 1790208800.8501737,
+  "supervisor_pid": 7757,
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v35_straight_finetune/2026-09-23_23-49-41_straight_from_v34_20260923T234933Z/model_2695.pt",
+  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_four_terrain/2026-09-20_22-45-03_mixed_curriculum_20260920T224437Z/model_2396.pt",
+  "log": "/home/ubuntu22/terrain_v35_straight_finetune/results/20260923T234933Z/V35直线微调_300轮.log"
+}

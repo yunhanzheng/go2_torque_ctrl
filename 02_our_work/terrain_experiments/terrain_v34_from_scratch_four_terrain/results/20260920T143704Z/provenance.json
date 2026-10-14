@@ -1,0 +1,16 @@
+{
+  "strict_from_scratch": true,
+  "external_checkpoint_loaded": false,
+  "curriculum": [
+    "stand",
+    "0.1mps",
+    "0.3mps",
+    "0.5mps",
+    "four_terrain"
+  ],
+  "training_seed": 1,
+  "reference_hashes": {
+    "V24": "6d41e21f2dc7bc7a6dd9f9c490a535507724a5e7eaa7c1dea76d1fbd20dcc5dc",
+    "V26": "8c1f588b9aaa39449bca185df986e079ab4a017d914ed772c04796d66477fb4e"
+  }
+}

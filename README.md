@@ -1,93 +1,123 @@
-# Semeterarbeit Haomin
+# Semester Project: SAC Locomotion for Unitree Go2
 
+This repository is the complete hand-off package for the semester project on
+Soft Actor-Critic (SAC) locomotion for the Unitree Go2. It contains the
+open-source starting points, our experiment code, selected reproducible model
+checkpoints, evaluation data, training logs, and videos.
 
+> **Start here:** the final result is V50, while V48 is the strongest dedicated
+> 23 cm stair policy and V49 is the multi-terrain transfer stage. Large `.pt`,
+> `.mp4`, and `.webm` files are stored with Git LFS; clone with Git LFS enabled.
 
-## Getting started
+## Repository map
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+| Folder | Ownership / purpose |
+|---|---|
+| `01_open_source_baselines/` | **Third-party open-source starting code**: SATA, IsaacLab-SAC, and RSL-RL-SAC. See its README for URLs, commits, and licences. |
+| `02_our_work/legacy_sac_workspace/` | **Our earlier SAC adaptation**, scripts, evaluation outputs, and notes. |
+| `02_our_work/terrain_experiments/` | **Our experiment sequence V25--V50**, including source, logs, JSON results, plots, and videos. |
+| `03_final_models/` | **Selected final checkpoints** for V48, V49, and V50, with checksums and intended use. |
+| `04_archived_milestones/` | Earlier verified milestones: V14 flat locomotion, V23 8 cm stairs, and V24 10 cm stairs. |
+| `05_documentation/` | Experiment hand-off notes and detailed result documentation. |
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Generated caches, duplicate intermediate checkpoints, local Python environments,
+Isaac Sim/Isaac Gym installations, and proprietary simulator binaries are not
+included. They are not project source and would make the repository several
+gigabytes larger. The representative checkpoints and all final evaluation
+artifacts are included.
 
-## Add your files
+## Final results
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+All reported tests use deterministic policies, seed 7, 32 parallel environments,
+and first-episode physical traversal counts. These are simulation results for the
+specified test setup, not claims of real-robot reliability or statistical
+significance across training seeds.
 
+| Model | Main purpose | Fixed 23 cm upstairs | Other terrain result |
+|---|---|---:|---|
+| V48 `model_4778.pt` | Dedicated 23 cm stair policy | 21/32 | Baseline before generalisation |
+| V49 `model_4980.pt` | Transfer source retained for V50 | 24/32 | Mean 26.33/32 across six generalisation terrains; minimum 8/32 |
+| V49 `model_5177_recommended.pt` | Best V49 model under the documented ranking rule | 20/32 | Mean 26.67/32; minimum 8/32 |
+| V50 `model_5099.pt` | Final curriculum-recovery model | 24/32 | Mean 25.83/32; minimum 7/32; terminal curriculum level 6.3861 |
+
+For V50 the six generalisation counts are: plane 32/32, 18 cm downstairs
+26/32, uphill 32/32, downhill 32/32, boxes 7/32, and random rough 26/32.
+The raw evidence is in
+`02_our_work/terrain_experiments/terrain_v50_curriculum_recovery/evaluations/`.
+
+Earlier verified milestones are also retained: V23 achieved 30/32 at 8 cm, and
+V24 achieved 31/32 at 10 cm under their documented fixed protocol. See
+`05_documentation/SAC_STAIRS_V23_V24_README.md`.
+
+## Quick review (no simulator required)
+
+1. Read this file and `05_documentation/FINAL_HANDOFF.md`.
+2. Open the `.webm` videos under the V48--V50 `video_reports/` folders in any
+   modern browser (Firefox/Chrome) or VLC.
+3. Inspect `summary.json` in the V49 and V50 evaluation folders for the raw
+   per-terrain counts.
+4. Check the model hashes in `03_final_models/README.md`.
+
+## Clone correctly
+
+```bash
+git lfs install
+git clone git@gitlab.lrz.de:00000000014C2063/semeterarbeit-haomin.git
+cd semeterarbeit-haomin
+git lfs pull
 ```
-cd existing_repo
-git remote add origin https://gitlab.lrz.de/00000000014C2063/semeterarbeit-haomin.git
-git branch -M main
-git push -uf origin main
+
+If Git LFS is not installed, the checkout contains small pointer files instead
+of the actual models and videos.
+
+## Reproducing the final experiment
+
+The final work uses Ubuntu 22.04, Python 3.11, NVIDIA Isaac Sim/Isaac Lab 5.1,
+the included IsaacLab-SAC fork, and the included RSL-RL-SAC fork. A CUDA-capable
+NVIDIA GPU is required. Isaac Sim itself is not redistributed here; install it
+under NVIDIA's licence.
+
+The experiment modules form an inheritance chain. Keep the whole
+`02_our_work/terrain_experiments/` directory on `PYTHONPATH`; do not copy only
+V50. The original scripts contain absolute paths from the experiment machine for
+auditability. Before running on another computer, replace `/home/ubuntu22` and
+`/data/sac` with the local clone path, or create equivalent paths.
+
+Recommended installation outline:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e 01_open_source_baselines/rsl_rl_sac
+pip install -e 01_open_source_baselines/isaaclab_sac/source/isaaclab_rl
+export PYTHONPATH="$PWD:$PWD/02_our_work/legacy_sac_workspace:$PWD/02_our_work/legacy_sac_workspace/scripts:$PYTHONPATH"
 ```
 
-## Integrate with your tools
+Install Isaac Sim/Isaac Lab dependencies according to the bundled upstream
+README before running. Exact final-stage commands and path notes are in
+`05_documentation/REPRODUCING.md`.
 
-* [Set up project integrations](https://gitlab.lrz.de/00000000014C2063/semeterarbeit-haomin/-/settings/integrations)
+## Provenance and licences
 
-## Collaborate with your team
+Third-party code is deliberately separated from our work and retains its
+original licence files. The principal starting points are:
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+- SATA: <https://github.com/PeiZhuoLi/SATA>
+- IsaacLab-SAC fork: <https://github.com/sabagian/isaaclab-sac>, local source
+  commit `bbd05d8031d8c0a78d372da198863ca38d6b8c5d`
+- RSL-RL-SAC: <https://github.com/leggedrobotics/rsl_rl_sac>, local source
+  commit `e0d243aa6d3f8a7231783b7f3cefeaec1b4a5521`
 
-## Test and Deploy
+See `01_open_source_baselines/README.md` for the detailed boundary between
+open-source inputs and project contributions. No claim of authorship is made
+over third-party code.
 
-Use the built-in continuous integration in GitLab.
+## Integrity and limitations
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+- Model files are PyTorch checkpoints and should only be loaded in a trusted
+  environment; PyTorch checkpoints may contain pickle data.
+- Absolute paths in archived logs and JSON files document the original machine.
+- Isaac Sim, NVIDIA drivers, CUDA, and local Conda environments are external
+  dependencies and are not included.
+- Results come from fixed simulation protocols and mostly one training seed.
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.

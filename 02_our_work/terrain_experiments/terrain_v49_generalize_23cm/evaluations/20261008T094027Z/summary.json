@@ -1,0 +1,226 @@
+{
+  "criterion": "Prefer checkpoints retaining at least 16/32 physical success on fixed 23 cm; then maximize mean/min physical traversal across six generalization terrains.",
+  "recommended": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_5177.pt",
+  "ranking": [
+    {
+      "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_5177.pt",
+      "fixed_23cm_physical": 20,
+      "generalization_physical_mean": 26.666666666666668,
+      "generalization_physical_min": 8,
+      "eligible_retains_23cm": true,
+      "by_terrain": {
+        "fixed_upstairs_23cm": {
+          "physical": 20,
+          "strict": 0,
+          "terminated": 12
+        },
+        "plane": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "stairs_down_18cm": {
+          "physical": 29,
+          "strict": 7,
+          "terminated": 3
+        },
+        "slope_up": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "slope_down": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "boxes": {
+          "physical": 8,
+          "strict": 0,
+          "terminated": 23
+        },
+        "random_rough": {
+          "physical": 27,
+          "strict": 0,
+          "terminated": 5
+        }
+      }
+    },
+    {
+      "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_5080.pt",
+      "fixed_23cm_physical": 22,
+      "generalization_physical_mean": 26.5,
+      "generalization_physical_min": 5,
+      "eligible_retains_23cm": true,
+      "by_terrain": {
+        "fixed_upstairs_23cm": {
+          "physical": 22,
+          "strict": 0,
+          "terminated": 10
+        },
+        "plane": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "stairs_down_18cm": {
+          "physical": 31,
+          "strict": 6,
+          "terminated": 1
+        },
+        "slope_up": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "slope_down": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "boxes": {
+          "physical": 5,
+          "strict": 0,
+          "terminated": 27
+        },
+        "random_rough": {
+          "physical": 27,
+          "strict": 0,
+          "terminated": 5
+        }
+      }
+    },
+    {
+      "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_4980.pt",
+      "fixed_23cm_physical": 24,
+      "generalization_physical_mean": 26.333333333333332,
+      "generalization_physical_min": 8,
+      "eligible_retains_23cm": true,
+      "by_terrain": {
+        "fixed_upstairs_23cm": {
+          "physical": 24,
+          "strict": 0,
+          "terminated": 8
+        },
+        "plane": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "stairs_down_18cm": {
+          "physical": 28,
+          "strict": 2,
+          "terminated": 4
+        },
+        "slope_up": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "slope_down": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "boxes": {
+          "physical": 8,
+          "strict": 0,
+          "terminated": 24
+        },
+        "random_rough": {
+          "physical": 26,
+          "strict": 0,
+          "terminated": 6
+        }
+      }
+    },
+    {
+      "checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_23CM_BEST_2026-10-07/V48_23CM_21OF32_model_4778.pt",
+      "fixed_23cm_physical": 21,
+      "generalization_physical_mean": 25.0,
+      "generalization_physical_min": 5,
+      "eligible_retains_23cm": true,
+      "by_terrain": {
+        "fixed_upstairs_23cm": {
+          "physical": 21,
+          "strict": 0,
+          "terminated": 11
+        },
+        "plane": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "stairs_down_18cm": {
+          "physical": 26,
+          "strict": 3,
+          "terminated": 6
+        },
+        "slope_up": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "slope_down": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "boxes": {
+          "physical": 5,
+          "strict": 0,
+          "terminated": 27
+        },
+        "random_rough": {
+          "physical": 23,
+          "strict": 0,
+          "terminated": 9
+        }
+      }
+    },
+    {
+      "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_4880.pt",
+      "fixed_23cm_physical": 15,
+      "generalization_physical_mean": 26.0,
+      "generalization_physical_min": 7,
+      "eligible_retains_23cm": false,
+      "by_terrain": {
+        "fixed_upstairs_23cm": {
+          "physical": 15,
+          "strict": 0,
+          "terminated": 17
+        },
+        "plane": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "stairs_down_18cm": {
+          "physical": 27,
+          "strict": 3,
+          "terminated": 5
+        },
+        "slope_up": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "slope_down": {
+          "physical": 32,
+          "strict": 0,
+          "terminated": 0
+        },
+        "boxes": {
+          "physical": 7,
+          "strict": 0,
+          "terminated": 26
+        },
+        "random_rough": {
+          "physical": 26,
+          "strict": 0,
+          "terminated": 6
+        }
+      }
+    }
+  ]
+}

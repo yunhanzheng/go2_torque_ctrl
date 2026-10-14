@@ -1,0 +1,30 @@
+{
+  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v42_23cm_straight/2026-10-06_10-08-32_height_5to23cm_width40_straight_from_v41_2820_20261006T100825Z/model_2840.pt",
+  "source_sha256": "3f3dd74639c174babedccd6168c4b9f2a5939cfd9fd29b70b3156de54fbfaa24",
+  "actor_observation_dim": 62,
+  "height_scan_in_actor": false,
+  "stair_height_m": [
+    0.05,
+    0.18
+  ],
+  "stair_step_width_m": 0.4,
+  "swing_target_m": {
+    "flat": 0.075,
+    "at_18cm_relief": 0.219
+  },
+  "excessive_foot_height_threshold_m": 0.26,
+  "curriculum_gate": {
+    "abs_y_m": 0.5,
+    "abs_heading_deg": 15.0,
+    "upright": true
+  },
+  "actor_warmup_update_calls": 50,
+  "optimizer_transfer": false,
+  "fixed_alpha_from_source": true,
+  "actor_learning_rate": 2e-07,
+  "critic_learning_rate": 5e-05,
+  "policy_frequency": 5,
+  "iterations": 300,
+  "save_interval": 10,
+  "num_envs": 4096
+}

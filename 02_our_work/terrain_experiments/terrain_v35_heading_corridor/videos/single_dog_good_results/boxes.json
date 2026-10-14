@@ -1,0 +1,193 @@
+{
+  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v35_stair_boxes/2026-09-21_08-10-08_stair_boxes_focus_200/model_744.pt",
+  "terrain": "boxes",
+  "difficulty": 0.0,
+  "terrain_seed": 7,
+  "num_envs": 1,
+  "steps": 500,
+  "dt": 0.02,
+  "success": 1,
+  "terminated": 0,
+  "other_no_success": 0,
+  "max_x_m": [
+    3.7340126037597656
+  ],
+  "trace_env0": [
+    {
+      "step": 0,
+      "x": 0.0007708705961704254,
+      "z": 0.3986692428588867,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 20,
+      "x": 0.13794641196727753,
+      "z": 0.2857854664325714,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 40,
+      "x": 0.3368584215641022,
+      "z": 0.29827725887298584,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 60,
+      "x": 0.53699791431427,
+      "z": 0.29775309562683105,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 80,
+      "x": 0.7360271215438843,
+      "z": 0.30170682072639465,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 100,
+      "x": 0.9352383017539978,
+      "z": 0.3034725487232208,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 120,
+      "x": 1.1357909440994263,
+      "z": 0.28941595554351807,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 140,
+      "x": 1.3339687585830688,
+      "z": 0.2967453598976135,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 160,
+      "x": 1.5345381498336792,
+      "z": 0.290462464094162,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 180,
+      "x": 1.7330127954483032,
+      "z": 0.29284098744392395,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 200,
+      "x": 1.9322575330734253,
+      "z": 0.29169440269470215,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 220,
+      "x": 2.1314072608947754,
+      "z": 0.2861972749233246,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 240,
+      "x": 2.329660177230835,
+      "z": 0.2909218966960907,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 260,
+      "x": 2.53029203414917,
+      "z": 0.2846197783946991,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 280,
+      "x": 2.728463888168335,
+      "z": 0.2860802710056305,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 300,
+      "x": 2.927309036254883,
+      "z": 0.2885845899581909,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 320,
+      "x": 3.130021810531616,
+      "z": 0.26252567768096924,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 340,
+      "x": 3.330595016479492,
+      "z": 0.261603981256485,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 360,
+      "x": 3.5316967964172363,
+      "z": 0.2689318060874939,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 380,
+      "x": 3.72426438331604,
+      "z": 0.28217464685440063,
+      "done": false,
+      "active": true
+    },
+    {
+      "step": 400,
+      "x": 3.918735980987549,
+      "z": 0.2793954312801361,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 420,
+      "x": 4.1147284507751465,
+      "z": 0.2719185948371887,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 440,
+      "x": 4.312236309051514,
+      "z": 0.27490171790122986,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 460,
+      "x": 4.512904167175293,
+      "z": 0.27362823486328125,
+      "done": false,
+      "active": false
+    },
+    {
+      "step": 480,
+      "x": 4.710710525512695,
+      "z": 0.2768673002719879,
+      "done": false,
+      "active": false
+    }
+  ],
+  "criterion": "first episode; fixed 0.5 m/s; base x > 3.5m, all feet x > 3.05m, gravity_z < -0.85 for 0.5s; abs(y)<=0.75m; no reset"
+}
