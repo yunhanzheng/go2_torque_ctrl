@@ -2,7 +2,12 @@
 from pathlib import Path
 
 
-base = Path("/home/ubuntu22/eval_eth_sata_v17_stairs.py")
+base = (
+    Path(__file__).resolve().parents[2]
+    / "base_adapter"
+    / "initial_stair_source"
+    / "eval_eth_sata_v17_stairs.py"
+)
 source = base.read_text()
 
 

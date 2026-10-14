@@ -2,7 +2,7 @@
 from pathlib import Path
 
 
-path = Path("/home/ubuntu22/terrain_v45_23cm_from_18cm/evaluate_dual.py")
+path = Path(__file__).resolve().parents[1] / "terrain_v45_23cm_from_18cm" / "evaluate_dual.py"
 source = path.read_text()
 old = "import terrain_v45_23cm_from_18cm.config"
 new = "import terrain_v47_22cm_breakthrough.config"

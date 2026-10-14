@@ -2,7 +2,7 @@
 from pathlib import Path
 
 
-path = Path("/home/ubuntu22/terrain_v35_straight_finetune/evaluate_straight.py")
+path = Path(__file__).resolve().parents[1] / "terrain_v35_straight_finetune" / "evaluate_straight.py"
 wrapper = path.read_text()
 wrapper = wrapper.replace(
     '"import eth_sata_reward_v17_stairs\\n"\n'

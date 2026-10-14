@@ -82,18 +82,28 @@ set of submitted results.
 - IsaacLab-SAC and RSL-RL-SAC at the commits documented in
   `open_source/README.md`.
 
-The archived scripts retain absolute paths from the original machine
-(`/home/ubuntu22` and `/data/sac`) for auditability. Replace them with the local
-checkout paths before running. The original final evaluator is:
+The final evaluator and its dynamic source chain use repository-relative paths.
+The original final evaluator is:
 
 ```text
 final/source/terrain_v50_curriculum_recovery/evaluate_final.py
 ```
 
-Point its model path to `final/model/model_5099.pt`, and place repository root,
-`final/source/dependency_chain`, `final/source/base_adapter`, and
-`final/source/base_adapter/initial_stair_source` on `PYTHONPATH`. Isaac Sim is
-not redistributed here because it is an external NVIDIA dependency.
+It automatically loads `final/model/model_5099.pt`. Isaac Sim is not
+redistributed here because it is an external NVIDIA dependency.
+
+For a quick end-to-end check on a machine with the Isaac Lab environment:
+
+```bash
+ISAACLAB_PYTHON=/path/to/isaaclab/python bash run_smoke_test.sh
+```
+
+This creates the V50 environment, loads the final checkpoint, and runs one
+deterministic headless plane episode. Full seven-case reproduction can be run
+with `evaluate_final.py`. The submitted final model is directly runnable for
+inference/evaluation; retraining the transfer stage from scratch would also
+require its V49 source checkpoint, which is intentionally not included in this
+final-only repository.
 
 ## Model integrity
 

@@ -4,17 +4,29 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-MODEL = Path(
-    "/home/ubuntu22/logs/rsl_rl/terrain_v50_curriculum_recovery/"
-    "2026-10-08_14-10-57_level6_trial_from_v49_4980_20261008T141051Z/model_5099.pt"
-)
+REPO = ROOT.parents[2]
+SOURCE = ROOT.parent
+PYTHON = os.environ.get("ISAACLAB_PYTHON", sys.executable)
+MODEL = REPO / "final" / "model" / "model_5099.pt"
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-OUT = ROOT / "evaluations" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+OUT = REPO / "final" / "results" / "reproduced" / STAMP
+PYTHON_PATHS = (
+    SOURCE,
+    SOURCE / "dependency_chain",
+    SOURCE / "base_adapter",
+    SOURCE / "base_adapter" / "initial_stair_source",
+)
+ENV = dict(
+    os.environ,
+    PYTHONPATH=os.pathsep.join(map(str, PYTHON_PATHS))
+    + os.pathsep
+    + os.environ.get("PYTHONPATH", ""),
+    WANDB_MODE="offline",
+)
 TASK = ["--task", "Isaac-Go2-V50-CurriculumRecovery-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 CASES = {
     "fixed_upstairs_23cm": ("stairs_up_23_anchor", 1.0),
@@ -44,7 +56,7 @@ def main():
         log = OUT / f"model_5099_{label}.log"
         with log.open("w") as stream:
             process = subprocess.Popen(
-                command, cwd="/home/ubuntu22", env=env,
+                command, cwd=REPO, env=env,
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
             )
             assert process.stdout is not None
