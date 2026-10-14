@@ -1,9 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1789949101.263858,
-  "supervisor_pid": 12957,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_four_terrain/2026-09-20_22-45-03_mixed_curriculum_20260920T224437Z/model_2396.pt",
-  "flat_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_flat_foundation/2026-09-20_16-31-55_stage3_20260920T163148Z/model_1597.pt",
-  "page": "/home/ubuntu22/terrain_v34_from_scratch_four_terrain/results/20260920T224437Z/V34严格从头训练四地形报告.html",
-  "recovered_recordings": true
-}

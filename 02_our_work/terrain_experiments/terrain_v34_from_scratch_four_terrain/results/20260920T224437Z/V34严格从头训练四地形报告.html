@@ -1,6 +1,0 @@
-<!doctype html><meta charset="utf-8"><title>V34严格从头训练四地形报告</title><style>body{font-family:sans-serif;margin:24px;background:#eee}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}article{background:white;padding:16px}video{width:100%}pre{white-space:pre-wrap}</style><h1>V34：严格从头训练的四地形统一策略</h1><p>全新Actor、Critic、normalizer、optimizer、alpha与replay；先平地基础，再训练楼梯、斜坡、随机方块、随机粗糙面。</p><p>历史基线：V24楼梯10 cm 31/32；V26 Rough hard 32/32、Boxes hard 21/32、上坡16/32、下坡17/32。</p><pre>| 测试条件 | V34严格从头训练 |
-|---|---:|
-| 规则楼梯（上/下） | 1/32 / 5/32 |
-| 斜坡（上/下） | 0/32 / 0/32 |
-| 随机方块 | 10/32 |
-| 随机粗糙面 | 8/32 |</pre><main><article><h2>规则楼梯（1/5 /32）</h2><video controls loop muted preload="metadata" src="videos/V34_stairs_up.webm"></video><video controls loop muted preload="metadata" src="videos/V34_stairs_down.webm"></video></article><article><h2>斜坡（0/0 /32）</h2><video controls loop muted preload="metadata" src="videos/V34_slope_up.webm"></video><video controls loop muted preload="metadata" src="videos/V34_slope_down.webm"></video></article><article><h2>随机方块（10 /32）</h2><video controls loop muted preload="metadata" src="videos/V34_boxes.webm"></video></article><article><h2>随机粗糙面（8 /32）</h2><video controls loop muted preload="metadata" src="videos/V34_random_rough.webm"></video></article></main>

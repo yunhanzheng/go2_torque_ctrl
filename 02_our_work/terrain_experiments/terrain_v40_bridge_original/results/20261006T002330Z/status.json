@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1791247684.5922925,
-  "supervisor_pid": 5600,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v40_bridge_original/2026-10-06_00-23-39_bridge_5to12cm_35cm_from_v37_2799_20261006T002330Z/model_3098.pt",
-  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_PAPER_2026-09-26/V37_PAPER_RECOMMENDED_model_2799.pt",
-  "log": "/home/ubuntu22/terrain_v40_bridge_original/results/20261006T002330Z/V40桥接原始楼梯_300轮.log"
-}

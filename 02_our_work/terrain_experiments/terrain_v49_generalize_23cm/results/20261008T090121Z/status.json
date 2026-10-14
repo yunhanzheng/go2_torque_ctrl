@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1791452355.9545765,
-  "supervisor_pid": 7664,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/model_5177.pt",
-  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_23CM_BEST_2026-10-07/V48_23CM_21OF32_model_4778.pt",
-  "log": "/home/ubuntu22/terrain_v49_generalize_23cm/results/20261008T090121Z/V49_保23cm能力的多地形泛化_400轮.log"
-}

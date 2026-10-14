@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1790211451.153978,
-  "supervisor_pid": 12954,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v36_straight_four_terrain/2026-09-24_00-42-28_four_terrain_from_v35_2525_20260924T004222Z/model_2724.pt",
-  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v35_straight_finetune/2026-09-23_23-49-41_straight_from_v34_20260923T234933Z/model_2525.pt",
-  "log": "/home/ubuntu22/terrain_v36_straight_four_terrain/results/20260924T004222Z/V36直线四地形强化_200轮.log"
-}

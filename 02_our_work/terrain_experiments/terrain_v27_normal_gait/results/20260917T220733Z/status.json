@@ -1,7 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1789685092.1192825,
-  "supervisor_pid": 23116,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v27_normal_gait_from_v26/2026-09-17_22-08-08_v27_20260917T220733Z/model_299.pt",
-  "page": "/home/ubuntu22/terrain_v27_normal_gait/results/20260917T220733Z/V26_V27步态对比.html"
-}

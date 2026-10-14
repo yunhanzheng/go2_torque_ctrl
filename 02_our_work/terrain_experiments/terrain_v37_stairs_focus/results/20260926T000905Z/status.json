@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1790382626.533441,
-  "supervisor_pid": 8686,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v37_stairs_focus/2026-09-26_00-09-12_stairs_5to10cm_from_v36_2550_20260926T000905Z/model_2799.pt",
-  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v36_straight_four_terrain/2026-09-24_00-42-28_four_terrain_from_v35_2525_20260924T004222Z/model_2550.pt",
-  "log": "/home/ubuntu22/terrain_v37_stairs_focus/results/20260926T000905Z/V37无高度观测楼梯专项_250轮.log"
-}

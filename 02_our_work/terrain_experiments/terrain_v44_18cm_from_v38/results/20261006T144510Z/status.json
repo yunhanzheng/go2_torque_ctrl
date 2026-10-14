@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1791299294.162635,
-  "supervisor_pid": 38016,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v44_18cm_from_v38/2026-10-06_14-45-16_height_10to18cm_width30_from_v38_3798_20261006T144510Z/model_4047.pt",
-  "source_checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v38_official_stairs/2026-09-26_11-55-01_official_5to23cm_resume2900_to3799_20260926T115454Z/model_3798.pt",
-  "log": "/home/ubuntu22/terrain_v44_18cm_from_v38/results/20261006T144510Z/V44_从V38向18cm推进_250轮.log"
-}

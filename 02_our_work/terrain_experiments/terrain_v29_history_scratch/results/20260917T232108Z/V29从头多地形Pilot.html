@@ -1,9 +1,0 @@
-<!doctype html><meta charset="utf-8"><title>V29从头多地形Pilot</title><style>body{font-family:sans-serif;margin:24px;background:#eee}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}article{background:white;padding:16px}video{width:100%}pre{white-space:pre-wrap}</style><h1>V29从随机初始化进行多地形统一训练</h1><p>平地、规则楼梯、斜坡、随机方块、随机粗糙面均在同一次训练中出现；Policy使用当前官方高度扫描观测，并通过Encoder使用过去160 ms历史。</p><pre>| 测试条件 | V29从头训练Pilot |
-|---|---:|
-| 平地 | 0/32 |
-| 随机粗糙面（hard） | 0/32 |
-| 随机方块（hard） | 0/32 |
-| 上坡（hard） | 0/32 |
-| 下坡（hard） | 0/32 |
-| 10 cm上楼 | 0/32 |
-| 10 cm下楼 | 0/32 |</pre><main><article><h2>平地（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_plane.webm"></video></article><article><h2>随机粗糙面（hard）（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_random_rough.webm"></video></article><article><h2>随机方块（hard）（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_boxes.webm"></video></article><article><h2>上坡（hard）（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_slope_up.webm"></video></article><article><h2>下坡（hard）（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_slope_down.webm"></video></article><article><h2>10 cm上楼（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_stairs_up.webm"></video></article><article><h2>10 cm下楼（0/32）</h2><video controls loop muted preload="metadata" src="videos/V29_stairs_down.webm"></video></article></main>

@@ -1,8 +1,0 @@
-{
-  "stage": "training",
-  "updated_at": 1791392094.5584574,
-  "supervisor_pid": 23631,
-  "child_pid": 23639,
-  "elapsed_seconds": 165,
-  "log": "/home/ubuntu22/terrain_v48_23cm_final/results/20261007T134206Z/V48_最终突破23cm_300轮.log"
-}

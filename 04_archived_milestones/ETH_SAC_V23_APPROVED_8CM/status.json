@@ -1,7 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1789522111.183233,
-  "supervisor_pid": 18457,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/stairs_v23_from_v22/2026-09-16_01-04-07_v23_20260916T010341Z/model_299.pt",
-  "page": "/home/ubuntu22/stair_v23/results/20260916T010341Z/视频对比.html"
-}

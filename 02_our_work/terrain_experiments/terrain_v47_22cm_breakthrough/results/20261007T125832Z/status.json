@@ -1,8 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1791379686.5908432,
-  "supervisor_pid": 16532,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v47_22cm_breakthrough/2026-10-07_12-58-38_focused_20to22cm_from_v46_4180_20261007T125832Z/model_4479.pt",
-  "source_checkpoint": "/home/ubuntu22/saved_models/SATA_STAIRS_22CM_FRONTIER_2026-10-07/V46_22CM_4OF32_model_4180.pt",
-  "log": "/home/ubuntu22/terrain_v47_22cm_breakthrough/results/20261007T125832Z/V47_突破22cm_300轮.log"
-}

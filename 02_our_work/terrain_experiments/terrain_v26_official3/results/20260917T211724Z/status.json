@@ -1,7 +1,0 @@
-{
-  "stage": "complete",
-  "updated_at": 1789682005.1291466,
-  "supervisor_pid": 8987,
-  "checkpoint": "/home/ubuntu22/logs/rsl_rl/terrain_v26_official3_from_v24/2026-09-17_21-18-06_v26_20260917T211724Z/model_599.pt",
-  "page": "/home/ubuntu22/terrain_v26_official3/results/20260917T211724Z/视频演示.html"
-}
