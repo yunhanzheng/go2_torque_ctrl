@@ -7,6 +7,14 @@ One run of this script produces the evidence for one controller:
     <out>/forces.png       four feet + total, with the body weight as a reference line
     <out>/psd.png          spectrum of the total normal force (load oscillation)
     <out>/load_share.png   mean load share per foot
+    <out>/pd_gains.png     equivalent Kp / Kd of the torque policy, one sample per step
+    <out>/pd_distribution.png  those gains as mean +- std against the stock 25 / 0.5
+    <out>/pd_coupling.png  |d tau_i / d q_j|, the cross-joint part of the same Jacobian
+    <out>/pd_gains.csv     every per-step gain, so the figures can be re-derived
+
+For a direct-torque task the equivalent gains are read off the policy Jacobian at every
+control step (see ``pd_probe.py``); for the position task there is nothing to measure, so
+the probe is skipped unless it is explicitly forced with ``--pd_probe on``.
 
 ``compare_force.py`` then merges any number of ``summary.json`` files into the final
 position-vs-torque table.  Nothing here trains and nothing touches wandb.
@@ -53,6 +61,15 @@ parser.add_argument("--duration", type=float, default=6.0, help="Seconds recorde
 parser.add_argument("--warmup", type=float, default=0.5, help="Seconds dropped after the reset (landing transient).")
 parser.add_argument("--seed", type=int, default=7, help="Seed for the (deterministic) evaluation.")
 parser.add_argument("--no_plots", action="store_true", default=False, help="Skip the matplotlib figures.")
+parser.add_argument(
+    "--pd_probe",
+    type=str,
+    default="auto",
+    choices=["auto", "on", "off"],
+    help="Measure the instantaneous equivalent PD gains while playing (auto: direct-torque tasks only).",
+)
+parser.add_argument("--stock_kp", type=float, default=25.0, help="Reference stiffness drawn on the PD figures.")
+parser.add_argument("--stock_kd", type=float, default=0.5, help="Reference damping drawn on the PD figures.")
 AppLauncher.add_app_launcher_args(parser)
 parser.set_defaults(headless=True)
 args_cli = parser.parse_args()
@@ -81,6 +98,15 @@ from terrain_v56_stand_force_compare.eval_common import (
     psd,
     summarise_force,
 )
+from terrain_v56_stand_force_compare.pd_probe import (
+    PdProbe,
+    stack_records,
+    summarise_gains,
+    torque_term,
+)
+from terrain_v56_stand_force_compare.pd_probe import print_table as print_pd_table
+from terrain_v56_stand_force_compare.pd_probe import write_csv as write_pd_csv
+from terrain_v56_stand_force_compare.pd_probe import write_plots as write_pd_plots
 
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
@@ -215,6 +241,17 @@ def main(env_cfg, agent_cfg):
     runner.load(args_cli.checkpoint)
     policy = runner.get_inference_policy(device=env.device)
 
+    probe = None
+    if args_cli.pd_probe != "off" and torque_term(env) is not None:
+        probe = PdProbe(policy, env, stock_kp=args_cli.stock_kp, stock_kd=args_cli.stock_kd)
+        print(
+            f"[INFO] pd probe : Kp/Kd from d(tau)/d(obs), {probe.n_joints} joints, "
+            f"action_scale {probe.action_scale:.2f} N.m, limit +-{probe.torque_limit:.1f} N.m",
+            flush=True,
+        )
+    elif args_cli.pd_probe == "on":
+        print("[WARN] --pd_probe on, but this task has no direct-torque action term: skipped", flush=True)
+
     env.reset()
     obs = env.get_observations()
 
@@ -223,10 +260,21 @@ def main(env_cfg, agent_cfg):
     samples: dict[str, list[np.ndarray]] = {}
     time_s = np.arange(recorded_steps) * step_dt
     resets = 0
+    pd_samples: list[dict[str, np.ndarray]] = []
+    pd_summary = None
+    pd_stacked = None
 
     with torch.inference_mode():
         for step in range(warmup_steps + recorded_steps):
-            actions = policy(obs)
+            if probe is None:
+                actions = policy(obs)
+            else:
+                # Same action the policy would have returned, plus this step's gains.  The probe
+                # lifts the inference mode itself, so the probe call has to stay inside the loop
+                # body rather than outside it.
+                actions, gains = probe(obs)
+                if step >= warmup_steps:
+                    pd_samples.append(gains)
             obs, _reward, dones, _extras = env.step(actions)
             if dones.any():
                 reset_ids = dones.nonzero(as_tuple=False).flatten()
@@ -282,12 +330,26 @@ def main(env_cfg, agent_cfg):
         "weight_N": round(weight, 3),
         **summarise_force(rows, weight, step_dt),
     }
+
+    if pd_samples:
+        pd_stacked = stack_records(pd_samples)
+        pd_summary = summarise_gains(
+            pd_stacked,
+            probe.joint_names,
+            stock_kp=args_cli.stock_kp,
+            stock_kd=args_cli.stock_kd,
+        )
+        summary["pd"] = pd_summary
+        write_pd_csv(os.path.join(out_dir, "pd_gains.csv"), pd_stacked, probe.joint_names, step_dt)
+
     summary_path = os.path.join(out_dir, "summary.json")
     with open(summary_path, "w", encoding="utf-8") as handle:
         json.dump(summary, handle, indent=2, sort_keys=True)
 
     if not args_cli.no_plots:
         _write_plots(out_dir, label, time_s, rows, 1.0 / step_dt)
+        if pd_summary is not None:
+            write_pd_plots(out_dir, label, pd_stacked, pd_summary, step_dt)
 
     print("\n[RESULT]", flush=True)
     print(
@@ -309,6 +371,9 @@ def main(env_cfg, agent_cfg):
         flush=True,
     )
     print(f"  artefacts   : {out_dir}", flush=True)
+
+    if pd_summary is not None:
+        print_pd_table(pd_summary)
 
     sys.stdout.flush()
     sys.stderr.flush()

@@ -5,13 +5,14 @@
 #   ./run_trial.sh train pos                   # reference: stock JointPositionAction + PD
 #   ./run_trial.sh train torque                # tau = clamp(10 * a), no PD, 50 Hz
 #   ./run_trial.sh train torque200             # same at 200 Hz (bandwidth ablation)
-#   ./run_trial.sh eval pos  <ckpt.pt>         # forces.csv / summary.json / figures
+#   ./run_trial.sh eval pos  <ckpt.pt>         # forces.csv / summary.json / figures (+ Kp/Kd for torque)
 #   ./run_trial.sh compare                     # merge the three summaries into one table
 #   ./run_trial.sh identify <ckpt.pt>          # is the torque policy an equivalent joint PD?
 #
 # Everything is overridable from the environment:
 #   NUM_ENVS (4096) SEED (1) ITERS (1000) ACTION_SCALE (10.0) PYTHON (python) CUDA_VISIBLE_DEVICES (0)
 #   EVAL_ENVS (4) EVAL_SECONDS (6.0) PD_ENVS (8) PD_SECONDS (6.0) PD_EXCITE (0.15)
+#   PD_PROBE (auto) STOCK_KP (25) STOCK_KD (0.5)
 # WANDB_API_KEY must be set for `train` (never store it in this file).
 set -euo pipefail
 
@@ -29,6 +30,9 @@ EVAL_SECONDS=${EVAL_SECONDS:-6.0}
 PD_ENVS=${PD_ENVS:-8}
 PD_SECONDS=${PD_SECONDS:-6.0}
 PD_EXCITE=${PD_EXCITE:-0.15}
+PD_PROBE=${PD_PROBE:-auto}
+STOCK_KP=${STOCK_KP:-25}
+STOCK_KD=${STOCK_KD:-0.5}
 
 export PYTHONPATH="$SOURCE_ROOT:$SOURCE_ROOT/base_adapter:$ROOT:${PYTHONPATH:-}"
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
@@ -92,6 +96,9 @@ case "$CMD" in
       --label "$VARIANT" \
       --num_envs "$EVAL_ENVS" \
       --duration "$EVAL_SECONDS" \
+      --pd_probe "$PD_PROBE" \
+      --stock_kp "$STOCK_KP" \
+      --stock_kd "$STOCK_KD" \
       --output_dir "$ROOT/results/force_eval/$VARIANT" \
       --headless "$@"
     ;;
