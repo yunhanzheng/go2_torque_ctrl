@@ -1,9 +1,64 @@
+# ---------------------------------------------------------------------------
+# Repository policy: commit source code, configs and documentation only.
+# Training logs, checkpoints, videos and third-party clones stay local.
+# The final V50 deliverables (model_5099.pt and the three WebM demos) are
+# already tracked via Git LFS and are not affected by the rules below.
+# ---------------------------------------------------------------------------
+
+# --- Python ---
 __pycache__/
 *.py[cod]
 *.egg-info/
-.pytest_cache/
+.eggs/
+build/
+dist/
 .venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Runtime outputs: training logs, Hydra runs, TensorBoard ---
+logs/
+outputs/
+tmp_tb/
+wandb/
+hydra.log
+*.log
+# Final evidence logs stay tracked
+!/final/results/training.log
+!/final/results/evaluation/*.log
 *.pid
 *.lock
-outputs/
-logs/
+events.out.tfevents.*
+
+# --- Checkpoints and exported models ---
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+_ckpt_server/
+
+# --- Videos, renders and extracted frames ---
+*.mp4
+*.webm
+*.mov
+*.avi
+final/**/video*/
+
+# --- Third-party clones (upstream commits documented in README) ---
+/isaac_sac_setup/isaaclab-sac/
+/isaac_sac_setup/rsl_rl_sac/
+/rsl_rl/
+
+# --- Local tooling and environment leftovers ---
+/=2.13.0
+*.AppImage
+*.bak
+*.orig
+.env
+.DS_Store
+.idea/
+.vscode/
+*.swp

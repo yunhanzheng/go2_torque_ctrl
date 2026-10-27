@@ -1,0 +1,8 @@
+adfb49296166434bb104127ca4e6ddc7  config.py
+e9f2f2615a84120d672aa75b17bcff3b  evaluate_video.py
+ad0d082bd7d583b00e1b4c801d37ac9e  sata_rewards.py
+2cddf689e84773523c7fa61a9ee848d3  sata_terrain.py
+a21b425d78c23c2864a1803bb3b24f20  smoke_test.py
+6a4bb0051e0286160612163a5caf4073  train.py
+e24e524fcb8764fa5eb0fbc5589faed2  run_trial.sh
+45b9b3ec75c41d4dd9ebb6b14757c4ae  v51/sata_alignment.py
