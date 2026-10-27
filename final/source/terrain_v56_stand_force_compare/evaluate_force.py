@@ -247,6 +247,8 @@ def main(env_cfg, agent_cfg):
         video_seconds = args_cli.video_seconds if args_cli.video_seconds is not None else args_cli.warmup + args_cli.duration
         video_length = int(round(video_seconds / physics_dt))
         video_folder = os.path.join(out_dir, "videos")
+        # Playback has to run at the control rate or the clip is in slow motion (V55 does the same).
+        env.unwrapped.metadata["render_fps"] = max(1, int(round(1.0 / physics_dt)))
         print(f"[INFO] video     : {video_folder} ({video_length} steps, {video_length * physics_dt:.1f} s)", flush=True)
         # Same recipe as IsaacLab's own play.py: record from step 0 for a fixed number of steps.
         video_recorder = gym.wrappers.RecordVideo(
@@ -409,8 +411,12 @@ def main(env_cfg, agent_cfg):
         print_pd_table(pd_summary)
 
     if video_recorder is not None:
-        # ``os._exit`` below skips every finaliser, so the open episode has to be flushed here.
-        video_recorder.stop_recording()
+        # ``os._exit`` below skips every finaliser, so the open episode has to be flushed here;
+        # V55 reaches the same point by closing the wrapper instead.
+        try:
+            video_recorder.stop_recording()
+        except AttributeError:
+            video_recorder.close()
         print(f"  video       : {os.path.join(out_dir, 'videos')}", flush=True)
 
     sys.stdout.flush()
