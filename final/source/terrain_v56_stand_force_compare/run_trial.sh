@@ -18,6 +18,7 @@ set -euo pipefail
 
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 SOURCE_ROOT=$(cd "$ROOT/.." && pwd)
+REPO_ROOT=$(cd "$SOURCE_ROOT/../.." && pwd)
 PYTHON=${PYTHON:-python}
 
 NUM_ENVS=${NUM_ENVS:-4096}
@@ -34,7 +35,9 @@ PD_PROBE=${PD_PROBE:-auto}
 STOCK_KP=${STOCK_KP:-25}
 STOCK_KD=${STOCK_KD:-0.5}
 
-export PYTHONPATH="$SOURCE_ROOT:$SOURCE_ROOT/base_adapter:$ROOT:${PYTHONPATH:-}"
+# ``rsl_rl`` lives at the repository root, not under ``final/source``; the pip editable install in
+# some environments points at a directory that no longer exists, so the checkout wins.
+export PYTHONPATH="$SOURCE_ROOT:$SOURCE_ROOT/base_adapter:$ROOT:$REPO_ROOT/rsl_rl:${PYTHONPATH:-}"
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
 
 CMD=${1:-smoke}
