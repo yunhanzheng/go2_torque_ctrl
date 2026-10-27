@@ -326,11 +326,11 @@ def main(env_cfg, agent_cfg):
                 if step >= warmup_steps:
                     pd_samples.append(gains)
             obs, _reward, dones, _extras = env.step(actions)
-            if dones.any():
-                reset_ids = dones.nonzero(as_tuple=False).flatten()
-                base_env.reset(env_ids=reset_ids)
-                obs = env.get_observations()
-                resets += int(reset_ids.numel())
+            # ``RslRlVecEnvWrapper.step`` has already reset the finished environments and handed
+            # back the fresh observations.  Resetting a second time here only zeroes
+            # ``episode_length_buf`` again, which keeps the force metrics' warm-up mask off for
+            # the rest of the run (and made every force number read 0).
+            resets += int(dones.sum())
             if step < warmup_steps:
                 continue
             for key, value in force_snapshot(base_env).items():
