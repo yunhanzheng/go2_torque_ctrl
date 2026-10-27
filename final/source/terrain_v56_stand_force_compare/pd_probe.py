@@ -139,17 +139,45 @@ def _actions_of(output):
     return output
 
 
+def _differentiable_obs(obs, group: str):
+    """Split an observation into the policy input and the leaf tensor to differentiate.
+
+    rsl_rl 4 feeds the actor a ``TensorDict`` keyed by observation group, and
+    ``torch.autograd.grad`` refuses a ``TensorDict`` as the tensor it differentiates, so the
+    group tensor itself gets ``requires_grad_`` while the surrounding dict is passed on.
+    """
+    keys = getattr(obs, "keys", None)
+    if keys is None:  # plain tensor, older rsl_rl
+        leaf = obs.detach().clone().requires_grad_(True)
+        return leaf, leaf
+    td = obs.detach().clone()
+    key = group if group in keys() else next(iter(keys()))
+    leaf = td[key].detach().clone().requires_grad_(True)
+    td[key] = leaf
+    return td, leaf
+
+
 class PdProbe:
     """Wraps a policy: same action out, plus the instantaneous equivalent PD gains."""
 
-    def __init__(self, policy, env, *, term_name: str = "joint_pos", stock_kp: float = 25.0, stock_kd: float = 0.5):
+    def __init__(
+        self,
+        policy,
+        env,
+        *,
+        term_name: str = "joint_pos",
+        group: str = "policy",
+        stock_kp: float = 25.0,
+        stock_kd: float = 0.5,
+    ):
         base = _base_env(env)
         term = torque_term(env, term_name)
         if term is None:
             raise RuntimeError("PdProbe needs a direct-torque action term (see config.StandTorqueEnvCfg)")
 
         self.policy = policy
-        self.layout = resolve_obs_layout(env)
+        self.group = group
+        self.layout = resolve_obs_layout(env, group)
         self.n_joints = self.layout.n_joints
         self.action_scale = float(getattr(term.cfg, "action_scale", 1.0))
         self.torque_limit = float(getattr(term.cfg, "torque_limit", float("inf")))
@@ -170,8 +198,8 @@ class PdProbe:
         # inference flag and silently refuses to build a graph, so the mode has to be lifted
         # before the copy is made.
         with torch.inference_mode(False), torch.enable_grad():
-            x = obs.detach().clone().requires_grad_(True)
-            output = self.policy(x)
+            policy_input, x = _differentiable_obs(obs, self.group)
+            output = self.policy(policy_input)
             # rsl_rl >= 4 answers with a TensorDict, and ``torch.autograd.grad`` refuses to
             # differentiate one, so the bare action tensor is what the Jacobian is taken on.
             tau = (_actions_of(output) * self.action_scale).clamp(-self.torque_limit, self.torque_limit)
