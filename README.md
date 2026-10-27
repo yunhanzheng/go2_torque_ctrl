@@ -20,8 +20,8 @@ Large model/video files use Git LFS. Clone with:
 
 ```bash
 git lfs install
-git clone git@gitlab.lrz.de:00000000014C2063/semeterarbeit-haomin.git
-cd semeterarbeit-haomin
+git clone git@github.com:yunhanzheng/go2_torque_ctrl.git
+cd go2_torque_ctrl
 git lfs pull
 ```
 
