@@ -127,6 +127,18 @@ def torque_term(env, term_name: str = "joint_pos"):
     return term
 
 
+def _actions_of(output):
+    """The bare action tensor inside whatever ``act_inference`` returned.
+
+    rsl_rl 4 hands back a ``TensorDict`` keyed by ``actions``; older releases hand back the
+    tensor itself.  Only a plain tensor can be run through ``torch.autograd.grad``.
+    """
+    keys = getattr(output, "keys", None)
+    if keys is not None and "actions" in keys():
+        return output["actions"]
+    return output
+
+
 class PdProbe:
     """Wraps a policy: same action out, plus the instantaneous equivalent PD gains."""
 
@@ -152,19 +164,23 @@ class PdProbe:
         self.step_dt = float(base.step_dt)
 
     # -- one control step ------------------------------------------------------------------
-    def __call__(self, obs: torch.Tensor) -> tuple[torch.Tensor, dict[str, np.ndarray]]:
+    def __call__(self, obs: torch.Tensor):
         """Return ``(action, record)`` for this step; ``action`` is what ``env.step`` expects."""
         # ``env.step`` runs inside ``torch.inference_mode``; a tensor cloned there carries the
         # inference flag and silently refuses to build a graph, so the mode has to be lifted
         # before the copy is made.
         with torch.inference_mode(False), torch.enable_grad():
             x = obs.detach().clone().requires_grad_(True)
-            action = self.policy(x)
-            tau = (action * self.action_scale).clamp(-self.torque_limit, self.torque_limit)
+            output = self.policy(x)
+            # rsl_rl >= 4 answers with a TensorDict, and ``torch.autograd.grad`` refuses to
+            # differentiate one, so the bare action tensor is what the Jacobian is taken on.
+            tau = (_actions_of(output) * self.action_scale).clamp(-self.torque_limit, self.torque_limit)
             jacobian = self._jacobian(x, tau)
             with torch.inference_mode(True):
                 record = self._record(x.detach(), tau.detach(), jacobian.detach())
-                return action.detach(), record
+                # Hand back whatever the policy returned, detached, so this stays a drop-in
+                # replacement for calling the policy directly.
+                return output.detach() if hasattr(output, "detach") else output, record
 
     def _jacobian(self, x: torch.Tensor, tau: torch.Tensor) -> torch.Tensor:
         """d tau / d obs, shape ``(num_envs, num_joints, obs_dim)``.
