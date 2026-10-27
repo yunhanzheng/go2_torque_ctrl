@@ -9,14 +9,14 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 EVALUATOR = Path("/home/ubuntu22/terrain_v35_straight_finetune/evaluate_straight.py")
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-FFMPEG = "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
+FFMPEG = "/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 SUMMARY = Path((ROOT / "latest_evaluation.txt").read_text().strip()) / "summary.json"
 RESULTS = json.loads(SUMMARY.read_text())
 MODEL = Path(RESULTS["best_checkpoint"])
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "video_reports" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ["--task", "Isaac-Go2-V35-StraightFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 
 

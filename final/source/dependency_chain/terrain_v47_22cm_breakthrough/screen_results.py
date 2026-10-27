@@ -7,10 +7,10 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 EVALUATOR = ROOT / "evaluate_dual.py"
 TASK = ["--task", "Isaac-Go2-V47-22cmBreakthrough-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "evaluations" / STAMP
 SOURCE = Path(

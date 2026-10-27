@@ -12,7 +12,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path(
     "/home/ubuntu22/saved_models/SATA_STAIRS_23CM_BEST_2026-10-07/"
     "V48_23CM_21OF32_model_4778.pt"
@@ -25,7 +25,7 @@ RUN_NAME = f"mixed55upstairs_keep15fixed23_from_v48_4778_{STAMP}"
 ENV = dict(
     os.environ,
     PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-    WANDB_MODE="offline",
+    WANDB_API_KEY=os.environ["WANDB_API_KEY"],
     V49_SOURCE_CHECKPOINT=str(SOURCE),
 )
 LOCK_PATH = ROOT / ".training.lock"
@@ -115,7 +115,7 @@ def main():
         "--task", "Isaac-Go2-V49-Generalize23cm-v0",
         "--agent", "rsl_rl_sac_cfg_entry_point",
         "--num_envs", "4096", "--max_iterations", "400", "--seed", "1",
-        "--resume", "--run_name", RUN_NAME, "--headless",
+        "--resume", "--run_name", RUN_NAME, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless",
     ]
     print("[V49] protected model4778 -> 55% upstairs + 45% generalization terrains", flush=True)
     print("[V49] exact 23 cm anchor remains 15%", flush=True)

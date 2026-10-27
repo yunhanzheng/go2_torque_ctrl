@@ -89,6 +89,18 @@ from isaaclab_rl.utils.pretrained_checkpoint import get_published_pretrained_che
 
 import isaaclab_tasks  # noqa: F401
 import eth_fixed05_v2  # noqa: F401
+try:
+    import native_curriculum.register  # noqa: F401
+except ImportError:
+    pass
+try:
+    import native_terrain_sata.register  # noqa: F401
+except ImportError:
+    pass
+try:
+    import native_terrain_sata.test_config  # noqa: F401
+except ImportError:
+    pass
 from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
 

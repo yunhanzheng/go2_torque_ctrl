@@ -8,14 +8,14 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 EVALUATOR = Path("/home/ubuntu22/terrain_v35_straight_finetune/evaluate_straight.py")
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-FFMPEG = "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
+FFMPEG = "/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 MODEL = Path("/home/ubuntu22/logs/rsl_rl/terrain_v36_straight_four_terrain/2026-09-24_00-42-28_four_terrain_from_v35_2525_20260924T004222Z/model_2550.pt")
 EVAL = Path((ROOT / "latest_evaluation.txt").read_text().strip())
 MATRIX = json.loads((EVAL / "summary.json").read_text())["evaluated_matrix"]["model_2550"]
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "reports" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ["--task", "Isaac-Go2-V35-StraightFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 CASES = {
     "plane": ("平地直线", 0.0), "random_rough": ("随机粗糙面", 0.75),

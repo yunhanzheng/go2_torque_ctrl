@@ -7,12 +7,12 @@ if pgrep -f '/terrain_v48_23cm_final/train.py' >/dev/null; then
   exit 1
 fi
 
-/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python - <<'PY'
+/opt/conda/envs/isaac_sac/bin/python - <<'PY'
 import torch
 assert torch.cuda.is_available(), "CUDA is still unavailable; reboot the machine first"
 probe = torch.zeros(1, device="cuda:0")
 print("CUDA preflight passed:", probe)
 PY
 
-exec /home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python -u \
+exec /opt/conda/envs/isaac_sac/bin/python -u \
   /home/ubuntu22/terrain_v48_23cm_final/supervisor.py

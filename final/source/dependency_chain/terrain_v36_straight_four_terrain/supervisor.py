@@ -11,14 +11,14 @@ import time
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path("/home/ubuntu22/logs/rsl_rl/terrain_v35_straight_finetune/2026-09-23_23-49-41_straight_from_v34_20260923T234933Z/model_2525.pt")
 EXPERIMENT = "terrain_v36_straight_four_terrain"
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 BATCH = ROOT / "results" / STAMP
 RUN_NAME = f"four_terrain_from_v35_2525_{STAMP}"
 ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-           WANDB_MODE="offline", V36_SOURCE_CHECKPOINT=str(SOURCE))
+           WANDB_API_KEY=os.environ["WANDB_API_KEY"], V36_SOURCE_CHECKPOINT=str(SOURCE))
 
 
 def sha256(path):
@@ -63,7 +63,7 @@ def main():
     command = [PYTHON, "-u", str(ROOT / "train.py"),
         "--task", "Isaac-Go2-V36-StraightFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point",
         "--num_envs", "4096", "--max_iterations", "200", "--seed", "1", "--resume",
-        "--run_name", RUN_NAME, "--headless"]
+        "--run_name", RUN_NAME, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"]
     print("[V36] 从V35 model_2525.pt强化四地形；30%平地直线锚点", flush=True)
     print("[GPU]", gpu.stdout.strip(), flush=True)
     print("[命令]", " ".join(command), flush=True)

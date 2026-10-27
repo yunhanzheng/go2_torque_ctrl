@@ -6,7 +6,7 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 MODEL = Path(
     "/home/ubuntu22/logs/rsl_rl/terrain_v49_generalize_23cm/"
     "2026-10-08_09-01-27_mixed55upstairs_keep15fixed23_from_v48_4778_20261008T090121Z/"
@@ -22,7 +22,7 @@ def main():
         env = dict(
             os.environ,
             PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-            WANDB_MODE="offline",
+            WANDB_API_KEY=os.environ["WANDB_API_KEY"],
             STRAIGHT_OUTPUT=str(output),
             TERRAIN_CASE="boxes",
             TERRAIN_DIFFICULTY="0.75",

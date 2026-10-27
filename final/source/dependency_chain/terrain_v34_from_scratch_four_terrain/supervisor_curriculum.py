@@ -82,7 +82,7 @@ def main():
             common.run(
                 [PYTHON, "-u", str(ROOT / "train.py"), "--task", STAGES[0][1], *AGENT,
                  "--num_envs", "64", "--max_iterations", "29", "--seed", "1",
-                 "--run_name", f"smoke_curriculum_{STAMP}", "--headless",
+                 "--run_name", f"smoke_curriculum_{STAMP}", "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless",
                  "agent.algorithm.replay_buffer_size=8192", "agent.algorithm.num_mini_batches=2",
                  "agent.algorithm.mini_batch_size=128"],
                 "速度课程严格从头检查", 900,
@@ -106,7 +106,7 @@ def main():
             run_name = f"stage{index}_{STAMP}"
             command = [PYTHON, "-u", str(ROOT / "train.py"), "--task", task, *AGENT,
                        "--num_envs", "4096", "--max_iterations", str(iterations),
-                       "--seed", "1", "--run_name", run_name, "--headless"]
+                       "--seed", "1", "--run_name", run_name, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"]
             env = ENV
             if source is not None:
                 command.insert(-1, "--resume")
@@ -131,7 +131,7 @@ def main():
         common.run(
             [PYTHON, "-u", str(ROOT / "train.py"), *common.MIXED_TASK, "--num_envs", "4096",
              "--max_iterations", "800", "--seed", "1", "--resume",
-             "--run_name", mixed_name, "--headless"],
+             "--run_name", mixed_name, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"],
             "四地形课程_800轮", 14400, mixed_env,
         )
         mixed_model = common.checkpoint("terrain_v34_scratch_four_terrain", mixed_name)

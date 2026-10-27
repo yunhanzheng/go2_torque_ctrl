@@ -7,11 +7,11 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 EVALUATOR = Path("/home/ubuntu22/terrain_v35_straight_finetune/evaluate_straight.py")
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 RUN = Path("/home/ubuntu22/logs/rsl_rl/terrain_v36_straight_four_terrain/2026-09-24_00-42-28_four_terrain_from_v35_2525_20260924T004222Z")
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "evaluations" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ["--task", "Isaac-Go2-V35-StraightFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 CASES = {
     "plane": 0.0, "random_rough": 0.75, "boxes": 0.75,

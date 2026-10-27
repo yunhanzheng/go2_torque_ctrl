@@ -98,6 +98,14 @@ from isaaclab_rl.rsl_rl import RslRlBaseRunnerCfg, RslRlVecEnvWrapper, handle_de
 
 import isaaclab_tasks  # noqa: F401
 import eth_fixed05_v2  # noqa: F401
+try:
+    import native_curriculum.register  # noqa: F401
+except ImportError:
+    pass
+try:
+    import native_terrain_sata.register  # noqa: F401
+except ImportError:
+    pass
 from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
 

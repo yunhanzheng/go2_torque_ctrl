@@ -25,7 +25,7 @@ ENV = dict(
     PYTHONPATH=os.pathsep.join(map(str, PYTHON_PATHS))
     + os.pathsep
     + os.environ.get("PYTHONPATH", ""),
-    WANDB_MODE="offline",
+    WANDB_API_KEY=os.environ["WANDB_API_KEY"],
 )
 TASK = ["--task", "Isaac-Go2-V50-CurriculumRecovery-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 CASES = {

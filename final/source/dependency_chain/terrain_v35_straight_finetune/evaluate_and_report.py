@@ -9,13 +9,13 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-FFMPEG = "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
+FFMPEG = "/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 RUN = Path("/home/ubuntu22/logs/rsl_rl/terrain_v35_straight_finetune/2026-09-23_23-49-41_straight_from_v34_20260923T234933Z")
 V34 = Path("/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_four_terrain/2026-09-20_22-45-03_mixed_curriculum_20260920T224437Z/model_2396.pt")
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "evaluations" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ["--task", "Isaac-Go2-V35-StraightFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 
 

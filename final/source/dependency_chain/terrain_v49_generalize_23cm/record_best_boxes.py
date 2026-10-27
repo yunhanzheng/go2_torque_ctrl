@@ -6,9 +6,9 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 FFMPEG = (
-    "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/"
+    "/opt/conda/envs/isaac_sac/lib/python3.11/"
     "site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 )
 MODEL = Path(
@@ -29,7 +29,7 @@ def main():
     env = dict(
         os.environ,
         PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-        WANDB_MODE="offline",
+        WANDB_API_KEY=os.environ["WANDB_API_KEY"],
         STRAIGHT_OUTPUT=str(output),
         TERRAIN_CASE="boxes",
         TERRAIN_DIFFICULTY="0.75",

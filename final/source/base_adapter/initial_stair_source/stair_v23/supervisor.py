@@ -10,12 +10,12 @@ import subprocess
 import time
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = '/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python'
-FFMPEG = '/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
+PYTHON = '/opt/conda/envs/isaac_sac/bin/python'
+FFMPEG = '/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
 SOURCE = Path('/home/ubuntu22/saved_models/V22_APPROVED/model_299.pt')
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 BATCH = ROOT / 'results' / STAMP
-ENV = dict(os.environ, PYTHONPATH='/home/ubuntu22:/data/sac:/data/sac/scripts', WANDB_MODE='offline')
+ENV = dict(os.environ, PYTHONPATH='/home/ubuntu22:/data/sac:/data/sac/scripts', WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ['--task', 'Isaac-Go2-Stairs-V23-v0', '--agent', 'rsl_rl_sac_cfg_entry_point']
 
 
@@ -73,12 +73,14 @@ def main():
     name = f'v23_{STAMP}'
     try:
         run([PYTHON, '-u', str(ROOT/'train.py'), *TASK, '--num_envs', '64', '--max_iterations', '29',
-             '--seed', '1', '--resume', '--run_name', f'smoke_{STAMP}', '--headless',
+             '--seed', '1', '--resume', '--run_name', f'smoke_{STAMP}',
+             '--logger', 'wandb', '--log_project_name', 'isaac_sac_pipeline', '--headless',
              'agent.algorithm.replay_buffer_size=8192', 'agent.algorithm.num_mini_batches=2',
              'agent.algorithm.mini_batch_size=128'], '接口与更新检查', 600)
         # Keep training visible through terminal metrics without a simulator GUI.
         run([PYTHON, '-u', str(ROOT/'train.py'), *TASK, '--num_envs', '4096', '--max_iterations', '300',
-             '--seed', '1', '--resume', '--run_name', name, '--headless'], '正式训练300轮', 7200)
+             '--seed', '1', '--resume', '--run_name', name,
+             '--logger', 'wandb', '--log_project_name', 'isaac_sac_pipeline', '--headless'], '正式训练300轮', 7200)
         checkpoints = list(Path('/home/ubuntu22/logs/rsl_rl/stairs_v23_from_v22').glob(f'*_{name}/model_299.pt'))
         assert len(checkpoints) == 1, checkpoints
         trained = checkpoints[0]

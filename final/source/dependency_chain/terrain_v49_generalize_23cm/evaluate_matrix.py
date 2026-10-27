@@ -7,14 +7,14 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path(
     "/home/ubuntu22/saved_models/SATA_STAIRS_23CM_BEST_2026-10-07/"
     "V48_23CM_21OF32_model_4778.pt"
 )
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 OUT = ROOT / "evaluations" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 TASK = ["--task", "Isaac-Go2-V49-Generalize23cm-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 CASES = {
     "fixed_upstairs_23cm": ("stairs_up_23_anchor", 1.0),

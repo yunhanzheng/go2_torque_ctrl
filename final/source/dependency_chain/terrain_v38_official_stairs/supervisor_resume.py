@@ -11,7 +11,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path(
     "/home/ubuntu22/logs/rsl_rl/terrain_v38_official_stairs/"
     "2026-09-26_00-50-15_official_5to23cm_from_v37_2799_20260926T005009Z/"
@@ -24,7 +24,7 @@ RUN_NAME = f"official_5to23cm_resume2900_to3799_{STAMP}"
 ENV = dict(
     os.environ,
     PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-    WANDB_MODE="offline",
+    WANDB_API_KEY=os.environ["WANDB_API_KEY"],
     V38_SOURCE_CHECKPOINT=str(SOURCE),
 )
 
@@ -124,7 +124,7 @@ def main():
         "--resume",
         "--run_name",
         RUN_NAME,
-        "--headless",
+        "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless",
     ]
     print("[V38 resume] 原始5-23 cm楼梯课程；从model_2900恢复至model_3799", flush=True)
     print("[GPU]", gpu.stdout.strip(), flush=True)

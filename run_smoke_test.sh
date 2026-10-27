@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-python_bin="${ISAACLAB_PYTHON:-/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python}"
+python_bin="${ISAACLAB_PYTHON:-/opt/conda/envs/isaac_sac/bin/python}"
 source_root="$repo_root/final/source"
 if [[ -n "${SAC_SMOKE_OUTPUT:-}" ]]; then
   output_path="$SAC_SMOKE_OUTPUT"
@@ -12,7 +12,7 @@ else
 fi
 
 export PYTHONPATH="$source_root:$source_root/dependency_chain:$source_root/base_adapter:$source_root/base_adapter/initial_stair_source:${PYTHONPATH:-}"
-export WANDB_MODE=offline
+export WANDB_API_KEY="${WANDB_API_KEY:?set WANDB_API_KEY}"
 export STRAIGHT_OUTPUT="$output_path"
 export TERRAIN_CASE=plane
 export TERRAIN_DIFFICULTY=0.0

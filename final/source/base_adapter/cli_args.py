@@ -9,6 +9,35 @@ import argparse
 import random
 from typing import TYPE_CHECKING
 
+# ---------------------------------------------------------------------------
+# Compatibility shim for the shared `isaac_sac` server environment.
+#
+# `import isaaclab_tasks` recursively auto-imports EVERY sibling task package
+# (isaaclab_tasks/utils/importer.py:_walk_packages). On the server those tasks
+# resolve to someone else's checkout that ships an `sa_16dof` teacher-student task
+# whose terrain_teacher_model.py needs rsl_rl.modules.distribution.GaussianDistribution
+# and RslRlMLPModelCfg.GaussianDistributionCfg -- classes this env's rsl_rl *SAC*
+# fork does not provide. The package-wide auto-import then raises
+# ModuleNotFoundError, which takes down our own `import ...config` (V50/V51/V52)
+# even though we never touch sa_16dof.
+#
+# We must NOT edit that checkout (it is not ours). Instead we exploit
+# _walk_packages: after __import__(name) it descends via sys.modules[name].__path__.
+# Pre-registering sa_16dof as an already-imported stub with an EMPTY __path__ makes
+# __import__ a no-op and stops the recursion before it reaches the broken module.
+# The local dev isaaclab_tasks has no sa_16dof, so this is a harmless no-op there.
+# ---------------------------------------------------------------------------
+import sys
+import types
+
+for _stub_name in (
+    "isaaclab_tasks.manager_based.locomotion.velocity.config.sa_16dof",
+):
+    if _stub_name not in sys.modules:
+        _stub = types.ModuleType(_stub_name)
+        _stub.__path__ = []  # empty => _walk_packages will not descend into it
+        sys.modules[_stub_name] = _stub
+
 if TYPE_CHECKING:
     from isaaclab_rl.rsl_rl import RslRlBaseRunnerCfg
 

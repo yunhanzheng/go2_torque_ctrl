@@ -6,8 +6,8 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-FFMPEG = "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
+FFMPEG = "/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 MODEL = Path(
     "/home/ubuntu22/logs/rsl_rl/terrain_v48_23cm_final/"
     "2026-10-07_17-05-30_focused_215to23cm_from_v47_4479_20261007T170522Z/"
@@ -24,7 +24,7 @@ def main():
     env = dict(
         os.environ,
         PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-        WANDB_MODE="offline",
+        WANDB_API_KEY=os.environ["WANDB_API_KEY"],
         STRAIGHT_OUTPUT=str(output),
         TERRAIN_CASE="stairs_up_23_anchor",
         TERRAIN_DIFFICULTY="0",

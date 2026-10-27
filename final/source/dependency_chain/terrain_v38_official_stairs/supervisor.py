@@ -11,14 +11,14 @@ import time
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path("/home/ubuntu22/logs/rsl_rl/terrain_v37_stairs_focus/2026-09-26_00-09-12_stairs_5to10cm_from_v36_2550_20260926T000905Z/model_2799.pt")
 EXPERIMENT = "terrain_v38_official_stairs"
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 BATCH = ROOT / "results" / STAMP
 RUN_NAME = f"official_5to23cm_from_v37_2799_{STAMP}"
 ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-           WANDB_MODE="offline", V38_SOURCE_CHECKPOINT=str(SOURCE))
+           WANDB_API_KEY=os.environ["WANDB_API_KEY"], V38_SOURCE_CHECKPOINT=str(SOURCE))
 
 
 def sha256(path):
@@ -70,7 +70,7 @@ def main():
     command = [PYTHON, "-u", str(ROOT / "train.py"),
         "--task", "Isaac-Go2-V38-OfficialStairs-v0", "--agent", "rsl_rl_sac_cfg_entry_point",
         "--num_envs", "4096", "--max_iterations", "1000", "--seed", "1", "--resume",
-        "--run_name", RUN_NAME, "--headless"]
+        "--run_name", RUN_NAME, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"]
     print("[V38] 原始5-23 cm、30 cm宽楼梯课程；62维本体观测；从V37继续", flush=True)
     print("[GPU]", gpu.stdout.strip(), flush=True)
     print("[命令]", " ".join(command), flush=True)

@@ -11,7 +11,7 @@ import time
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
 SOURCE = Path("/home/ubuntu22/logs/rsl_rl/terrain_v34_scratch_four_terrain/2026-09-20_22-45-03_mixed_curriculum_20260920T224437Z/model_2396.pt")
 EXPERIMENT = "terrain_v35_straight_finetune"
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -20,7 +20,7 @@ RUN_NAME = f"straight_from_v34_{STAMP}"
 ENV = dict(
     os.environ,
     PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts",
-    WANDB_MODE="offline",
+    WANDB_API_KEY=os.environ["WANDB_API_KEY"],
     V35_SOURCE_CHECKPOINT=str(SOURCE),
 )
 
@@ -84,7 +84,7 @@ def main():
         "--task", "Isaac-Go2-V35-StraightFourTerrain-v0",
         "--agent", "rsl_rl_sac_cfg_entry_point",
         "--num_envs", "4096", "--max_iterations", "300",
-        "--seed", "1", "--resume", "--run_name", RUN_NAME, "--headless",
+        "--seed", "1", "--resume", "--run_name", RUN_NAME, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless",
     ]
     print("[V35] 保持62维输入和原网络，从V34 model_2396.pt开始直线微调", flush=True)
     print("[GPU]", gpu.stdout.strip(), flush=True)

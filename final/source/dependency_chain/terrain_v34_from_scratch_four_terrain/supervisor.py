@@ -14,11 +14,11 @@ from catalog import CASES, PAPER_FAMILIES
 
 
 ROOT = Path(__file__).resolve().parent
-PYTHON = "/home/ubuntu22/miniforge3/envs/env_isaaclab/bin/python"
-FFMPEG = "/home/ubuntu22/miniforge3/envs/env_isaaclab/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+PYTHON = "/opt/conda/envs/isaac_sac/bin/python"
+FFMPEG = "/opt/conda/envs/isaac_sac/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
 STAMP = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 BATCH = ROOT / "results" / STAMP
-ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_MODE="offline")
+ENV = dict(os.environ, PYTHONPATH="/home/ubuntu22:/data/sac:/data/sac/scripts", WANDB_API_KEY=os.environ["WANDB_API_KEY"])
 FLAT_TASK = ["--task", "Isaac-Go2-V34-ScratchFlat-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 MIXED_TASK = ["--task", "Isaac-Go2-V34-ScratchFourTerrain-v0", "--agent", "rsl_rl_sac_cfg_entry_point"]
 V24 = Path("/data/sac/saved_models/ETH_SAC_V24_10CM/model_299.pt")
@@ -161,13 +161,13 @@ def main():
     try:
         smoke_name = f"smoke_{STAMP}"
         run(
-            [PYTHON, "-u", str(ROOT / "train.py"), *FLAT_TASK, "--num_envs", "64", "--max_iterations", "29", "--seed", "1", "--run_name", smoke_name, "--headless", "agent.algorithm.replay_buffer_size=8192", "agent.algorithm.num_mini_batches=2", "agent.algorithm.mini_batch_size=128"],
+            [PYTHON, "-u", str(ROOT / "train.py"), *FLAT_TASK, "--num_envs", "64", "--max_iterations", "29", "--seed", "1", "--run_name", smoke_name, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless", "agent.algorithm.replay_buffer_size=8192", "agent.algorithm.num_mini_batches=2", "agent.algorithm.mini_batch_size=128"],
             "V34严格从头接口与更新检查", 900,
         )
 
         flat_name = f"flat_{STAMP}"
         run(
-            [PYTHON, "-u", str(ROOT / "train.py"), *FLAT_TASK, "--num_envs", "4096", "--max_iterations", "1000", "--seed", "1", "--run_name", flat_name, "--headless"],
+            [PYTHON, "-u", str(ROOT / "train.py"), *FLAT_TASK, "--num_envs", "4096", "--max_iterations", "1000", "--seed", "1", "--run_name", flat_name, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"],
             "V34平地基础_1000轮", 14400,
         )
         flat_model = checkpoint("terrain_v34_scratch_flat_foundation", flat_name)
@@ -184,7 +184,7 @@ def main():
         mixed_name = f"mixed_{STAMP}"
         resume_env = dict(ENV, V34_OWN_FLAT_CHECKPOINT=str(flat_model))
         run(
-            [PYTHON, "-u", str(ROOT / "train.py"), *MIXED_TASK, "--num_envs", "4096", "--max_iterations", "800", "--seed", "1", "--resume", "--run_name", mixed_name, "--headless"],
+            [PYTHON, "-u", str(ROOT / "train.py"), *MIXED_TASK, "--num_envs", "4096", "--max_iterations", "800", "--seed", "1", "--resume", "--run_name", mixed_name, "--logger", "wandb", "--log_project_name", "isaac_sac_pipeline", "--headless"],
             "V34四地形课程_800轮", 14400, resume_env,
         )
         mixed_model = checkpoint("terrain_v34_scratch_four_terrain", mixed_name)
