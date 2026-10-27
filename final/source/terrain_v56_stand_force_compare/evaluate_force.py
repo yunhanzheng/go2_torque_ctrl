@@ -34,6 +34,7 @@ import csv
 import json
 import os
 import sys
+import time
 from dataclasses import replace
 
 # --- same path bootstrap as train.py ---------------------------------------------------------
@@ -501,6 +502,9 @@ def main(env_cfg, agent_cfg):
             video_recorder.stop_recording()
         except AttributeError:
             video_recorder.close()
+        # The encoder runs on a background thread and ``os._exit`` below would cut its last
+        # writes, which produced mp4 files of a few dozen bytes here.
+        time.sleep(2.0)
         print(f"  video       : {os.path.join(out_dir, 'videos')}", flush=True)
 
     sys.stdout.flush()
