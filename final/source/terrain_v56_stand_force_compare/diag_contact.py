@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+from dataclasses import replace
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _SOURCE_ROOT = os.path.dirname(_HERE)
@@ -28,6 +29,13 @@ parser.add_argument("--task", type=str, default="Isaac-Go2-V56-StandTorque-v0")
 parser.add_argument("--agent", type=str, default="rsl_rl_cfg_entry_point")
 parser.add_argument("--checkpoint", type=str, required=True)
 parser.add_argument("--steps", type=int, default=25)
+parser.add_argument("--print_every", type=int, default=1, help="Print every n-th step.")
+parser.add_argument(
+    "--disable_base_contact",
+    action="store_true",
+    default=False,
+    help="Stop the base-contact term from ending the episode, so the rollout can be watched longer.",
+)
 parser.add_argument("--seed", type=int, default=7)
 AppLauncher.add_app_launcher_args(parser)
 parser.set_defaults(headless=True)
@@ -64,6 +72,11 @@ def _stats(sensor) -> str:
         f"hist{tuple(history.shape)} |hist|max={float(history.abs().max()):.1f} "
         f"|now|max={float(current.abs().max()):.1f}"
     )
+
+
+def _never(env, **kwargs) -> torch.Tensor:
+    """Replacement for a DoneTerm: never terminates."""
+    return torch.zeros(env.num_envs, dtype=torch.bool, device=env.device)
 
 
 @hydra_task_config(args_cli.task, args_cli.agent)
@@ -106,23 +119,33 @@ def main(env_cfg, agent_cfg):
     contact = base_env.scene.sensors["contact_forces"]
     feet = base_env.scene.sensors["feet_forces"]
     robot = base_env.scene["robot"]
-
-    header = (
-        "step ep_len done base_z  " + "  ".join(f"{n:>9s}" for n in ("terms", "contact_forces", "feet_forces"))
+    print(
+        f"[INFO] step_dt={base_env.step_dt:.4f} s  max_episode_length={base_env.max_episode_length} "
+        f"  num_envs={base_env.num_envs}",
+        flush=True,
     )
+
+    if args_cli.disable_base_contact:
+        # A zero return keeps the episode alive; the buffer is read in the same step by
+        # ``compute``, so this hides the term without touching the sensors.
+        manager.set_term_cfg("base_contact", replace(manager.get_term_cfg("base_contact"), func=_never))
+        print("[INFO] base_contact disabled", flush=True)
+
+    header = "step ep_len done base_z  " + "  ".join(f"{n:>9s}" for n in ("terms", "contact_forces", "feet_forces"))
     print("\n" + header, flush=True)
     with torch.inference_mode():
         for step in range(args_cli.steps):
             ep_len = int(base_env.episode_length_buf.item())
+            z_before = float(robot.data.root_pos_w[0, 2])
             actions = policy(obs)
             obs, _rew, dones, _extras = env.step(actions)
-            fired = "".join(
-                f"{name}=" f"{int(manager.get_term(name).item())}" for name in manager.active_terms
-            )
+            if step % args_cli.print_every and not int(dones.item()):
+                continue
+            fired = " ".join(f"{name}={int(manager.get_term(name).item())}" for name in manager.active_terms)
             print(
                 f"{step:4d} {ep_len:6d} {int(dones.item()):4d} "
-                f"{float(robot.data.root_pos_w[0, 2]):.4f}  "
-                f"{fired:<24s}  {_stats(contact)}  {_stats(feet)}",
+                f"{z_before:.4f}->{float(robot.data.root_pos_w[0, 2]):.4f}  "
+                f"{fired:<40s}  {_stats(contact)}  {_stats(feet)}",
                 flush=True,
             )
 
