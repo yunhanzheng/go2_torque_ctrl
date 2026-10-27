@@ -73,6 +73,20 @@ parser.add_argument("--stock_kp", type=float, default=25.0, help="Reference stif
 parser.add_argument("--stock_kd", type=float, default=0.5, help="Reference damping drawn on the PD figures.")
 parser.add_argument("--video", action="store_true", default=False, help="Record the rollout to an mp4 (turns on --enable_cameras).")
 parser.add_argument(
+    "--camera_eye",
+    type=float,
+    nargs=3,
+    default=[1.6, 1.6, 0.9],
+    help="Viewer position in metres; the stock viewport leaves the robot a few pixels wide.",
+)
+parser.add_argument(
+    "--camera_target",
+    type=float,
+    nargs=3,
+    default=[0.0, 0.0, 0.30],
+    help="Point the viewer looks at, in metres.",
+)
+parser.add_argument(
     "--video_seconds",
     type=float,
     default=None,
@@ -249,6 +263,7 @@ def main(env_cfg, agent_cfg):
         video_folder = os.path.join(out_dir, "videos")
         # Playback has to run at the control rate or the clip is in slow motion (V55 does the same).
         env.unwrapped.metadata["render_fps"] = max(1, int(round(1.0 / physics_dt)))
+        env.unwrapped.sim.set_camera_view(eye=args_cli.camera_eye, target=args_cli.camera_target)
         print(f"[INFO] video     : {video_folder} ({video_length} steps, {video_length * physics_dt:.1f} s)", flush=True)
         # Same recipe as IsaacLab's own play.py: record from step 0 for a fixed number of steps.
         video_recorder = gym.wrappers.RecordVideo(
