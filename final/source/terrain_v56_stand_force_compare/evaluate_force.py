@@ -34,6 +34,7 @@ import csv
 import json
 import os
 import sys
+from dataclasses import replace
 
 # --- same path bootstrap as train.py ---------------------------------------------------------
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -68,6 +69,12 @@ parser.add_argument(
     default="auto",
     choices=["auto", "on", "off"],
     help="Measure the instantaneous equivalent PD gains while playing (auto: direct-torque tasks only).",
+)
+parser.add_argument(
+    "--no_termination",
+    action="store_true",
+    default=False,
+    help="Watch one uninterrupted rollout instead of a reset every time a done term fires.",
 )
 parser.add_argument("--stock_kp", type=float, default=25.0, help="Reference stiffness drawn on the PD figures.")
 parser.add_argument("--stock_kd", type=float, default=0.5, help="Reference damping drawn on the PD figures.")
@@ -156,6 +163,11 @@ CSV_COLUMNS = (
     "sat_count",
     *(f"contact_{label}" for label in FOOT_LABELS),
 )
+
+
+def _never(env, **kwargs) -> torch.Tensor:
+    """Replacement for a DoneTerm: never fires, so the rollout is not cut short."""
+    return torch.zeros(env.num_envs, dtype=torch.bool, device=env.device)
 
 
 def _write_plots(out_dir: str, label: str, time_s: np.ndarray, rows: dict[str, np.ndarray], fs: float) -> list[str]:
@@ -278,6 +290,14 @@ def main(env_cfg, agent_cfg):
     env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
     base_env = env.unwrapped
     step_dt = base_env.step_dt
+    if args_cli.no_termination:
+        # A done term that fires every ten steps turns a ten-second clip into fifty collapses and
+        # teleports; replacing every term with "never" shows the rollout the policy produces.
+        manager = base_env.termination_manager
+        for term in manager.active_terms:
+            manager.set_term_cfg(term, replace(manager.get_term_cfg(term), func=_never))
+        print("[INFO] terminations disabled: one uninterrupted rollout", flush=True)
+
     weight = float(base_env.scene["robot"].root_physx_view.get_masses()[0].sum()) * GRAVITY
     print(f"[INFO] m g       : {weight:.2f} N", flush=True)
 
