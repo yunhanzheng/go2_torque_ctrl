@@ -11,6 +11,7 @@ One run of this script produces the evidence for one controller:
     <out>/pd_distribution.png  those gains as mean +- std against the stock 25 / 0.5
     <out>/pd_coupling.png  |d tau_i / d q_j|, the cross-joint part of the same Jacobian
     <out>/pd_gains.csv     every per-step gain, so the figures can be re-derived
+    <out>/videos/          the rollout as mp4, only with --video
 
 For a direct-torque task the equivalent gains are read off the policy Jacobian at every
 control step (see ``pd_probe.py``); for the position task there is nothing to measure, so
@@ -70,9 +71,20 @@ parser.add_argument(
 )
 parser.add_argument("--stock_kp", type=float, default=25.0, help="Reference stiffness drawn on the PD figures.")
 parser.add_argument("--stock_kd", type=float, default=0.5, help="Reference damping drawn on the PD figures.")
+parser.add_argument("--video", action="store_true", default=False, help="Record the rollout to an mp4 (turns on --enable_cameras).")
+parser.add_argument(
+    "--video_seconds",
+    type=float,
+    default=None,
+    help="Length of the recording (default: warmup + duration, i.e. everything that is recorded).",
+)
 AppLauncher.add_app_launcher_args(parser)
 parser.set_defaults(headless=True)
 args_cli = parser.parse_args()
+
+# The camera has to be enabled before the app starts, not when the recorder is wrapped.
+if args_cli.video:
+    args_cli.enable_cameras = True
 
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
@@ -224,7 +236,25 @@ def main(env_cfg, agent_cfg):
         flush=True,
     )
 
-    env = gym.make(args_cli.task, cfg=env_cfg)
+    env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
+
+    physics_dt = env_cfg.decimation * env_cfg.sim.dt
+    video_recorder = None
+    if args_cli.video:
+        video_seconds = args_cli.video_seconds if args_cli.video_seconds is not None else args_cli.warmup + args_cli.duration
+        video_length = int(round(video_seconds / physics_dt))
+        video_folder = os.path.join(out_dir, "videos")
+        print(f"[INFO] video     : {video_folder} ({video_length} steps, {video_length * physics_dt:.1f} s)", flush=True)
+        # Same recipe as IsaacLab's own play.py: record from step 0 for a fixed number of steps.
+        video_recorder = gym.wrappers.RecordVideo(
+            env,
+            video_folder=video_folder,
+            step_trigger=lambda step: step == 0,
+            video_length=video_length,
+            disable_logger=True,
+        )
+        env = video_recorder
+
     env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
     base_env = env.unwrapped
     step_dt = base_env.step_dt
@@ -374,6 +404,11 @@ def main(env_cfg, agent_cfg):
 
     if pd_summary is not None:
         print_pd_table(pd_summary)
+
+    if video_recorder is not None:
+        # ``os._exit`` below skips every finaliser, so the open episode has to be flushed here.
+        video_recorder.stop_recording()
+        print(f"  video       : {os.path.join(out_dir, 'videos')}", flush=True)
 
     sys.stdout.flush()
     sys.stderr.flush()
