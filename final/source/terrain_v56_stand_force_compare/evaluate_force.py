@@ -281,6 +281,13 @@ def main(env_cfg, agent_cfg):
     weight = float(base_env.scene["robot"].root_physx_view.get_masses()[0].sum()) * GRAVITY
     print(f"[INFO] m g       : {weight:.2f} N", flush=True)
 
+    # The ``base_contact`` termination of the stock Go2 task reads exactly this sensor and body,
+    # so reading it here shows what the term saw when it fired.
+    contact_sensor = base_env.scene.sensors.get("contact_forces")
+    base_body_ids = None
+    if contact_sensor is not None and "base" in contact_sensor.body_names:
+        base_body_ids = [contact_sensor.body_names.index("base")]
+
     runner_kwargs = {"log_dir": out_dir, "device": str(env.device)}
     if agent_cfg.class_name == "OnPolicyRunner":
         runner = OnPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
@@ -313,12 +320,15 @@ def main(env_cfg, agent_cfg):
     # Why the episodes end is the difference between "the robot stands" and "the metrics are
     # empty", so the termination counters training logs already print are collected here too.
     terminations: dict[str, float] = {}
+    episode_lengths: list[int] = []
+    base_force_max = 0.0
     pd_samples: list[dict[str, np.ndarray]] = []
     pd_summary = None
     pd_stacked = None
 
     with torch.inference_mode():
         for step in range(warmup_steps + recorded_steps):
+            lengths_before = base_env.episode_length_buf.clone()
             if probe is None:
                 actions = policy(obs)
             else:
@@ -333,11 +343,25 @@ def main(env_cfg, agent_cfg):
             # back the fresh observations.  Resetting a second time here only zeroes
             # ``episode_length_buf`` again, which keeps the force metrics' warm-up mask off for
             # the rest of the run (and made every force number read 0).
-            resets += int(dones.sum())
-            if isinstance(_extras, dict):
-                for key, value in (_extras.get("log") or {}).items():
-                    if isinstance(key, str) and key.startswith("Episode_Termination"):
-                        terminations[key] = terminations.get(key, 0.0) + float(np.asarray(value).mean())
+            finished = dones.bool()
+            n_reset = int(finished.sum())
+            resets += n_reset
+            if n_reset:
+                episode_lengths.extend(int(v) for v in (lengths_before[finished] + 1).tolist())
+                # ``extras["log"]`` is refilled by ``_reset_idx`` only, so its
+                # ``Episode_Termination/*`` entries stay in the dict for every step that follows
+                # a reset; summing them counts one termination once per remaining step (316 for
+                # 32 resets here).  ``get_term`` holds each term's value for exactly one step.
+                manager = base_env.termination_manager
+                for term in manager.active_terms:
+                    fired = float(manager.get_term(term)[finished].float().sum())
+                    if fired > 0.0:
+                        terminations[term] = terminations.get(term, 0.0) + fired
+            if base_body_ids is not None:
+                base_force_max = max(
+                    base_force_max,
+                    float(contact_sensor.data.net_forces_w_history[:, :, base_body_ids].norm(dim=-1).max()),
+                )
             if step < warmup_steps:
                 continue
             for key, value in force_snapshot(base_env).items():
@@ -385,6 +409,13 @@ def main(env_cfg, agent_cfg):
         "steps": recorded_steps,
         "resets": resets,
         "terminations": terminations,
+        "episodes": {
+            "count": len(episode_lengths),
+            "mean_steps": round(float(np.mean(episode_lengths)), 2) if episode_lengths else None,
+            "mean_s": round(float(np.mean(episode_lengths)) * step_dt, 3) if episode_lengths else None,
+            "min_steps": int(min(episode_lengths)) if episode_lengths else None,
+        },
+        "base_contact_force_max_N": round(base_force_max, 3) if base_body_ids is not None else None,
         "weight_N": round(weight, 3),
         **summarise_force(rows, weight, step_dt),
     }
@@ -430,8 +461,15 @@ def main(env_cfg, agent_cfg):
     )
     print(f"  artefacts   : {out_dir}", flush=True)
 
-    for key, value in sorted(terminations.items()):
-        print(f"  {key:52s} {value:+.3f}", flush=True)
+    if episode_lengths:
+        print(
+            f"  episodes    : {len(episode_lengths)} ended, mean {summary['episodes']['mean_s']:.2f} s "
+            f"({summary['episodes']['mean_steps']:.1f} steps, min {summary['episodes']['min_steps']})   "
+            f"base |F| max = {base_force_max:.1f} N",
+            flush=True,
+        )
+    if terminations:
+        print("  terminated  : " + "  ".join(f"{k} {v:.0f}" for k, v in sorted(terminations.items())), flush=True)
 
     if pd_summary is not None:
         print_pd_table(pd_summary)
