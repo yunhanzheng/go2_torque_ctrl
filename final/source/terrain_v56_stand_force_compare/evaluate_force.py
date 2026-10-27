@@ -310,6 +310,9 @@ def main(env_cfg, agent_cfg):
     samples: dict[str, list[np.ndarray]] = {}
     time_s = np.arange(recorded_steps) * step_dt
     resets = 0
+    # Why the episodes end is the difference between "the robot stands" and "the metrics are
+    # empty", so the termination counters training logs already print are collected here too.
+    terminations: dict[str, float] = {}
     pd_samples: list[dict[str, np.ndarray]] = []
     pd_summary = None
     pd_stacked = None
@@ -331,6 +334,10 @@ def main(env_cfg, agent_cfg):
             # ``episode_length_buf`` again, which keeps the force metrics' warm-up mask off for
             # the rest of the run (and made every force number read 0).
             resets += int(dones.sum())
+            if isinstance(_extras, dict):
+                for key, value in (_extras.get("log") or {}).items():
+                    if isinstance(key, str) and key.startswith("Episode_Termination"):
+                        terminations[key] = terminations.get(key, 0.0) + float(np.asarray(value).mean())
             if step < warmup_steps:
                 continue
             for key, value in force_snapshot(base_env).items():
@@ -377,6 +384,7 @@ def main(env_cfg, agent_cfg):
         "duration_s": args_cli.duration,
         "steps": recorded_steps,
         "resets": resets,
+        "terminations": terminations,
         "weight_N": round(weight, 3),
         **summarise_force(rows, weight, step_dt),
     }
@@ -421,6 +429,9 @@ def main(env_cfg, agent_cfg):
         flush=True,
     )
     print(f"  artefacts   : {out_dir}", flush=True)
+
+    for key, value in sorted(terminations.items()):
+        print(f"  {key:52s} {value:+.3f}", flush=True)
 
     if pd_summary is not None:
         print_pd_table(pd_summary)
