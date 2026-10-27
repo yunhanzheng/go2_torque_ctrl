@@ -92,6 +92,7 @@ class StandForceEnv(ManagerBasedRLEnv):
         # Weight reference for the "does the ground carry the robot?" check.  Read once:
         # the add_base_mass event randomises the base link, and this metric is meant to be
         # a drift detector, not a mass estimator.
+        robot = self.scene["robot"]
         self._weight_n = float(robot.root_physx_view.get_masses()[0].sum()) * 9.81
         # Warm-up in policy steps, derived from a duration so that the 200 Hz ablation (four
         # times the steps per second) gates exactly the same amount of physical time.
