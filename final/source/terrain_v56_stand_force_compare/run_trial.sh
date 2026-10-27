@@ -35,9 +35,10 @@ PD_PROBE=${PD_PROBE:-auto}
 STOCK_KP=${STOCK_KP:-25}
 STOCK_KD=${STOCK_KD:-0.5}
 
-# ``rsl_rl`` lives at the repository root, not under ``final/source``; the pip editable install in
-# some environments points at a directory that no longer exists, so the checkout wins.
-export PYTHONPATH="$SOURCE_ROOT:$SOURCE_ROOT/base_adapter:$ROOT:$REPO_ROOT/rsl_rl:${PYTHONPATH:-}"
+# ``rsl_rl`` has to come from the SAC fork under ``isaac_sac_setup``: the top-level ``rsl_rl/``
+# is upstream and has no ``OffPolicyRunner``.  The pip editable install in this environment points
+# at a directory that no longer exists, so the checkout has to win.
+export PYTHONPATH="$SOURCE_ROOT:$SOURCE_ROOT/base_adapter:$ROOT:$REPO_ROOT/isaac_sac_setup/rsl_rl_sac:${PYTHONPATH:-}"
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
 
 CMD=${1:-smoke}
