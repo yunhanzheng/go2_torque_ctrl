@@ -80,11 +80,14 @@ parser.add_argument(
 )
 AppLauncher.add_app_launcher_args(parser)
 parser.set_defaults(headless=True)
-args_cli = parser.parse_args()
+args_cli, hydra_args = parser.parse_known_args()
 
 # The camera has to be enabled before the app starts, not when the recorder is wrapped.
 if args_cli.video:
     args_cli.enable_cameras = True
+
+# ``hydra_task_config`` parses ``sys.argv`` after this point, so drop what argparse consumed.
+sys.argv = [sys.argv[0]] + hydra_args
 
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
