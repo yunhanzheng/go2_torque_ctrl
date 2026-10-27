@@ -1,9 +1,11 @@
 # Semester Project — Final SAC Result for Unitree Go2
 
-This repository contains **only the final V50 result** of the semester project:
-the final source code, trained checkpoint, evaluation evidence, training log, and
-three demonstration videos. Earlier experimental models, repeated checkpoints,
-and obsolete result folders are intentionally excluded.
+This repository contains the **final V50 result** of the semester project — the
+final source code, trained checkpoint, evaluation evidence, training log, and
+three demonstration videos — plus the source code of the follow-up experiments
+V51–V55. Earlier experimental models, repeated checkpoints, training artefacts,
+and obsolete result folders are intentionally excluded; see
+[Repository scope](#repository-scope-and-ignored-artefacts).
 
 ## What to open first
 
@@ -14,6 +16,7 @@ and obsolete result folders are intentionally excluded.
 | `final/results/videos/` | Three browser-playable WebM demonstrations |
 | `final/source/terrain_v50_curriculum_recovery/` | Final V50 experiment code |
 | `final/source/dependency_chain/` | Source-only config inheritance required by V50; not archived old results |
+| `final/source/` | V51–V55 follow-up experiments, source and configs only (see below) |
 | `open_source/README.md` | Clearly marked open-source starting points, commits, and licences |
 
 Large model/video files use Git LFS. Clone with:
@@ -74,10 +77,40 @@ V34 -> V35 -> V36 -> V37 -> V38 -> V44 -> V45 -> V46 -> V47 -> V48 -> V49 -> V50
 config modules imported by this chain. This is supporting source, not a second
 set of submitted results.
 
-### Additional experiments
+### Additional experiments (V51–V55)
 
-- `final/source/native_terrain_sata/` — A baseline experiment using IsaacLab's
-  native terrain curriculum with SATA rewards and algorithm, serving as a comparison to V50.
+After V50 the work continued by porting the dynamics of the `SATA` `go2_torque`
+reference project into IsaacLab and then isolating one factor per experiment.
+Only source and configs are committed for these runs; their checkpoints, logs and
+videos stay local (see [Repository scope](#repository-scope-and-ignored-artefacts)).
+
+| Path | Experiment | Change against its baseline |
+|---|---|---|
+| `final/source/terrain_v51_native_terrain/` | V51 | Ports SATA dynamics (TG torque model, Gompertz growth curriculum, 60-D observation) onto SAC + IsaacLab, keeping V50's 16 rewards and the native terrain/curriculum. Details in `final/source/README.md`. |
+| `final/source/terrain_v52_sata_ppo_flat/` | V52 | SATA-identical verification of that port: PPO + flat ground + SATA's nine growth-coupled rewards. |
+| `final/source/terrain_v53_sata_sac_flat/` | V53 | Algorithm-only control against V52: identical environment, SAC instead of PPO. |
+| `final/source/terrain_v54_sata_ppo_rough/` | V54 | Terrain-only control against V52: IsaacLab's official Go2 rough terrain, 12 reward terms and revised joint limits; see `V54修改说明.md`. |
+| `final/source/terrain_v55_sata_warmstart_isaac_rl/` | V55 | Warm start from SATA's `model_3000.pt` and continue with IsaacLab's stock Go2 reward table plus a bounded `gs` ramp; see `实验说明.md`. |
+
+`pipeline_logs/` holds the shell helpers used to cut the 10 s clips from those
+runs, and `run_full_pipeline.py` / `run_full_pipeline.sh` drive the V34→V50
+chain.
+
+## Repository scope and ignored artefacts
+
+Only source code, configurations and documentation are versioned. `.gitignore`
+keeps the following local, so a fresh clone is small:
+
+| Ignored | Reason |
+|---|---|
+| `*/logs/`, `*/outputs/`, `tmp_tb/`, `wandb/`, `events.out.tfevents.*`, `*.log` | Training run output; the V51–V55 runs alone are ≈1.5 GB |
+| `*.pt`, `*.pth`, `*.ckpt`, `*.onnx`, `_ckpt_server/` | Checkpoints; only the V50 `model_5099.pt` is committed, through Git LFS |
+| `*.mp4`, `*.webm`, `final/**/video*/` | Rendered videos and extracted frames; only the three V50 WebM demos are committed, through Git LFS |
+| `isaac_sac_setup/isaaclab-sac/`, `isaac_sac_setup/rsl_rl_sac/`, `rsl_rl/` | Third-party clones; install them at the commits pinned in `open_source/README.md` and in [Environment setup](#environment-setup) |
+
+Final evidence logs are explicitly kept tracked (`final/results/training.log`,
+`final/results/evaluation/*.log`) so the V50 numbers stay auditable. New
+artefacts that must be committed despite these rules need `git add -f`.
 
 ## Reproduction requirements
 
@@ -86,6 +119,12 @@ set of submitted results.
 - NVIDIA GPU, driver, CUDA, and Isaac Sim 5.1;
 - IsaacLab-SAC and RSL-RL-SAC at the commits documented in
   `open_source/README.md`.
+
+The V51–V55 experiments expect the same IsaacLab environment plus the SATA
+dynamics in `sata_alignment.py`; each folder has its own `train.py`,
+`smoke_test.py` and `run_trial.sh`. Their training was run on a remote GPU host
+with absolute paths, so paths inside `run_trial.sh` and the log helpers must be
+adapted before reuse.
 
 The final evaluator and its dynamic source chain use repository-relative paths.
 The original final evaluator is:
@@ -174,21 +213,21 @@ deterministic headless plane episode. Full seven-case reproduction can be run
 with `evaluate_final.py`. The submitted final model is directly runnable for
 inference/evaluation; retraining the transfer stage from scratch would also
 require its V49 source checkpoint, which is intentionally not included in this
-final-only repository.
+archive.
 
-### Running the native curriculum baseline
+### Running the V51 native-terrain experiment
 
-To train with IsaacLab's native terrain curriculum and rewards:
+To train V51 — IsaacLab's built-in `ROUGH_TERRAINS_CFG` terrain and curriculum,
+with the ported SATA torque dynamics and V50's reward set:
 
 ```bash
-cd final/source/native_terrain_sata
-python supervisor.py
+cd final/source/terrain_v51_native_terrain
+python smoke_test.py --headless
+python train.py --task Isaac-Go2-V51-NativeTerrain-v0 --agent rsl_rl_sac_cfg_entry_point
 ```
 
-This experiment uses the built-in ROUGH_TERRAINS_CFG curriculum (6 terrain
-types, 10 difficulty levels) with default IsaacLab rewards, while keeping
-the project's core torque control settings (base_height_l2, feet_slide,
-low_base termination).
+`run_trial.sh` wraps the same command with the paths of the original host.
+Per-folder details are in `final/source/README.md`.
 
 ## Full training pipeline
 

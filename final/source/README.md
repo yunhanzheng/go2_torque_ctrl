@@ -2,12 +2,15 @@
 
 - `terrain_v51_native_terrain/`: V51 experiment — SATA `go2_torque` dynamics (TG torque + growth + 60-D obs) ported onto SAC + IsaacLab, with V50 rewards + IsaacLab native terrain.
 - `terrain_v52_sata_ppo_flat/`: V52 verification run — same SATA dynamics as V51, but SATA's *original* recipe: PPO + flat ground + SATA's 9 growth-coupled rewards. Reuses V51's `sata_alignment.py`; V51 stays untouched.
+- `terrain_v53_sata_sac_flat/`: V53 control run — V52's environment unchanged, only the algorithm differs: SAC (OffPolicyRunner) instead of PPO.
+- `terrain_v54_sata_ppo_rough/`: V54 control run — V52's setup on IsaacLab's official Go2 rough terrain, with 12 reward terms and revised joint limits. See `V54修改说明.md` inside the folder.
 - `terrain_v55_sata_warmstart_isaac_rl/`: V55 — warm start from SATA's `model_3000.pt` (gs 0.789) and continue on V54's terrain with **IsaacLab's stock Go2 reward table only** (11 terms, `undesired_contacts` off). gs becomes a bounded 0.789→1.0 ramp over 500 iters (`v55_growth.py`) instead of SATA's Gompertz. See `实验说明.md` inside the folder.
+- `terrain_v56_stand_force_compare/`: V56 — position control vs **direct torque** on a flat *standing* task, compared through the ground reaction forces. Baseline is IsaacLab's stock `UnitreeGo2FlatEnvCfg` (not the V50/V54 chain); the torque variant applies `tau = clamp(10 * a, +-23.5 N.m)` with the actuator PD removed (no SATA tanh / filter / hill / fatigue / growth), plus a 200 Hz ablation. GRF / CoP / torque metrics reach wandb through `extras["log"]`. Entry point: `run_trial.sh smoke|train|eval|compare|identify`; `identify` fits `tau = Kp (q* - q) - Kd qdot` to the torque policy and replays the fitted and the stock PD in closed loop to test whether the learned law is realisable as a joint PD.
 - `terrain_v50_curriculum_recovery/`: V50 experiment entry points and config.
 - `dependency_chain/`: source modules inherited by V50; no old models or archived results.
 - `base_adapter/`: Go2 SAC adapter, train/play entry points, and stair config modules.
 
-The source preserves original absolute paths. Update those paths for a new machine as described in the top-level README.
+The source preserves original absolute paths. Update those paths for a new machine as described in the top-level README. Checkpoints, run logs and videos of the V51–V56 experiments are not committed (see "Repository scope" in the top-level README).
 
 ## V51 — V50 Rewards + IsaacLab Native Terrain + SATA Dynamics
 
