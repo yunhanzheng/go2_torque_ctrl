@@ -21,6 +21,8 @@ venv/
 # --- Runtime outputs: training logs, Hydra runs, TensorBoard ---
 logs/
 outputs/
+# V56 force evaluations, BC checkpoints and rollout clips are produced on the training host
+/final/source/terrain_v56_stand_force_compare/results/
 tmp_tb/
 wandb/
 hydra.log

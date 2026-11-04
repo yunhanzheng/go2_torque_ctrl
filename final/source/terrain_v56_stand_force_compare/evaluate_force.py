@@ -126,14 +126,17 @@ from rsl_rl.runners import OffPolicyRunner, OnPolicyRunner
 
 from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
 
-import terrain_v56_stand_force_compare.config  # noqa: F401  (registers the three tasks)
+import terrain_v56_stand_force_compare.config  # noqa: F401  (registers the four tasks)
+from terrain_v56_stand_force_compare.bc import is_bc_checkpoint, load_bc
 from terrain_v56_stand_force_compare.eval_common import (
     FOOT_LABELS,
     GRAVITY,
     force_snapshot,
     play_overrides,
     psd,
+    reference_snapshot,
     summarise_force,
+    summarise_reference,
 )
 from terrain_v56_stand_force_compare.pd_probe import (
     PdProbe,
@@ -163,6 +166,11 @@ CSV_COLUMNS = (
     "tau_rms_Nm",
     "sat_count",
     *(f"contact_{label}" for label in FOOT_LABELS),
+    # Base-relative reference error (``reference.py``): the same numbers the training curves log as
+    # ``Ref/*``, so a rollout can be checked against what the policy was scored on.
+    "ref_dq_max_rad",
+    "ref_tilt_rad",
+    "ref_d_ell_mm",
 )
 
 
@@ -310,14 +318,21 @@ def main(env_cfg, agent_cfg):
         base_body_ids = [contact_sensor.body_names.index("base")]
 
     runner_kwargs = {"log_dir": out_dir, "device": str(env.device)}
-    if agent_cfg.class_name == "OnPolicyRunner":
-        runner = OnPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
-    elif agent_cfg.class_name == "OffPolicyRunner":
-        runner = OffPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+    if is_bc_checkpoint(args_cli.checkpoint):
+        # A behaviour-cloning checkpoint (``bc_train.py``) is a plain MLP, not an rsl_rl actor.
+        # Building the runner would work but would also construct a critic and an optimiser that
+        # the file does not contain, so the policy is loaded directly.
+        policy = load_bc(args_cli.checkpoint, device=env.device)
+        print("[INFO] policy    : behaviour cloning (plain MLP, no rsl_rl runner)", flush=True)
     else:
-        raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
-    runner.load(args_cli.checkpoint)
-    policy = runner.get_inference_policy(device=env.device)
+        if agent_cfg.class_name == "OnPolicyRunner":
+            runner = OnPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+        elif agent_cfg.class_name == "OffPolicyRunner":
+            runner = OffPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+        else:
+            raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
+        runner.load(args_cli.checkpoint)
+        policy = runner.get_inference_policy(device=env.device)
 
     probe = None
     if args_cli.pd_probe != "off" and torque_term(env) is not None:
@@ -387,6 +402,8 @@ def main(env_cfg, agent_cfg):
                 continue
             for key, value in force_snapshot(base_env).items():
                 samples.setdefault(key, []).append(value)
+            for key, value in reference_snapshot(base_env).items():
+                samples.setdefault(key, []).append(value)
 
     rows: dict[str, np.ndarray] = {key: np.stack(values) for key, values in samples.items()}
     rows["weight"] = np.full((recorded_steps, args_cli.num_envs), weight)
@@ -415,6 +432,9 @@ def main(env_cfg, agent_cfg):
                         f"{rows['tau_rms'][index, env_id]:.3f}",
                         f"{int(rows['sat_count'][index, env_id])}",
                         *(int(rows["contact"][index, env_id, i]) for i in range(4)),
+                        f"{rows['ref_dq_max'][index, env_id]:.4f}",
+                        f"{rows['ref_tilt'][index, env_id]:.4f}",
+                        f"{1e3 * rows['ref_d_ell'][index, env_id]:.2f}",
                     ]
                 )
 
@@ -439,6 +459,9 @@ def main(env_cfg, agent_cfg):
         "base_contact_force_max_N": round(base_force_max, 3) if base_body_ids is not None else None,
         "weight_N": round(weight, 3),
         **summarise_force(rows, weight, step_dt),
+        # Relative to the frame each episode started in - the comparable answer to "did it stand?",
+        # where ``pose.base_z_mean_m`` above is an absolute world coordinate.
+        "reference": summarise_reference(rows),
     }
 
     if pd_samples:
@@ -480,6 +503,14 @@ def main(env_cfg, agent_cfg):
         f"base z = {summary['pose']['base_z_mean_m']:.3f} m   resets = {resets}",
         flush=True,
     )
+    ref = summary["reference"]
+    print(
+        f"  Ref dq_max  = {ref['dq_max_rad']:.3f} rad (worst {ref['dq_max_worst_rad']:.3f})   "
+        f"tilt = {ref['tilt_mean_deg']:.2f} deg (max {ref['tilt_max_deg']:.2f})   "
+        f"d_ell = {ref['d_ell_mean_mm']:+.1f} mm (worst {ref['d_ell_worst_mm']:+.1f})   "
+        f"ell_0 = {ref['ell_0_m']:.3f} m",
+        flush=True,
+    )
     print(f"  artefacts   : {out_dir}", flush=True)
 
     if episode_lengths:
@@ -497,11 +528,12 @@ def main(env_cfg, agent_cfg):
 
     if video_recorder is not None:
         # ``os._exit`` below skips every finaliser, so the open episode has to be flushed here;
-        # V55 reaches the same point by closing the wrapper instead.
-        try:
+        # V55 reaches the same point by closing the wrapper instead.  ``RecordVideo`` stops itself
+        # once ``video_length`` steps are in, and calling ``stop_recording()`` a second time trips
+        # its own ``assert self.recording`` - which would abort the script *after* the mp4 was
+        # already written, making a successful recording look like a crash.
+        if getattr(video_recorder, "recording", False):
             video_recorder.stop_recording()
-        except AttributeError:
-            video_recorder.close()
         # The encoder runs on a background thread and ``os._exit`` below would cut its last
         # writes, which produced mp4 files of a few dozen bytes here.
         time.sleep(2.0)

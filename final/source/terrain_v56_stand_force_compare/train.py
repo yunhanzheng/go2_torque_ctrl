@@ -1,7 +1,13 @@
-"""Train one V56 standing variant (position control, direct torque, or torque at 200 Hz).
+"""Train one V56 standing variant with PPO (position control or direct torque).
+
+Four tasks are registered, in two matched pairs: the two arms at the official 50 Hz policy rate
+(``stand_pos`` / ``stand_torque``) and the same two at the physics rate (``stand_pos200`` /
+``stand_torque200``), which is the only way to give both controllers the same loop bandwidth - see
+the module docstring of ``config.py``.
 
 The runner is IsaacLab's stock ``UnitreeGo2FlatPPORunnerCfg`` (network, optimiser, PPO
-hyper-parameters); only the iteration budget and the experiment name differ.  Force
+hyper-parameters); only the experiment name differs, plus the ``num_steps_per_env`` correction
+that keeps an iteration at 0.48 s of physical time when the control rate quadruples.  Force
 metrics reach wandb/TensorBoard through ``extras["log"]``, see ``metrics.py``.
 """
 from __future__ import annotations
@@ -33,7 +39,10 @@ parser.add_argument(
     "--task",
     type=str,
     default="Isaac-Go2-V56-StandTorque-v0",
-    help="Task id: Isaac-Go2-V56-StandPos-v0 / -StandTorque-v0 / -StandTorque200-v0.",
+    help=(
+        "Task id: Isaac-Go2-V56-StandPos-v0 / -StandTorque-v0 (official 50 Hz) and"
+        " -StandPos200-v0 / -StandTorque200-v0 (bandwidth-matched pair at 200 Hz)."
+    ),
 )
 parser.add_argument(
     "--agent", type=str, default="rsl_rl_cfg_entry_point", help="Name of the RL agent configuration entry point."
@@ -87,7 +96,7 @@ from isaaclab.utils.io import dump_yaml
 
 from isaaclab_rl.rsl_rl import RslRlBaseRunnerCfg, RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
 
-# Registers the three V56 tasks.
+# Registers the four V56 tasks (two official-rate arms, two at the physics rate).
 import terrain_v56_stand_force_compare.config  # noqa: F401
 
 import isaaclab_tasks  # noqa: F401

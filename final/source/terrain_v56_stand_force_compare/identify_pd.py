@@ -103,8 +103,9 @@ from rsl_rl.runners import OffPolicyRunner, OnPolicyRunner
 
 from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
 
-import terrain_v56_stand_force_compare.config  # noqa: F401  (registers the three tasks)
+import terrain_v56_stand_force_compare.config  # noqa: F401  (registers the four tasks)
 from terrain_v56_stand_force_compare.actions import DirectTorqueAction
+from terrain_v56_stand_force_compare.bc import is_bc_checkpoint, load_bc
 from terrain_v56_stand_force_compare.eval_common import (
     FOOT_LABELS,
     GRAVITY,
@@ -350,14 +351,20 @@ def main(env_cfg, agent_cfg):
     print(f"[INFO] m g        : {weight:.2f} N, {num_joints} joints, action_scale {float(term.cfg.action_scale):.2f}", flush=True)
 
     runner_kwargs = {"log_dir": out_dir, "device": str(env.device)}
-    if agent_cfg.class_name == "OnPolicyRunner":
-        runner = OnPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
-    elif agent_cfg.class_name == "OffPolicyRunner":
-        runner = OffPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+    if is_bc_checkpoint(args_cli.checkpoint):
+        # Same branch as ``evaluate_force.py``: a cloned policy carries no critic and no optimiser,
+        # so the runner is skipped and the MLP is loaded straight from the checkpoint.
+        policy = load_bc(args_cli.checkpoint, device=env.device)
+        print("[INFO] policy     : behaviour cloning (plain MLP, no rsl_rl runner)", flush=True)
     else:
-        raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
-    runner.load(args_cli.checkpoint)
-    policy = runner.get_inference_policy(device=env.device)
+        if agent_cfg.class_name == "OnPolicyRunner":
+            runner = OnPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+        elif agent_cfg.class_name == "OffPolicyRunner":
+            runner = OffPolicyRunner(env, agent_cfg.to_dict(), **runner_kwargs)
+        else:
+            raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
+        runner.load(args_cli.checkpoint)
+        policy = runner.get_inference_policy(device=env.device)
 
     warmup_steps = int(round(args_cli.warmup / step_dt))
     record_steps = int(round(args_cli.duration / step_dt))

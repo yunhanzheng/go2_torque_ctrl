@@ -6,6 +6,10 @@ averages every key over one iteration, so wandb/TensorBoard receive one scalar p
 iteration without touching the third-party stack.  The dict is *merged* into the one the
 managers already put there, so ``Episode_Reward/*`` and ``Episode_Termination/*`` survive.
 
+The ``Ref/*`` keys come from :mod:`reference` and are the arm-agnostic way of asking "is the robot
+still in the frame its episode started in?": joint drift, tilt from projected gravity and the
+base-to-foot extension, none of which needs an absolute height or a ground plane.
+
 Design notes
 ------------
 * The four feet are addressed by name (``FOOT_NAMES``), never by USD ordering, so the
@@ -21,6 +25,8 @@ from __future__ import annotations
 import torch
 
 from isaaclab.envs import ManagerBasedRLEnv
+
+from .reference import StandingReference
 
 FOOT_NAMES: tuple[str, ...] = ("FL_foot", "FR_foot", "RL_foot", "RR_foot")
 """Force-metric body order: front-left, front-right, rear-left, rear-right."""
@@ -88,20 +94,25 @@ class StandForceEnv(ManagerBasedRLEnv):
 
     def _setup_force_metrics(self) -> None:
         self._robot_foot_ids = foot_ids(self)[1]
+        # Base-relative reference of the frame each episode starts in (see reference.py).
+        self.reference = StandingReference(self, self._robot_foot_ids)
 
         # Weight reference for the "does the ground carry the robot?" check.  Read once:
         # the add_base_mass event randomises the base link, and this metric is meant to be
         # a drift detector, not a mass estimator.
         robot = self.scene["robot"]
         self._weight_n = float(robot.root_physx_view.get_masses()[0].sum()) * 9.81
-        # Warm-up in policy steps, derived from a duration so that the 200 Hz ablation (four
-        # times the steps per second) gates exactly the same amount of physical time.
+        # Warm-up in policy steps, derived from a duration rather than from a step count so the
+        # gate keeps meaning the same amount of physical time.
         warmup_s = float(getattr(self.cfg, "metrics_warmup_s", 0.25))
         self._warmup_steps = int(round(warmup_s / self.step_dt))
         self._prev_cop_xy: torch.Tensor | None = None
 
     def step(self, action):
         obs, rewards, terminated, truncated, extras = super().step(action)
+        # ``_reset_idx`` sets ``episode_length_buf`` to 0 and ``scene.reset()`` has already pushed
+        # the spawn state into the asset's buffers, so these rows are the true first frame.
+        self.reference.capture(torch.nonzero(self.episode_length_buf == 0, as_tuple=False).squeeze(-1))
         log = self._compute_metrics()
         if log is not None:
             # Merge, never replace: on a step with resets ``extras["log"]`` was just refilled
@@ -116,6 +127,7 @@ class StandForceEnv(ManagerBasedRLEnv):
 
         force_z = foot_normal_forces(self)  # [N, 4], compression only
         total = force_z.sum(dim=1)
+        err = self.reference.tracking_error()
 
         foot_xy = robot.data.body_pos_w[:, self._robot_foot_ids, :2]
         cop_xy = (force_z.unsqueeze(-1) * foot_xy).sum(dim=1) / total.clamp(min=1e-3).unsqueeze(-1)
@@ -136,6 +148,14 @@ class StandForceEnv(ManagerBasedRLEnv):
         total_safe = total.clamp(min=1e-3)
 
         log = {
+            # --- reference tracking, base-relative and ground-free -----------------------------
+            "Ref/dq_rms_rad": (err["dq_rms"] * w).sum() / w_sum,
+            "Ref/dq_max_rad": (err["dq_max"] * w).sum() / w_sum,
+            "Ref/tilt_rad": (err["tilt"] * w).sum() / w_sum,
+            # Signed: negative means the body sank towards its own feet relative to the start frame.
+            "Ref/d_ell_mm": 1e3 * (err["d_ell"] * w).sum() / w_sum,
+            "Ref/d_foot_ell_max_mm": 1e3 * (err["d_foot_ell_max"] * w).sum() / w_sum,
+            "Ref/ell_0_m": (self.reference.ell_0 * w).sum() / w_sum,
             # --- load level ---
             "Force/total_N": (total * w).sum() / w_sum,
             "Force/total_over_weight": (total / self._weight_n * w).sum() / w_sum,
@@ -177,4 +197,8 @@ class StandForceEnv(ManagerBasedRLEnv):
 
     def reset(self, *args, **kwargs):
         self._prev_cop_xy = None
-        return super().reset(*args, **kwargs)
+        out = super().reset(*args, **kwargs)
+        # ``ManagerBasedEnv.reset`` writes the spawn state to the sim and runs ``sim.forward()``,
+        # so the buffers now hold exactly the frame the episodes start in.
+        self.reference.capture(torch.arange(self.num_envs, device=self.device))
+        return out

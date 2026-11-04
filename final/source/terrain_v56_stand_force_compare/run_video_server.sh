@@ -9,7 +9,7 @@
 #     restricted CUDA_VISIBLE_DEVICES, so the renderer is pinned explicitly and that
 #     variable is dropped rather than set to a single device.
 #
-#   bash run_video_server.sh <pos|torque|torque200> <checkpoint.pt> [seconds]
+#   bash run_video_server.sh <pos|torque|pos200|torque200> <checkpoint.pt> [seconds]
 #   RENDER_GPU=1 bash run_video_server.sh torque "$CKT" 10    # if GPU0 is busy
 set -euo pipefail
 
@@ -18,7 +18,7 @@ WORK=/root/bayes-tmp/xiaoyulong/yunhanzheng
 REPO=$WORK/go2_torque_ctrl
 PYTHON=${PYTHON:-/root/bayes-tmp/system_caches/opt_conda/envs/isaac_sac/bin/python3.11}
 
-VARIANT=${1:?usage: run_video_server.sh <pos|torque|torque200> <checkpoint.pt> [seconds]}
+VARIANT=${1:?usage: run_video_server.sh <pos|torque|pos200|torque200> <checkpoint.pt> [seconds]}
 CHECKPOINT=${2:?usage: run_video_server.sh <variant> <checkpoint.pt> [seconds]}
 SECS=${3:-6}
 shift $(( $# >= 3 ? 3 : $# ))
@@ -26,8 +26,9 @@ shift $(( $# >= 3 ? 3 : $# ))
 case "$VARIANT" in
   pos) TASK=Isaac-Go2-V56-StandPos-v0 ;;
   torque) TASK=Isaac-Go2-V56-StandTorque-v0 ;;
+  pos200) TASK=Isaac-Go2-V56-StandPos200-v0 ;;
   torque200) TASK=Isaac-Go2-V56-StandTorque200-v0 ;;
-  *) echo "unknown variant '$VARIANT' (pos|torque|torque200)" >&2; exit 1 ;;
+  *) echo "unknown variant '$VARIANT' (pos|torque|pos200|torque200)" >&2; exit 1 ;;
 esac
 
 # Isaac Sim writes kit/shaderc caches into HOME; keep them out of fanlineng's tree.
@@ -44,13 +45,15 @@ export PYTHONPATH="$REPO/final/source:$REPO/final/source/base_adapter:$REPO/fina
 KIT_ARGS=${KIT_ARGS:-"--allow-root --/renderer/multiGpu/enabled=false --/renderer/activeGpu=${RENDER_GPU:-0} --/plugins/carb.tasking.plugin/threadCount=4"}
 
 cd "$REPO/final/source/terrain_v56_stand_force_compare"
+# ``_video`` suffix: a video pass runs 1 env for a different duration, and writing it into the
+# same directory would overwrite the 4-env force evaluation that the comparison table is built from.
 exec "$PYTHON" -u evaluate_force.py \
   --task "$TASK" \
   --checkpoint "$CHECKPOINT" \
   --label "$VARIANT" \
   --num_envs 1 \
   --duration "$SECS" \
-  --output_dir "results/force_eval/$VARIANT" \
+  --output_dir "results/force_eval/${VARIANT}_video" \
   --video \
   --kit_args "$KIT_ARGS" \
   --headless "$@"

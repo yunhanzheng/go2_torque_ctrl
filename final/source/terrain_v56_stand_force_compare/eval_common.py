@@ -51,6 +51,10 @@ SNAPSHOT_KEYS = (
 """Keys produced by :func:`force_snapshot`, one array of ``[num_envs, ...]`` per step."""
 
 
+REFERENCE_KEYS = ("ref_dq_rms", "ref_dq_max", "ref_tilt", "ref_d_ell", "ref_ell_0")
+"""Keys produced by :func:`reference_snapshot`, one ``[num_envs]`` array per step."""
+
+
 def force_snapshot(env) -> dict[str, np.ndarray]:
     """Per-step force / pose / torque / joint-state read-out, ``[num_envs, ...]`` per key.
 
@@ -90,6 +94,46 @@ def force_snapshot(env) -> dict[str, np.ndarray]:
         "tau": torque.cpu().numpy(),
         "grav": gravity_b.cpu().numpy(),
         "ang_vel": robot.data.root_ang_vel_b.cpu().numpy(),
+    }
+
+
+def reference_snapshot(env) -> dict[str, np.ndarray]:
+    """Per-step base-relative tracking error, ``[num_envs]`` per key.
+
+    The same quantities :mod:`metrics` publishes as ``Ref/*`` during training, read raw instead of
+    averaged over an iteration.  They are relative to the frame the episode started in, so a run at
+    a different control rate, a different spawn height or a different plane elevation is still
+    comparable - unlike ``base_z``, which is an absolute world coordinate.
+    """
+    err = env.reference.tracking_error()
+    return {
+        "ref_dq_rms": err["dq_rms"].cpu().numpy(),
+        "ref_dq_max": err["dq_max"].cpu().numpy(),
+        "ref_tilt": err["tilt"].cpu().numpy(),
+        "ref_d_ell": err["d_ell"].cpu().numpy(),
+        "ref_ell_0": env.reference.ell_0.cpu().numpy(),
+    }
+
+
+def summarise_reference(rows: dict[str, np.ndarray]) -> dict[str, float]:
+    """Statistics of the base-relative error over every environment and recorded step.
+
+    ``d_ell`` is signed (negative = the body sank towards its own feet), so both the mean and the
+    extreme are reported; ``tilt`` is an angle, so it is reported in degrees next to the radians
+    the plots use.
+    """
+    tilt = rows["ref_tilt"]
+    d_ell = rows["ref_d_ell"]
+    return {
+        "dq_rms_rad": round(float(rows["ref_dq_rms"].mean()), 4),
+        "dq_max_rad": round(float(rows["ref_dq_max"].mean()), 4),
+        "dq_max_worst_rad": round(float(rows["ref_dq_max"].max()), 4),
+        "tilt_mean_rad": round(float(tilt.mean()), 4),
+        "tilt_mean_deg": round(float(np.degrees(tilt).mean()), 3),
+        "tilt_max_deg": round(float(np.degrees(tilt).max()), 3),
+        "d_ell_mean_mm": round(1e3 * float(d_ell.mean()), 2),
+        "d_ell_worst_mm": round(1e3 * float(d_ell.min()), 2),
+        "ell_0_m": round(float(rows["ref_ell_0"].mean()), 4),
     }
 
 

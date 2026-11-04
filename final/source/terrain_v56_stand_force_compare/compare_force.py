@@ -4,7 +4,11 @@ This script needs no simulation, no checkpoint and no GPU - it only reads the ar
 ``evaluate_force.py`` wrote, so it can also be run on a laptop:
 
     python compare_force.py --run pos=force_eval/pos --run torque=force_eval/torque \
-        --run torque200=force_eval/torque200 --out force_eval/compare
+        --out force_eval/compare
+
+All four arms can share one table - ``--run pos=... --run torque=... --run pos200=... --run
+torque200=...``.  Labels are free-form, the only convention is that the pair a conclusion is
+drawn from shares the same suffix (``pos``/``torque`` at 50 Hz, ``pos200``/``torque200`` at 200 Hz).
 
 Outputs (in ``--out``):
     compare.json        the merged numbers
@@ -82,6 +86,16 @@ METRICS: tuple[tuple[str, callable, str, str, bool], ...] = (
     ("saturation", lambda s: s["actuation"]["sat_frac"] * 100.0, "{:.2f}", "%", True),
     ("resets", lambda s: s["resets"], "{:d}", "", True),
 )
+
+# Old summaries predate ``reference.py``; the rows are only added when every run has them, so a
+# mixed set still renders instead of raising KeyError halfway through the table.
+REFERENCE_ROWS: tuple[tuple[str, callable, str, str, bool], ...] = (
+    ("Ref dq_max", lambda s: s["reference"]["dq_max_rad"], "{:.3f}", "rad", True),
+    ("Ref tilt", lambda s: s["reference"]["tilt_mean_deg"], "{:.2f}", "deg", True),
+    ("Ref d_ell", lambda s: s["reference"]["d_ell_mean_mm"], "{:+.1f}", "mm", False),
+)
+if all("reference" in summary for summary in SUMMARIES.values()):
+    METRICS = METRICS + REFERENCE_ROWS
 
 header = "| metric | unit | " + " | ".join(LABELS) + " |"
 divider = "|---|---|" + "---|" * len(LABELS)
